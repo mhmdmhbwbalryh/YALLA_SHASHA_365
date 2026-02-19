@@ -56,6 +56,12 @@
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--gold-bright); border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; font-weight: 900; }
         .lineup-list p { margin: 4px 0; color: #e0e0e0; font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
+        /* تنسيق أحداث المباراة الجديد */
+        .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); text-align: center; }
+        .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .event-item.goal { color: #4ade80; }
+        .event-item.miss { color: #f87171; }
+
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); border: 1px solid var(--gold-muted); }
         table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-bright); padding: 10px 2px; border-bottom: 1px solid var(--gold-muted); }
@@ -85,7 +91,7 @@
 </div>
 
 <div class="container">
-    <div class="section-title">مباراة اليوم (إضغط للتشكيلة)</div>
+    <div class="section-title">مباراة اليوم (إضغط للتفاصيل)</div>
     <div class="match-card" onclick="toggleLineup()">
         <div class="match-content" id="match-content-inner"></div>
         <div class="lineup-section" id="lineup-area">
@@ -93,6 +99,7 @@
                 <div class="lineup-list" id="list-team1"></div>
                 <div class="lineup-list" id="list-team2"></div>
             </div>
+            <div id="events-area" class="match-events"></div>
         </div>
     </div>
 
@@ -126,7 +133,7 @@
             </thead>
             <tbody>
                 <tr><td>1</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>حمد صلاح</td><td>1</td><td>0</td></tr>
-                <tr><td>2</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">يوسف الريح</td><td>حمد صلاح</td><td>0</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -150,7 +157,13 @@
     };
 
     const allMatches = [
-        ["حمد صلاح", "عبدالرحيم"], ["أحمد محمد يوسف", "عبدالرحمن"], ["معاوية", "عبدالمؤمن"], null,
+        ["حمد صلاح", "عبدالرحيم", "1 - 0", [
+            {type: 'goal', txt: '⚽ سجل الهدف: مزمل عبدالحفيظ'},
+            {type: 'assist', txt: '👟 صناعة: يوسف الريح'},
+            {type: 'miss', txt: '❌ محمد محبوب: أضاع ركلة جزاء'}
+        ]],
+        ["أحمد محمد يوسف", "عبدالرحمن"], 
+        ["معاوية", "عبدالمؤمن"], null,
         ["عبدالمؤمن", "حافظ بشير"], ["معاوية", "حمد صلاح"], ["عبدالرحيم", "أحمد محمد يوسف"], null,
         ["معاوية", "عبدالرحمن"], ["حمد صلاح", "عبدالمؤمن"], ["عبدالرحيم", "حافظ بشير"], null,
         ["عبدالرحمن", "عبدالمؤمن"], ["حافظ بشير", "حمد صلاح"], ["معاوية", "أحمد محمد يوسف"], null,
@@ -175,14 +188,27 @@
         const matchData = allMatches[currentIndex];
         const container = document.getElementById('match-content-inner');
         const lineupArea = document.getElementById('lineup-area');
+        const eventsArea = document.getElementById('events-area');
         lineupArea.style.display = 'none';
 
         if (!matchData) {
             container.innerHTML = `<div style="padding:30px; text-align:center; font-weight:900; color:var(--gold-bright);">🗓️ استراحة - لا توجد مباريات</div>`;
         } else {
-            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">21:00</div><span class="timer-label" id="timer" style="font-size:10px; font-weight:bold; display:block; margin-top:5px; color:white;">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            const scoreOrTime = matchData[2] ? matchData[2] : "21:00";
+            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">${scoreOrTime}</div><span class="timer-label" id="timer" style="font-size:10px; font-weight:bold; display:block; margin-top:5px; color:white;">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            
             document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
             document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
+            
+            // عرض الأحداث
+            if (matchData[3]) {
+                eventsArea.innerHTML = `<div style="font-weight:900; color:var(--gold-bright); font-size:14px; margin-bottom:10px;">⚡ أحداث المباراة</div>` + 
+                matchData[3].map(ev => `<div class="event-item ${ev.type}">${ev.txt}</div>`).join('');
+                eventsArea.style.display = 'block';
+            } else {
+                eventsArea.style.display = 'none';
+            }
+            
             refreshTimer(d);
         }
     }
@@ -199,6 +225,12 @@
         const diff = target - now;
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
+
+        if (allMatches[currentIndex][2]) {
+            timerEl.innerText = 'انتهت المباراة';
+            return;
+        }
+
         if (diff <= 0 && diff > -7200000) timerEl.innerHTML = '<span class="live-badge">● مباشر الآن</span>';
         else if (diff <= -7200000) timerEl.innerText = 'انتهت المباراة';
         else {
