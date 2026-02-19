@@ -6,40 +6,66 @@
     <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        :root { --royal-purple: #4b0082; --deep-purple: #310055; --gold: #D4AF37; --white-silver: #f8f9fa; --indigo-blue: #4b0082; }
-        
+
+        :root {
+            --royal-purple: #4b0082; 
+            --deep-purple: #310055;  
+            --gold-bright: #FFD700;  /* ذهبي فاتح لامع */
+            --gold-muted: #D4AF37;   /* ذهبي مطفي */
+            --white-silver: #f8f9fa;
+        }
+
         body { 
             font-family: 'Cairo', sans-serif; 
             background-color: var(--royal-purple);
-            /* تم تغيير لون النقاط هنا إلى الأزرق النيلي */
-            background-image: radial-gradient(rgba(75, 0, 130, 0.8) 1.5px, transparent 1.5px);
-            background-size: 25px 25px;
+            background-image: radial-gradient(#ffffff15 1px, transparent 1px);
+            background-size: 20px 20px;
             margin: 0; color: var(--white-silver); overflow-x: hidden;
         }
 
-        header { background: var(--deep-purple); padding: 15px 0; text-align: center; border-bottom: 2px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-        .logo { font-size: 24px; font-weight: 900; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .nav-strip { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); display: flex; justify-content: space-around; align-items: center; padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-nav { background: var(--gold); color: var(--deep-purple); border: none; padding: 5px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; font-size: 13px; }
+        header { 
+            background: var(--deep-purple); padding: 15px 0; text-align: center;
+            border-bottom: 2px solid var(--gold-bright); box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .logo { font-size: 24px; font-weight: 900; color: var(--gold-bright); display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+        .nav-strip {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-nav { background: var(--gold-bright); color: var(--deep-purple); border: none; padding: 5px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; font-size: 13px; }
+
         .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
-        .section-title { font-size: 16px; font-weight: 700; margin: 20px 0 15px; color: var(--gold); border-right: 3px solid var(--gold); padding-right: 10px; }
-        .match-card { background: rgba(255, 255, 255, 0.98); border-radius: 12px; border: 1px solid var(--gold); color: #333; overflow: hidden; cursor: pointer; transition: 0.3s; }
-        .match-content { display: flex; align-items: center; padding: 20px 5px; }
+
+        .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-bright); border-right: 3px solid var(--gold-bright); padding-right: 10px; }
+
+        .match-card { background: rgba(255, 255, 255, 0.98); border-radius: 12px; border: 1px solid var(--gold-muted); color: #333; overflow: hidden; cursor: pointer; }
+        .match-content { display: flex; align-items: center; padding: 22px 5px; }
         .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; }
         .score-area { flex: 1.5; text-align: center; }
-        .time-box { background: var(--deep-purple); color: var(--gold); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
-        .lineup-section { background: #f0f0f0; padding: 10px; display: none; border-top: 1px solid #ddd; font-size: 11px; }
+        .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
+        
+        .lineup-section { background: #f4f4f4; padding: 12px; display: none; border-top: 1px solid #ddd; }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
-        .lineup-list { flex: 1; }
-        .lineup-list h4 { margin: 0 0 5px; font-size: 12px; color: var(--royal-purple); border-bottom: 1px solid #ccc; }
-        .lineup-list p { margin: 2px 0; color: #555; }
-        .scorers-list { font-size: 10px; color: #d00; margin-top: 5px; font-weight: bold; }
-        .assists-list { font-size: 10px; color: #0077b6; margin-top: 2px; font-weight: bold; }
-        .table-wrapper { background: white; border-radius: 10px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .standings-table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
-        .standings-table th { background: var(--deep-purple); color: var(--gold); padding: 10px 2px; }
-        .standings-table td { padding: 10px 2px; border-bottom: 1px solid #eee; text-align: center; font-weight: 600; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 30%; color: var(--deep-purple); font-weight: 700; }
+        .lineup-list { flex: 1; font-size: 11px; }
+        .lineup-list h4 { margin: 0 0 5px; font-size: 12px; color: var(--royal-purple); border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+        .lineup-list p { margin: 3px 0; color: #444; font-weight: 600; }
+
+        .table-wrapper { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
+        th { background: var(--deep-purple); color: var(--gold-bright); padding: 10px 2px; }
+        td { padding: 10px 2px; border-bottom: 1px solid #eee; text-align: center; font-weight: 700; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 32%; color: var(--deep-purple); }
+
+        footer { 
+            margin-top: 50px; padding: 30px 10px; text-align: center; 
+            background: var(--deep-purple); border-top: 2px solid var(--gold-bright); 
+            color: var(--gold-bright);
+        }
+
         .live-badge { color: #d00; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
     </style>
@@ -52,13 +78,13 @@
 
 <div class="nav-strip">
     <button class="btn-nav" onclick="changeDay(-1)">السابق</button>
-    <div id="current-date">--:--</div>
+    <div id="current-date">جاري التحميل...</div>
     <button class="btn-nav" onclick="changeDay(1)">التالي</button>
 </div>
 
 <div class="container">
-    <div class="section-title">مباراة اليوم (إضغط لعرض التفاصيل)</div>
-    <div class="match-card" id="match-display" onclick="toggleLineup()">
+    <div class="section-title">مباراة اليوم (إضغط للتشكيلة)</div>
+    <div class="match-card" onclick="toggleLineup()">
         <div class="match-content" id="match-content-inner"></div>
         <div class="lineup-section" id="lineup-area">
             <div class="lineup-grid">
@@ -68,35 +94,49 @@
         </div>
     </div>
 
-    <div class="section-title">جدول ترتيب النقاط</div>
+    <div class="section-title">جدول الترتيب العام</div>
     <div class="table-wrapper">
-        <table class="standings-table" id="points-table">
+        <table>
             <thead>
                 <tr>
-                    <th style="width:10%">#</th><th class="team-name-cell">الفريق</th><th>ل</th><th style="color:#2ecc71">ف</th><th style="color:#f1c40f">ت</th><th style="color:#e74c3c">خ</th><th>له</th><th>عليه</th><th style="background:#f0f0f0;color:var(--royal-purple)">ن</th>
+                    <th style="width:8%">#</th><th class="team-name-cell">الفريق</th><th>لعب</th><th style="color:#2ecc71">فوز</th><th style="color:#f1c40f">تعادل</th><th style="color:#e74c3c">خسارة</th><th>له</th><th>عليه</th><th style="background:#eee; color:#333">ن</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <tr><td>1</td><td class="team-name-cell">معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name-cell">عبدالرحيم محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>4</td><td class="team-name-cell">أحمد محمد يوسف</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>5</td><td class="team-name-cell">عبدالرحمن محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">عبدالمؤمن بابكر</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
         </table>
     </div>
 
-    <div class="section-title">إحصائيات اللاعبين</div>
+    <div class="section-title">الهدافين وصناع اللعب</div>
     <div class="table-wrapper">
-        <table class="standings-table" id="scorers-table">
+        <table>
             <thead>
                 <tr>
-                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:var(--gold)">أهداف</th><th style="color:#00b4d8">صناعة</th>
+                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#2ecc71">أهداف</th><th style="color:#00b4d8">صناعة</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <tr><td>1</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+            </tbody>
         </table>
     </div>
 </div>
 
-<script>
-    // قسم النتائج (اتركه فارغاً حتى تبدأ المباريات)
-    const matchResults = {};
+<footer>
+    <p style="margin: 0; font-size: 14px; font-weight: 700;">صمم بواسطة Muhammad Mahboub Alryh</p>
+    <p style="margin: 10px 0; font-size: 18px; font-weight: 900; letter-spacing: 3px;">LANSTER ™</p>
+    <p style="margin: 0; font-size: 11px; opacity: 0.8;">جميع الحقوق محفوظة 2026 ©</p>
+</footer>
 
+<script>
     const teamPlayers = {
         "معاوية": ["معاوية محبوب", "عبدالله الريح", "مصطفي عباس", "احمد حسن", "العاقب بلوله", "عبد اللطيف", "عباس"],
         "حافظ بشير": ["حافظ بشير", "محمد هيثم", "رحمة الله", "بكري صلاح", "عبدالحكم", "ابوعاقلة", "سعيد مبارك"],
@@ -125,68 +165,24 @@
         area.style.display = (area.style.display === 'block') ? 'none' : 'block';
     }
 
-    function calculateTables() {
-        let stats = {};
-        let playerStats = {};
-        Object.keys(teamPlayers).forEach(t => stats[t] = {played:0, w:0, d:0, l:0, gf:0, ga:0, pts:0});
-
-        Object.keys(matchResults).forEach(idx => {
-            const m = allMatches[idx];
-            const res = matchResults[idx];
-            if(!m) return;
-            stats[m[0]].played++; stats[m[1]].played++;
-            stats[m[0]].gf += res.s1; stats[m[0]].ga += res.s2;
-            stats[m[1]].gf += res.s2; stats[m[1]].ga += res.s1;
-            if(res.s1 > res.s2) { stats[m[0]].w++; stats[m[0]].pts+=3; stats[m[1]].l++; }
-            else if(res.s1 < res.s2) { stats[m[1]].w++; stats[m[1]].pts+=3; stats[m[0]].l++; }
-            else { stats[m[0]].d++; stats[m[1]].d++; stats[m[0]].pts+=1; stats[m[1]].pts+=1; }
-
-            [...res.goals1, ...res.goals2].forEach(g => {
-                let name = g.split('(')[0].trim();
-                let count = parseInt(g.match(/\d+/) || 1);
-                let team = res.goals1.includes(g) ? m[0] : m[1];
-                if(!playerStats[name]) playerStats[name] = { goals: 0, assists: 0, team: team };
-                playerStats[name].goals += count;
-            });
-
-            let allAssists = [...(res.assists1 || []), ...(res.assists2 || [])];
-            allAssists.forEach(a => {
-                let name = a.split('(')[0].trim();
-                let count = parseInt(a.match(/\d+/) || 1);
-                let team = (res.assists1 && res.assists1.includes(a)) ? m[0] : m[1];
-                if(!playerStats[name]) playerStats[name] = { goals: 0, assists: 0, team: team };
-                playerStats[name].assists += count;
-            });
-        });
-
-        const sortedTeams = Object.keys(stats).sort((a,b) => stats[b].pts - stats[a].pts || (stats[b].gf-stats[b].ga) - (stats[a].gf-stats[a].ga));
-        document.querySelector("#points-table tbody").innerHTML = sortedTeams.map((t, i) => `
-            <tr><td>${i+1}</td><td class="team-name-cell">${t}</td><td>${stats[t].played}</td><td>${stats[t].w}</td><td>${stats[t].d}</td><td>${stats[t].l}</td><td>${stats[t].gf}</td><td>${stats[t].ga}</td><td style="background:#f0f0f0">${stats[t].pts}</td></tr>
-        `).join('');
-
-        const sortedPlayers = Object.keys(playerStats).sort((a,b) => playerStats[b].goals - playerStats[a].goals || playerStats[b].assists - playerStats[a].assists);
-        document.querySelector("#scorers-table tbody").innerHTML = sortedPlayers.slice(0,8).map((p, i) => `
-            <tr><td>${i+1}</td><td class="team-name-cell">${p}</td><td>${playerStats[p].team}</td><td>${playerStats[p].goals}</td><td>${playerStats[p].assists}</td></tr>
-        `).join('');
-    }
-
     function updateUI() {
-        const d = new Date(startDate); d.setDate(startDate.getDate() + currentIndex);
+        const d = new Date(startDate);
+        d.setDate(startDate.getDate() + currentIndex);
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
-        const matchData = allMatches[currentIndex];
-        const res = matchResults[currentIndex];
-        const container = document.getElementById('match-content-inner');
         
+        const matchData = allMatches[currentIndex];
+        const container = document.getElementById('match-content-inner');
+        const lineupArea = document.getElementById('lineup-area');
+        lineupArea.style.display = 'none';
+
         if (!matchData) {
-            container.innerHTML = `<div class="no-match">🌙 استراحة - لا توجد مباريات</div>`;
+            container.innerHTML = `<div style="padding:30px; text-align:center; font-weight:900; color:var(--gold-bright);">🗓️ استراحة - لا توجد مباريات</div>`;
         } else {
-            let scoreHTML = res ? `<div class="time-box">${res.s1} - ${res.s2}</div><span class="timer-label">انتهت</span>` : `<div class="time-box">20:00</div><span class="timer-label" id="timer">--:--:--</span>`;
-            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area">${scoreHTML}</div><div class="team-box">${matchData[1]}</div>`;
-            document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('') + (res && res.goals1.length ? `<div class="scorers-list">⚽ ${res.goals1.join(', ')}</div>` : '') + (res && res.assists1?.length ? `<div class="assists-list">👟 ${res.assists1.join(', ')}</div>` : '');
-            document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('') + (res && res.goals2.length ? `<div class="scorers-list">⚽ ${res.goals2.join(', ')}</div>` : '') + (res && res.assists2?.length ? `<div class="assists-list">👟 ${res.assists2.join(', ')}</div>` : '');
-            if(!res) refreshTimer(d);
+            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">20:00</div><span class="timer-label" id="timer" style="font-size:10px; font-weight:bold; display:block; margin-top:5px;">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
+            document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
+            refreshTimer(d);
         }
-        calculateTables();
     }
 
     function changeDay(step) {
@@ -197,20 +193,21 @@
     }
 
     function refreshTimer(target) {
-        const now = new Date(); const diff = target - now;
+        const now = new Date();
+        const diff = target - now;
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
-        if (diff <= 0 && diff > -7200000) timerEl.innerHTML = '<span class="live-badge">● مباشر</span>';
-        else if (diff <= -7200000) timerEl.innerText = 'انتهت';
+        if (diff <= 0 && diff > -7200000) timerEl.innerHTML = '<span class="live-badge">● مباشر الآن</span>';
+        else if (diff <= -7200000) timerEl.innerText = 'انتهت المباراة';
         else {
             const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-            timerEl.innerText = `${h}:${m}:${s}`;
+            timerEl.innerText = `بعد ${h}:${m}:${s}`;
         }
     }
 
     setInterval(() => {
         const t = new Date(startDate); t.setDate(startDate.getDate() + currentIndex);
-        if (allMatches[currentIndex] && !matchResults[currentIndex]) refreshTimer(t);
+        if (allMatches[currentIndex]) refreshTimer(t);
     }, 1000);
 
     updateUI();
