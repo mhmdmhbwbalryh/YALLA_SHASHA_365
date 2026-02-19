@@ -6,8 +6,17 @@
     <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        :root { --royal-purple: #4b0082; --deep-purple: #310055; --gold: #D4AF37; --white-silver: #f8f9fa; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); background-image: radial-gradient(#ffffff15 1px, transparent 1px); background-size: 20px 20px; margin: 0; color: var(--white-silver); overflow-x: hidden; }
+        :root { --royal-purple: #4b0082; --deep-purple: #310055; --gold: #D4AF37; --white-silver: #f8f9fa; --indigo-blue: #4b0082; }
+        
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--royal-purple);
+            /* تم تغيير لون النقاط هنا إلى الأزرق النيلي */
+            background-image: radial-gradient(rgba(75, 0, 130, 0.8) 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            margin: 0; color: var(--white-silver); overflow-x: hidden;
+        }
+
         header { background: var(--deep-purple); padding: 15px 0; text-align: center; border-bottom: 2px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         .logo { font-size: 24px; font-weight: 900; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; }
         .nav-strip { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); display: flex; justify-content: space-around; align-items: center; padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -33,7 +42,6 @@
         .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 30%; color: var(--deep-purple); font-weight: 700; }
         .live-badge { color: #d00; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
-        .no-match { padding: 40px; text-align: center; color: var(--gold); font-weight: 900; }
     </style>
 </head>
 <body>
@@ -86,18 +94,8 @@
 </div>
 
 <script>
-    // ==========================================
-    // قسم النتائج (عدل هنا فقط)
-    // ==========================================
-    const matchResults = {
-        0: { 
-            s1: 0, s2: 3, 
-            goals1: [], 
-            goals2: ["عبدالرحيم يوسف (1)", "اسماعيل حسين (1)", "محمد محبوب (1)"],
-            assists1: [],
-            assists2: ["محمد عبد الرحمن (3)"] 
-        }
-    };
+    // قسم النتائج (اتركه فارغاً حتى تبدأ المباريات)
+    const matchResults = {};
 
     const teamPlayers = {
         "معاوية": ["معاوية محبوب", "عبدالله الريح", "مصطفي عباس", "احمد حسن", "العاقب بلوله", "عبد اللطيف", "عباس"],
@@ -136,16 +134,13 @@
             const m = allMatches[idx];
             const res = matchResults[idx];
             if(!m) return;
-            
             stats[m[0]].played++; stats[m[1]].played++;
             stats[m[0]].gf += res.s1; stats[m[0]].ga += res.s2;
             stats[m[1]].gf += res.s2; stats[m[1]].ga += res.s1;
-
             if(res.s1 > res.s2) { stats[m[0]].w++; stats[m[0]].pts+=3; stats[m[1]].l++; }
             else if(res.s1 < res.s2) { stats[m[1]].w++; stats[m[1]].pts+=3; stats[m[0]].l++; }
             else { stats[m[0]].d++; stats[m[1]].d++; stats[m[0]].pts+=1; stats[m[1]].pts+=1; }
 
-            // حساب أهداف اللاعبين
             [...res.goals1, ...res.goals2].forEach(g => {
                 let name = g.split('(')[0].trim();
                 let count = parseInt(g.match(/\d+/) || 1);
@@ -154,7 +149,6 @@
                 playerStats[name].goals += count;
             });
 
-            // حساب صناعة الأهداف
             let allAssists = [...(res.assists1 || []), ...(res.assists2 || [])];
             allAssists.forEach(a => {
                 let name = a.split('(')[0].trim();
@@ -188,7 +182,6 @@
         } else {
             let scoreHTML = res ? `<div class="time-box">${res.s1} - ${res.s2}</div><span class="timer-label">انتهت</span>` : `<div class="time-box">20:00</div><span class="timer-label" id="timer">--:--:--</span>`;
             container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area">${scoreHTML}</div><div class="team-box">${matchData[1]}</div>`;
-            
             document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('') + (res && res.goals1.length ? `<div class="scorers-list">⚽ ${res.goals1.join(', ')}</div>` : '') + (res && res.assists1?.length ? `<div class="assists-list">👟 ${res.assists1.join(', ')}</div>` : '');
             document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('') + (res && res.goals2.length ? `<div class="scorers-list">⚽ ${res.goals2.join(', ')}</div>` : '') + (res && res.assists2?.length ? `<div class="assists-list">👟 ${res.assists2.join(', ')}</div>` : '');
             if(!res) refreshTimer(d);
