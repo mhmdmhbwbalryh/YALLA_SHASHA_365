@@ -13,7 +13,7 @@
             --gold-bright: #FFD700;  
             --gold-muted: #D4AF37;   
             --white-silver: #f8f9fa;
-            --ramadan-green: #064e3b; /* اللون الأخضر الرمضاني العميق */
+            --ramadan-green: #064e3b; 
             --indigo-blue: #1a237e; 
         }
 
@@ -44,7 +44,6 @@
 
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-bright); border-right: 3px solid var(--gold-bright); padding-right: 10px; }
 
-        /* تغيير خلفية بطاقة المباراة للأخضر */
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-muted); color: white; overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; }
@@ -57,7 +56,6 @@
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--gold-bright); border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; font-weight: 900; }
         .lineup-list p { margin: 4px 0; color: #e0e0e0; font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
-        /* تغيير خلفية الجداول للأخضر */
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); border: 1px solid var(--gold-muted); }
         table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-bright); padding: 10px 2px; border-bottom: 1px solid var(--gold-muted); }
@@ -107,13 +105,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name-cell">معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>2</td><td class="team-name-cell">حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>3</td><td class="team-name-cell">عبدالرحيم محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">حمد صلاح</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td></tr>
+                <tr><td>2</td><td class="team-name-cell">معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name-cell">حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                 <tr><td>4</td><td class="team-name-cell">أحمد محمد يوسف</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                 <tr><td>5</td><td class="team-name-cell">عبدالرحمن محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                 <tr><td>6</td><td class="team-name-cell">عبدالمؤمن بابكر</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>7</td><td class="team-name-cell">حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">عبدالرحيم محمد</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -127,7 +125,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>حمد صلاح</td><td>1</td><td>0</td></tr>
                 <tr><td>2</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
             </tbody>
         </table>
@@ -162,7 +160,7 @@
     ];
 
     let currentIndex = 0;
-    const startDate = new Date(2026, 1, 19, 21, 0, 0); // تم الضبط على الساعة 9 مساءً
+    const startDate = new Date(2026, 1, 19, 21, 0, 0);
 
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
