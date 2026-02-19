@@ -11,9 +11,9 @@
             --royal-purple: #4b0082; 
             --deep-purple: #310055;  
             --gold-bright: #FFD700;  
-            --gold-muted: #D4AF37;   
+            --orange-timer: #FF8C00; /* برتقالي غامق للعداد */
             --white-silver: #f8f9fa;
-            --indigo-blue: #1a237e; /* اللون النيلي لأسماء اللاعبين */
+            --indigo-blue: #1a237e;
         }
 
         body { 
@@ -43,18 +43,20 @@
 
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-bright); border-right: 3px solid var(--gold-bright); padding-right: 10px; }
 
-        .match-card { background: rgba(255, 255, 255, 0.98); border-radius: 12px; border: 1px solid var(--gold-muted); color: #333; overflow: hidden; cursor: pointer; }
+        .match-card { background: rgba(255, 255, 255, 0.98); border-radius: 12px; border: 1px solid var(--gold-bright); color: #333; overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; }
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
         
-        /* تنسيق التشكيلة المعدل */
-        .lineup-section { background: #fdfdfd; padding: 12px; display: none; border-top: 2px solid var(--gold-muted); }
+        /* لون العداد البرتقالي */
+        .timer-label { font-size: 11px; font-weight: 900; display: block; margin-top: 5px; color: var(--orange-timer); }
+
+        .lineup-section { background: #fdfdfd; padding: 12px; display: none; border-top: 2px solid var(--gold-bright); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list { flex: 1; font-size: 12px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--royal-purple); border-bottom: 1px solid #ddd; padding-bottom: 4px; font-weight: 900; }
-        .lineup-list p { margin: 4px 0; color: var(--indigo-blue); font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
+        .lineup-list p { margin: 4px 0; color: var(--indigo-blue); font-weight: 700; border-right: 2px solid var(--orange-timer); padding-right: 5px; }
 
         .table-wrapper { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
@@ -115,21 +117,6 @@
             </tbody>
         </table>
     </div>
-
-    <div class="section-title">الهدافين وصناع اللعب</div>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#2ecc71">أهداف</th><th style="color:#00b4d8">صناعة</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
-                <tr><td>2</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 
 <footer>
@@ -160,7 +147,8 @@
     ];
 
     let currentIndex = 0;
-    const startDate = new Date(2026, 1, 19, 20, 0, 0);
+    // تم تعديل التوقيت هنا إلى الساعة 21:00 (التاسعة مساءً)
+    const startDate = new Date(2026, 1, 19, 21, 0, 0);
 
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
@@ -180,7 +168,7 @@
         if (!matchData) {
             container.innerHTML = `<div style="padding:30px; text-align:center; font-weight:900; color:var(--gold-bright);">🗓️ استراحة - لا توجد مباريات</div>`;
         } else {
-            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">20:00</div><span class="timer-label" id="timer" style="font-size:10px; font-weight:bold; display:block; margin-top:5px;">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">21:00</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
             document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
             document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
             refreshTimer(d);
