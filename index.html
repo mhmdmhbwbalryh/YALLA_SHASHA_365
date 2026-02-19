@@ -3,175 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YALA SHASHA 365 | البطولة الكبرى</title>
+    <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
         :root {
-            --primary-blue: #0d1b2a;    /* أزرق كحلي عميق */
-            --stadium-green: #2b9348;   /* أخضر عشبي رياضي */
-            --light-blue: #00b4d8;      /* أزرق فاتح للتفاعل */
-            --bg-gray: #f0f2f5;         /* خلفية الصفحة */
+            --primary-navy: #0a192f;    /* أزرق كحلي عميق */
+            --stadium-green: #1b913e;   /* أخضر نجيل ملاعب */
+            --silver-light: #e2e8f0;    /* فضي فاتح */
+            --silver-dark: #cbd5e1;     /* فضي داكن */
             --white: #ffffff;
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-            background: var(--bg-gray); 
+            font-family: 'Cairo', sans-serif; 
+            background: #f1f5f9; 
             margin: 0; 
-            color: var(--primary-blue); 
+            color: var(--primary-navy); 
         }
 
-        /* الهيدر الاحترافي */
+        /* الهيدر */
         header { 
-            background: var(--primary-blue); 
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #112240 100%); 
             color: var(--white); 
-            padding: 15px 0; 
+            padding: 25px 0; 
             text-align: center;
             border-bottom: 4px solid var(--stadium-green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .logo { 
-            font-size: 26px; 
+            font-size: 28px; 
             font-weight: 900; 
             letter-spacing: 1px;
-            text-transform: uppercase;
+            color: var(--silver-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* شريط التنقل بالألوان الجديدة */
+        /* شريط التنقل الفضي */
         .nav-strip {
-            background: var(--white);
-            border-bottom: 2px solid #e0e0e0;
+            background: var(--silver-light);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 12px;
-            gap: 25px;
+            gap: 20px;
+            border-bottom: 1px solid var(--silver-dark);
         }
 
         .btn-nav {
-            background: var(--white);
-            border: 2px solid var(--stadium-green);
-            color: var(--stadium-green);
-            padding: 6px 18px;
+            background: var(--primary-navy);
+            color: var(--silver-light);
+            border: none;
+            padding: 8px 20px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
-        .btn-nav:hover { 
-            background: var(--stadium-green); 
-            color: var(--white); 
+        .btn-nav:hover { background: var(--stadium-green); transform: translateY(-2px); }
+
+        #current-date { font-weight: 700; color: var(--primary-navy); font-size: 18px; }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--primary-navy);
+            border-right: 5px solid var(--stadium-green);
+            padding-right: 15px;
         }
 
-        #current-date { font-weight: bold; color: var(--primary-blue); font-size: 17px; }
-
-        .container { max-width: 950px; margin: 25px auto; padding: 0 15px; }
-
-        /* بطاقة المباراة الاحترافية */
+        /* بطاقة المباراة */
         .match-card {
             background: var(--white);
-            border-radius: 8px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid var(--silver-dark);
             overflow: hidden;
         }
 
-        .match-status {
+        .match-header {
+            background: #f8fafc;
             text-align: center;
-            font-size: 13px;
             padding: 10px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #eee;
-            color: #666;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: bold;
+            color: #64748b;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         .match-content {
             display: flex;
             align-items: center;
-            padding: 35px 20px;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #ffffff, #fdfdfd);
         }
 
         .team-box { 
             flex: 2; 
             text-align: center; 
-            font-size: 22px; 
-            font-weight: 700; 
-            color: var(--primary-blue);
+            font-size: 24px; 
+            font-weight: 900; 
+            color: var(--primary-navy);
         }
         
-        .score-box { 
+        .score-area { 
             flex: 1; 
             text-align: center; 
-            border-left: 2px solid #f0f0f0; 
-            border-right: 2px solid #f0f0f0;
+            padding: 0 20px;
         }
 
-        .time-text { font-size: 30px; font-weight: 900; color: #333; }
-        .countdown-text { color: var(--stadium-green); font-size: 14px; font-weight: bold; margin-top: 5px; }
-
-        /* جدول الترتيب المطور */
-        .table-title {
-            font-size: 19px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-        }
-
-        .table-title::before {
-            content: "";
-            width: 5px;
-            height: 25px;
-            background: var(--stadium-green);
-            margin-left: 10px;
+        .time-display { 
+            font-size: 34px; 
+            font-weight: 900; 
+            color: var(--primary-navy);
+            background: var(--silver-light);
+            padding: 5px 15px;
+            border-radius: 8px;
             display: inline-block;
         }
 
+        .timer-label { 
+            color: var(--stadium-green); 
+            font-size: 14px; 
+            font-weight: bold; 
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* جدول النقاط الاحترافي */
+        .table-wrapper { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .standings-table {
             width: 100%;
             border-collapse: collapse;
             background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
         }
 
         .standings-table th {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 15px 10px;
+            background: var(--primary-navy);
+            color: var(--silver-light);
+            padding: 15px;
             font-size: 14px;
         }
 
         .standings-table td {
-            padding: 14px 10px;
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            font-weight: 700;
+        }
+
+        .team-col { text-align: right !important; padding-right: 30px !important; color: var(--primary-navy); }
+        
+        .row-highlight { background-color: #f0fdf4; } /* لتمييز المتصدر */
+
+        .no-match {
+            padding: 50px;
             text-align: center;
-            border-bottom: 1px solid #f1f1f1;
-            font-size: 15px;
+            font-weight: 900;
+            color: #94a3b8;
+            font-size: 22px;
         }
 
-        .team-name-cell { 
-            text-align: right !important; 
-            font-weight: 600; 
-            padding-right: 25px !important;
-            color: var(--primary-blue);
+        .live-dot {
+            width: 10px; height: 10px; background: red; border-radius: 50%;
+            display: inline-block; margin-left: 8px; animation: blink 1s infinite;
         }
-
-        .rank-cell { font-weight: bold; color: #999; width: 40px; }
-
-        /* حالة مباشر */
-        .live-label {
-            background: #e63946;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse { 0% {opacity: 1;} 50% {opacity: 0.6;} 100% {opacity: 1;} }
+        @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
     </style>
 </head>
 <body>
@@ -187,58 +190,64 @@
 </div>
 
 <div class="container">
-    <div class="table-title">مباراة اليوم</div>
-    <div class="match-card">
-        <div class="match-status" id="match-label">الجولة 1 - الدوري الصيفي</div>
-        <div class="match-content">
-            <div class="team-box" id="team1">حمد صلاح</div>
-            <div class="score-box">
-                <span class="time-text">20:00</span>
-                <span class="countdown-text" id="timer">--:--:--</span>
+    <div class="section-title">مباراة اليوم - الدوري الرمضاني</div>
+    
+    <div class="match-card" id="match-display">
+        <div class="match-header">الجولة الحالية - ملعب المدينة</div>
+        <div class="match-content" id="match-content-inner">
             </div>
-            <div class="team-box" id="team2">عبدالرحيم</div>
-        </div>
     </div>
 
-    <div class="table-title">جدول ترتيب الفرق</div>
-    <table class="standings-table">
-        <thead>
-            <tr>
-                <th class="rank-cell">#</th>
-                <th class="team-name-cell">الفريق</th>
-                <th>لعب</th>
-                <th>فوز</th>
-                <th>تعادل</th>
-                <th>خسارة</th>
-                <th>نقاط</th>
-            </tr>
-        </thead>
-        <tbody id="standings-body">
-            <tr><td class="rank-cell">1</td><td class="team-name-cell">فريق معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">2</td><td class="team-name-cell">فريق حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">3</td><td class="team-name-cell">فريق عبدالرحيم محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">4</td><td class="team-name-cell">فريق أحمد محمد يوسف</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">5</td><td class="team-name-cell">فريق عبدالرحمن محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">6</td><td class="team-name-cell">فريق عبدالمؤمن بابكر</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-            <tr><td class="rank-cell">7</td><td class="team-name-cell">فريق حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        </tbody>
-    </table>
+    <div class="section-title">جدول ترتيب الفرق (النقاط)</div>
+    <div class="table-wrapper">
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="team-col">الفريق</th>
+                    <th>لعب</th>
+                    <th>فوز</th>
+                    <th>تعادل</th>
+                    <th>خسارة</th>
+                    <th>له</th>
+                    <th>عليه</th>
+                    <th>+/-</th>
+                    <th>نقاط</th>
+                </tr>
+            </thead>
+            <tbody id="standings-body">
+                <tr class="row-highlight"><td>1</td><td class="team-col">فريق معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-col">فريق حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-col">فريق عبدالرحيم محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>4</td><td class="team-col">فريق أحمد محمد يوسف</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>5</td><td class="team-col">فريق عبدالرحمن محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-col">فريق عبدالمؤمن بابكر</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-col">فريق حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
-    // قائمة المباريات الـ 21 كما قدمتها
-    const matches = [
-        ["حمد صلاح", "عبدالرحيم"], ["أحمد محمد يوسف", "عبدالرحمن"], ["معاوية", "عبدالمؤمن"],
-        ["عبدالمؤمن", "حافظ بشير"], ["معاوية", "حمد صلاح"], ["عبدالرحيم", "أحمد محمد يوسف"],
+    // نظام 3 أيام مباراة ويوم راحة
+    const allMatches = [
+        ["حمد صلاح", "عبدالرحيم"], ["أحمد محمد يوسف", "عبدالرحمن"], ["معاوية", "عبدالمؤمن"], // 3 أيام
+        null, // راحة
+        ["عبدالمؤمن", "حافظ بشير"], ["معاوية", "حمد صلاح"], ["عبدالرحيم", "أحمد محمد يوسف"], // 3 أيام
+        null, // راحة
         ["معاوية", "عبدالرحمن"], ["حمد صلاح", "عبدالمؤمن"], ["عبدالرحيم", "حافظ بشير"],
+        null, // راحة
         ["عبدالرحمن", "عبدالمؤمن"], ["حافظ بشير", "حمد صلاح"], ["معاوية", "أحمد محمد يوسف"],
+        null, // راحة
         ["عبدالرحيم", "معاوية"], ["عبدالرحمن", "حافظ بشير"], ["عبدالمؤمن", "أحمد محمد يوسف"],
+        null, // راحة
         ["حمد صلاح", "عبدالرحمن"], ["عبدالرحيم", "عبدالمؤمن"], ["أحمد محمد يوسف", "حافظ بشير"],
+        null, // راحة
         ["حافظ بشير", "معاوية"], ["حمد صلاح", "أحمد محمد يوسف"], ["عبدالرحيم", "عبدالرحمن"]
     ];
 
     let currentIndex = 0;
-    const startDate = new Date(2026, 1, 19, 20, 0, 0); // الخميس 19 فبراير، 8 مساءً
+    const startDate = new Date(2026, 1, 19, 20, 0, 0);
 
     function updateUI() {
         const d = new Date(startDate);
@@ -247,16 +256,28 @@
         const options = { weekday: 'long', day: 'numeric', month: 'long' };
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', options);
         
-        document.getElementById('team1').innerText = matches[currentIndex][0];
-        document.getElementById('team2').innerText = matches[currentIndex][1];
+        const matchData = allMatches[currentIndex];
+        const container = document.getElementById('match-content-inner');
 
-        refreshTimer(d);
+        if (!matchData) {
+            container.innerHTML = `<div class="no-match">🗓️ استراحة - لا توجد مباريات اليوم</div>`;
+        } else {
+            container.innerHTML = `
+                <div class="team-box">${matchData[0]}</div>
+                <div class="score-area">
+                    <span class="time-display">20:00</span>
+                    <span class="timer-label" id="timer">--:--:--</span>
+                </div>
+                <div class="team-box">${matchData[1]}</div>
+            `;
+            refreshTimer(d);
+        }
     }
 
     function changeDay(step) {
         currentIndex += step;
         if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex >= matches.length) currentIndex = matches.length - 1;
+        if (currentIndex >= allMatches.length) currentIndex = allMatches.length - 1;
         updateUI();
     }
 
@@ -264,25 +285,25 @@
         const now = new Date();
         const diff = target - now;
         const timerEl = document.getElementById('timer');
+        if (!timerEl) return;
 
         if (diff <= 0 && diff > -7200000) {
-            timerEl.innerHTML = '<span class="live-label">مباشر الآن</span>';
+            timerEl.innerHTML = '<span style="color:#ef4444"><span class="live-dot"></span> مباشر الآن</span>';
         } else if (diff <= -7200000) {
             timerEl.innerText = 'انتهت المباراة';
-            timerEl.style.color = "#999";
+            timerEl.style.color = "#94a3b8";
         } else {
             const h = Math.floor(diff / 3600000);
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
-            timerEl.innerText = `يبدأ بعد: ${h}:${m}:${s}`;
-            timerEl.style.color = "var(--stadium-green)";
+            timerEl.innerText = `تنطلق بعد: ${h}:${m}:${s}`;
         }
     }
 
     setInterval(() => {
         const target = new Date(startDate);
         target.setDate(startDate.getDate() + currentIndex);
-        refreshTimer(target);
+        if (allMatches[currentIndex]) refreshTimer(target);
     }, 1000);
 
     updateUI();
