@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 
         :root {
-            --royal-purple: #4b0082; /* بنفسجي ملكي */
-            --deep-purple: #310055;  /* بنفسجي غامق */
-            --gold: #D4AF37;         /* ذهبي شعار */
+            --royal-purple: #4b0082; 
+            --deep-purple: #310055;  
+            --gold: #D4AF37;         
             --white-silver: #f8f9fa;
-            --text-gold: #FFD700;    /* ذهبي نصوص */
         }
 
         body { 
             font-family: 'Cairo', sans-serif; 
-            /* خلفية بنفسجية مع خطوط بيضاء رقيقة */
             background-color: var(--royal-purple);
-            background-image: radial-gradient(#ffffff11 1px, transparent 1px);
+            background-image: radial-gradient(#ffffff15 1px, transparent 1px);
             background-size: 20px 20px;
             margin: 0; 
             color: var(--white-silver);
-            padding-bottom: 50px;
+            overflow-x: hidden;
         }
 
-        /* الهيدر */
         header { 
             background: var(--deep-purple); 
             padding: 15px 0; 
@@ -36,18 +33,15 @@
         }
 
         .logo { 
-            font-size: 22px; 
-            font-weight: 700; 
+            font-size: 24px; 
+            font-weight: 900; 
             color: var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .crescent { font-size: 18px; color: var(--gold); }
-
-        /* شريط التنقل */
         .nav-strip {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
@@ -69,97 +63,84 @@
             font-size: 13px;
         }
 
-        #current-date { font-weight: 600; font-size: 14px; color: #fff; }
+        #current-date { font-weight: 600; font-size: 14px; }
 
-        .container { max-width: 600px; margin: 20px auto; padding: 0 10px; }
+        .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
 
         .section-title {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: var(--text-gold);
+            color: var(--gold);
             border-right: 3px solid var(--gold);
             padding-right: 10px;
         }
 
-        /* بطاقة المباراة (نحيفة للجوال) */
         .match-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 12px;
             margin-bottom: 25px;
             border: 1px solid var(--gold);
-            overflow: hidden;
             color: #333;
-        }
-
-        .match-header {
-            background: #eee;
-            text-align: center;
-            padding: 5px;
-            font-size: 11px;
-            color: #666;
-            font-weight: bold;
+            overflow: hidden;
         }
 
         .match-content {
             display: flex;
             align-items: center;
-            padding: 20px 10px;
+            padding: 20px 5px;
         }
 
-        .team-box { flex: 2; text-align: center; font-size: 16px; font-weight: 700; }
-        
+        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; line-height: 1.2; }
         .score-area { flex: 1.5; text-align: center; }
-
         .time-box { 
-            background: var(--deep-purple);
-            color: var(--gold);
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: 700;
-            display: inline-block;
+            background: var(--deep-purple); color: var(--gold);
+            padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900;
         }
+        .timer-label { font-size: 10px; color: var(--royal-purple); font-weight: bold; margin-top: 4px; display: block; }
 
-        .timer-label { font-size: 11px; color: var(--royal-purple); font-weight: bold; margin-top: 5px; display: block; }
-
-        /* جدول الترتيب (مضغوط للجوال) */
-        .table-wrapper { overflow-x: auto; border-radius: 8px; }
+        /* الجدول المطور والملون */
+        .table-wrapper { background: white; border-radius: 10px; overflow: hidden; margin-top: 10px; }
         .standings-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
             color: #333;
-            font-size: 12px;
+            table-layout: fixed;
         }
 
         .standings-table th {
             background: var(--deep-purple);
-            color: var(--gold);
-            padding: 10px 5px;
+            color: var(--white-silver);
+            font-size: 10px;
+            padding: 10px 2px;
+            font-weight: 700;
         }
 
         .standings-table td {
-            padding: 10px 5px;
+            padding: 10px 2px;
             border-bottom: 1px solid #eee;
             text-align: center;
+            font-size: 10px;
+            font-weight: 600;
         }
 
-        .team-name { text-align: right !important; padding-right: 10px !important; font-weight: 700; font-size: 13px; }
+        .team-name-cell { 
+            text-align: right !important; 
+            padding-right: 8px !important; 
+            font-size: 11px !important; 
+            width: 28%; 
+            color: var(--deep-purple);
+        }
 
-        .no-match { padding: 30px; text-align: center; color: var(--gold); font-weight: bold; }
-
-        .live-badge { color: #d00; font-size: 10px; animation: blink 1s infinite; }
+        .no-match { padding: 40px; text-align: center; color: var(--gold); font-weight: 900; font-size: 18px; }
+        .live-badge { color: #d00; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">
-        <span class="crescent">🌙</span>
-        YALA SHASHA 365
-    </div>
+    <div class="logo">🌙 YALA SHASHA 365</div>
 </header>
 
 <div class="nav-strip">
@@ -170,34 +151,34 @@
 
 <div class="container">
     <div class="section-title">مباراة اليوم - الدوري الرمضاني</div>
-    
     <div class="match-card" id="match-display">
-        <div class="match-content" id="match-content-inner">
-            </div>
+        <div class="match-content" id="match-content-inner"></div>
     </div>
 
-    <div class="section-title">جدول النقاط</div>
+    <div class="section-title">جدول ترتيب النقاط</div>
     <div class="table-wrapper">
         <table class="standings-table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th class="team-name">الفريق</th>
+                    <th style="width: 8%;">#</th>
+                    <th class="team-name-cell">الفريق</th>
                     <th>لعب</th>
+                    <th style="color: #2ecc71;">فوز</th>
+                    <th style="color: #f1c40f;">تعادل</th>
+                    <th style="color: #e74c3c;">خسارة</th>
                     <th>له</th>
                     <th>عليه</th>
-                    <th>+/-</th>
-                    <th>نقاط</th>
+                    <th style="background: #f0f0f0; color: var(--royal-purple);">نقاط</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name">فريق معاوية</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>2</td><td class="team-name">فريق حافظ</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>3</td><td class="team-name">فريق عبدالرحيم</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>4</td><td class="team-name">فريق أحمد محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>5</td><td class="team-name">فريق عبدالرحمن</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>6</td><td class="team-name">فريق عبدالمؤمن</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>7</td><td class="team-name">فريق حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">معاوية محبوب</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">حافظ بشير</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name-cell">عبدالرحيم محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>4</td><td class="team-name-cell">أحمد محمد يوسف</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>5</td><td class="team-name-cell">عبدالرحمن محمد</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">عبدالمؤمن بابكر</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">حمد صلاح</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -227,13 +208,13 @@
         const container = document.getElementById('match-content-inner');
 
         if (!matchData) {
-            container.innerHTML = `<div class="no-match">🌙 يوم راحة - لا توجد مباريات</div>`;
+            container.innerHTML = `<div class="no-match">🌙 استراحة - لا توجد مباريات</div>`;
         } else {
             container.innerHTML = `
                 <div class="team-box">${matchData[0]}</div>
                 <div class="score-area">
                     <div class="time-box">20:00</div>
-                    <span class="timer-label" id="timer">--:--:--</span>
+                    <span class="timer-label" id="timer">00:00:00</span>
                 </div>
                 <div class="team-box">${matchData[1]}</div>
             `;
@@ -255,14 +236,14 @@
         if (!timerEl) return;
 
         if (diff <= 0 && diff > -7200000) {
-            timerEl.innerHTML = '<span class="live-badge">● مباشر الآن</span>';
+            timerEl.innerHTML = '<span class="live-badge">● مباشر</span>';
         } else if (diff <= -7200000) {
             timerEl.innerText = 'انتهت';
         } else {
             const h = Math.floor(diff / 3600000);
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
-            timerEl.innerText = `يبدأ: ${h}:${m}:${s}`;
+            timerEl.innerText = `${h}:${m}:${s}`;
         }
     }
 
@@ -274,6 +255,5 @@
 
     updateUI();
 </script>
-
 </body>
 </html>
