@@ -10,9 +10,10 @@
         :root {
             --royal-purple: #4b0082; 
             --deep-purple: #310055;  
-            --gold-bright: #FFD700;  /* ذهبي فاتح لامع */
-            --gold-muted: #D4AF37;   /* ذهبي مطفي */
+            --gold-bright: #FFD700;  
+            --gold-muted: #D4AF37;   
             --white-silver: #f8f9fa;
+            --indigo-blue: #1a237e; /* اللون النيلي لأسماء اللاعبين */
         }
 
         body { 
@@ -48,11 +49,12 @@
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
         
-        .lineup-section { background: #f4f4f4; padding: 12px; display: none; border-top: 1px solid #ddd; }
+        /* تنسيق التشكيلة المعدل */
+        .lineup-section { background: #fdfdfd; padding: 12px; display: none; border-top: 2px solid var(--gold-muted); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
-        .lineup-list { flex: 1; font-size: 11px; }
-        .lineup-list h4 { margin: 0 0 5px; font-size: 12px; color: var(--royal-purple); border-bottom: 1px solid #ccc; padding-bottom: 2px; }
-        .lineup-list p { margin: 3px 0; color: #444; font-weight: 600; }
+        .lineup-list { flex: 1; font-size: 12px; }
+        .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--royal-purple); border-bottom: 1px solid #ddd; padding-bottom: 4px; font-weight: 900; }
+        .lineup-list p { margin: 4px 0; color: var(--indigo-blue); font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
         .table-wrapper { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
