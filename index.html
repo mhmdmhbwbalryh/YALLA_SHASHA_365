@@ -57,7 +57,7 @@
         .lineup-list p { margin: 4px 0; color: var(--indigo-blue); font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
         .table-wrapper { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        <table> { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
+        table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-bright); padding: 10px 2px; }
         td { padding: 10px 2px; border-bottom: 1px solid #eee; text-align: center; font-weight: 700; }
         .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 32%; color: var(--deep-purple); }
@@ -160,7 +160,7 @@
     ];
 
     let currentIndex = 0;
-    // تم تغيير الساعة هنا إلى 21 (أي 9 مساءً)
+    // التعديل: جعل الساعة 21 (9 مساءً)
     const startDate = new Date(2026, 1, 19, 21, 0, 0);
 
     function toggleLineup() {
@@ -181,7 +181,7 @@
         if (!matchData) {
             container.innerHTML = `<div style="padding:30px; text-align:center; font-weight:900; color:var(--gold-bright);">🗓️ استراحة - لا توجد مباريات</div>`;
         } else {
-            // تم تغيير النص هنا إلى 21:00
+            // التعديل: نص الوقت 21:00
             container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">21:00</div><span class="timer-label" id="timer" style="font-size:10px; font-weight:bold; display:block; margin-top:5px;">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
             document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
             document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
