@@ -19,122 +19,52 @@
             background-color: var(--royal-purple);
             background-image: radial-gradient(#ffffff15 1px, transparent 1px);
             background-size: 20px 20px;
-            margin: 0; 
-            color: var(--white-silver);
-            overflow-x: hidden;
+            margin: 0; color: var(--white-silver); overflow-x: hidden;
         }
 
         header { 
-            background: var(--deep-purple); 
-            padding: 15px 0; 
-            text-align: center;
-            border-bottom: 2px solid var(--gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            background: var(--deep-purple); padding: 15px 0; text-align: center;
+            border-bottom: 2px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        .logo { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+        .logo { font-size: 24px; font-weight: 900; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
         .nav-strip {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .btn-nav {
-            background: var(--gold);
-            color: var(--deep-purple);
-            border: none;
-            padding: 5px 15px;
-            cursor: pointer;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        #current-date { font-weight: 600; font-size: 14px; }
+        .btn-nav { background: var(--gold); color: var(--deep-purple); border: none; padding: 5px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; font-size: 13px; }
 
         .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--gold);
-            border-right: 3px solid var(--gold);
-            padding-right: 10px;
-        }
+        .section-title { font-size: 16px; font-weight: 700; margin: 20px 0 15px; color: var(--gold); border-right: 3px solid var(--gold); padding-right: 10px; }
 
-        .match-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid var(--gold);
-            color: #333;
-            overflow: hidden;
-        }
-
-        .match-content {
-            display: flex;
-            align-items: center;
-            padding: 20px 5px;
-        }
-
-        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; line-height: 1.2; }
+        /* بطاقة المباراة والتشكيلة */
+        .match-card { background: rgba(255, 255, 255, 0.98); border-radius: 12px; border: 1px solid var(--gold); color: #333; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .match-card:active { transform: scale(0.98); }
+        .match-content { display: flex; align-items: center; padding: 20px 5px; }
+        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 700; }
         .score-area { flex: 1.5; text-align: center; }
-        .time-box { 
-            background: var(--deep-purple); color: var(--gold);
-            padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900;
-        }
-        .timer-label { font-size: 10px; color: var(--royal-purple); font-weight: bold; margin-top: 4px; display: block; }
+        .time-box { background: var(--deep-purple); color: var(--gold); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
+        
+        .lineup-section { background: #f0f0f0; padding: 10px; display: none; border-top: 1px solid #ddd; font-size: 11px; }
+        .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
+        .lineup-list { flex: 1; }
+        .lineup-list h4 { margin: 0 0 5px; font-size: 12px; color: var(--royal-purple); border-bottom: 1px solid #ccc; }
+        .lineup-list p { margin: 2px 0; color: #555; }
 
-        /* الجدول المطور والملون */
-        .table-wrapper { background: white; border-radius: 10px; overflow: hidden; margin-top: 10px; }
-        .standings-table {
-            width: 100%;
-            border-collapse: collapse;
-            color: #333;
-            table-layout: fixed;
-        }
+        /* الجداول */
+        .table-wrapper { background: white; border-radius: 10px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .standings-table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
+        .standings-table th { background: var(--deep-purple); color: var(--gold); padding: 10px 2px; }
+        .standings-table td { padding: 10px 2px; border-bottom: 1px solid #eee; text-align: center; font-weight: 600; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 30%; color: var(--deep-purple); font-weight: 700; }
 
-        .standings-table th {
-            background: var(--deep-purple);
-            color: var(--white-silver);
-            font-size: 10px;
-            padding: 10px 2px;
-            font-weight: 700;
-        }
-
-        .standings-table td {
-            padding: 10px 2px;
-            border-bottom: 1px solid #eee;
-            text-align: center;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .team-name-cell { 
-            text-align: right !important; 
-            padding-right: 8px !important; 
-            font-size: 11px !important; 
-            width: 28%; 
-            color: var(--deep-purple);
-        }
-
-        .no-match { padding: 40px; text-align: center; color: var(--gold); font-weight: 900; font-size: 18px; }
         .live-badge { color: #d00; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
+        .no-match { padding: 40px; text-align: center; color: var(--gold); font-weight: 900; }
     </style>
 </head>
 <body>
@@ -145,14 +75,20 @@
 
 <div class="nav-strip">
     <button class="btn-nav" onclick="changeDay(-1)">السابق</button>
-    <div id="current-date">الخميس 19 فبراير</div>
+    <div id="current-date">--:--</div>
     <button class="btn-nav" onclick="changeDay(1)">التالي</button>
 </div>
 
 <div class="container">
-    <div class="section-title">مباراة اليوم - الدوري الرمضاني</div>
-    <div class="match-card" id="match-display">
+    <div class="section-title">مباراة اليوم (إضغط لعرض التشكيلة)</div>
+    <div class="match-card" id="match-display" onclick="toggleLineup()">
         <div class="match-content" id="match-content-inner"></div>
+        <div class="lineup-section" id="lineup-area">
+            <div class="lineup-grid">
+                <div class="lineup-list" id="list-team1"></div>
+                <div class="lineup-list" id="list-team2"></div>
+            </div>
+        </div>
     </div>
 
     <div class="section-title">جدول ترتيب النقاط</div>
@@ -160,15 +96,7 @@
         <table class="standings-table">
             <thead>
                 <tr>
-                    <th style="width: 8%;">#</th>
-                    <th class="team-name-cell">الفريق</th>
-                    <th>لعب</th>
-                    <th style="color: #2ecc71;">فوز</th>
-                    <th style="color: #f1c40f;">تعادل</th>
-                    <th style="color: #e74c3c;">خسارة</th>
-                    <th>له</th>
-                    <th>عليه</th>
-                    <th style="background: #f0f0f0; color: var(--royal-purple);">نقاط</th>
+                    <th style="width:10%">#</th><th class="team-name-cell">الفريق</th><th>لعب</th><th style="color:#2ecc71">فوز</th><th style="color:#f1c40f">تعادل</th><th style="color:#e74c3c">خسارة</th><th>له</th><th>عليه</th><th style="background:#f0f0f0;color:var(--royal-purple)">نقاط</th>
                 </tr>
             </thead>
             <tbody>
@@ -182,9 +110,35 @@
             </tbody>
         </table>
     </div>
+
+    <div class="section-title">إحصائيات اللاعبين</div>
+    <div class="table-wrapper">
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:var(--gold)">أهداف</th><th style="color:#00b4d8">صناعة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name-cell">-</td><td>-</td><td>0</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
+    const teamPlayers = {
+        "معاوية": ["معاوية محبوب", "عبدالله الريح", "مصطفي عباس", "احمد حسن", "العاقب بلوله", "عبد اللطيف", "عباس"],
+        "حافظ بشير": ["حافظ بشير", "محمد هيثم", "رحمة الله", "بكري صلاح", "عبدالحكم", "ابوعاقلة", "سعيد مبارك"],
+        "عبدالرحيم": ["عبدالرحيم يوسف", "اسماعيل حسين", "محمد عبد الرحمن", "ابراهيم اسامه", "محمد محبوب", "عثمان عمر", "محمد بشير"],
+        "أحمد محمد يوسف": ["احمد محمد يوسف", "محمد محبوب الريح", "الطريفي رحمة الله", "محمد عمر", "عمر حسن حمد", "اليسع", "البشير"],
+        "عبدالرحمن": ["عبدالرحمن محمد", "يوسف حسين", "مضوي الريح", "يوسف الامين", "مدثر عبدالحفيظ", "البراء محمد", "حمد النيل"],
+        "عبدالمؤمن": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين", "يوسف"],
+        "حمد صلاح": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"]
+    };
+
     const allMatches = [
         ["حمد صلاح", "عبدالرحيم"], ["أحمد محمد يوسف", "عبدالرحمن"], ["معاوية", "عبدالمؤمن"], null,
         ["عبدالمؤمن", "حافظ بشير"], ["معاوية", "حمد صلاح"], ["عبدالرحيم", "أحمد محمد يوسف"], null,
@@ -198,26 +152,29 @@
     let currentIndex = 0;
     const startDate = new Date(2026, 1, 19, 20, 0, 0);
 
+    function toggleLineup() {
+        const area = document.getElementById('lineup-area');
+        area.style.display = (area.style.display === 'block') ? 'none' : 'block';
+    }
+
     function updateUI() {
         const d = new Date(startDate);
         d.setDate(startDate.getDate() + currentIndex);
-        const options = { weekday: 'long', day: 'numeric', month: 'long' };
-        document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', options);
+        document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
         
         const matchData = allMatches[currentIndex];
         const container = document.getElementById('match-content-inner');
+        const lineupArea = document.getElementById('lineup-area');
+        lineupArea.style.display = 'none';
 
         if (!matchData) {
             container.innerHTML = `<div class="no-match">🌙 استراحة - لا توجد مباريات</div>`;
         } else {
-            container.innerHTML = `
-                <div class="team-box">${matchData[0]}</div>
-                <div class="score-area">
-                    <div class="time-box">20:00</div>
-                    <span class="timer-label" id="timer">00:00:00</span>
-                </div>
-                <div class="team-box">${matchData[1]}</div>
-            `;
+            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">20:00</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            
+            // تحديث التشكيلة
+            document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
+            document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
             refreshTimer(d);
         }
     }
@@ -234,23 +191,17 @@
         const diff = target - now;
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
-
-        if (diff <= 0 && diff > -7200000) {
-            timerEl.innerHTML = '<span class="live-badge">● مباشر</span>';
-        } else if (diff <= -7200000) {
-            timerEl.innerText = 'انتهت';
-        } else {
-            const h = Math.floor(diff / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
+        if (diff <= 0 && diff > -7200000) timerEl.innerHTML = '<span class="live-badge">● مباشر</span>';
+        else if (diff <= -7200000) timerEl.innerText = 'انتهت';
+        else {
+            const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
             timerEl.innerText = `${h}:${m}:${s}`;
         }
     }
 
     setInterval(() => {
-        const target = new Date(startDate);
-        target.setDate(startDate.getDate() + currentIndex);
-        if (allMatches[currentIndex]) refreshTimer(target);
+        const t = new Date(startDate); t.setDate(startDate.getDate() + currentIndex);
+        if (allMatches[currentIndex]) refreshTimer(t);
     }, 1000);
 
     updateUI();
