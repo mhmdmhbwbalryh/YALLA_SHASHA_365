@@ -10,10 +10,9 @@
         :root {
             --royal-purple: #4b0082; 
             --deep-purple: #310055;  
-            --gold-bright: #FFD700;  
-            --brown-timer: #5D4037; /* لون بني أنيق للعداد */
+            --gold-bright: #FFD700;  /* ذهبي ناصع */
+            --ramadan-green: #064e3b; 
             --white-silver: #f8f9fa;
-            --indigo-blue: #1a237e;
         }
 
         body { 
@@ -49,20 +48,27 @@
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
         
-        /* تعديل العداد: لون بني وحجم أكبر */
-        .timer-label { font-size: 14px; font-weight: 900; display: block; margin-top: 5px; color: var(--brown-timer); }
+        /* تعديل العداد: ذهبي ناصع وحجم أكبر */
+        .timer-label { font-size: 16px; font-weight: 900; display: block; margin-top: 5px; color: #FFCC00; text-shadow: 0 0 5px rgba(255,204,0,0.5); }
 
         .lineup-section { background: #fdfdfd; padding: 12px; display: none; border-top: 2px solid var(--gold-bright); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list { flex: 1; font-size: 12px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--royal-purple); border-bottom: 1px solid #ddd; padding-bottom: 4px; font-weight: 900; }
-        .lineup-list p { margin: 4px 0; color: var(--indigo-blue); font-weight: 700; border-right: 2px solid var(--brown-timer); padding-right: 5px; }
+        .lineup-list p { margin: 4px 0; color: #1a237e; font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
-        .table-wrapper { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        table { width: 100%; border-collapse: collapse; color: #333; table-layout: fixed; font-size: 10px; }
-        th { background: var(--deep-purple); color: var(--gold-bright); padding: 10px 2px; }
-        td { padding: 10px 2px; border-bottom: 1px solid #eee; text-align: center; font-weight: 700; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 32%; color: var(--deep-purple); }
+        .table-wrapper { 
+            background: var(--ramadan-green); 
+            border-radius: 10px; 
+            overflow-x: auto; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid var(--gold-bright);
+        }
+        table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 11px; }
+        th { background: rgba(0,0,0,0.3); color: var(--gold-bright); padding: 12px 2px; border-bottom: 1px solid var(--gold-bright); }
+        td { padding: 12px 2px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: 700; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 35%; color: var(--gold-bright); }
 
         footer { 
             margin-top: 50px; padding: 30px 10px; text-align: center; 
@@ -70,7 +76,7 @@
             color: var(--gold-bright);
         }
 
-        .live-badge { color: #d00; animation: blink 1s infinite; font-weight: 900; }
+        .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
     </style>
 </head>
@@ -98,12 +104,12 @@
         </div>
     </div>
 
-    <div class="section-title">جدول الترتيب العام</div>
+    <div class="section-title">جدول الترتيب العام 🌙</div>
     <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
-                    <th style="width:8%">#</th><th class="team-name-cell">الفريق</th><th>لعب</th><th style="color:#2ecc71">فوز</th><th style="color:#f1c40f">تعادل</th><th style="color:#e74c3c">خسارة</th><th>له</th><th>عليه</th><th style="background:#eee; color:#333">ن</th>
+                    <th style="width:10%">#</th><th class="team-name-cell">الفريق</th><th>ل</th><th style="color:#4ade80">ف</th><th style="color:#fbbf24">ت</th><th style="color:#f87171">خ</th><th>له</th><th>عليه</th><th style="background:rgba(255,215,0,0.2)">ن</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,12 +124,12 @@
         </table>
     </div>
 
-    <div class="section-title">الهدافين وصناع اللعب</div>
+    <div class="section-title">الهدافين وصناع اللعب ✨</div>
     <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
-                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#2ecc71">أهداف</th><th style="color:#00b4d8">صناعة</th>
+                    <th style="width:12%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#4ade80">أهداف</th><th style="color:#22d3ee">صناعة</th>
                 </tr>
             </thead>
             <tbody>
@@ -161,8 +167,8 @@
     ];
 
     let currentIndex = 0;
-    // التعديل هنا: الساعة 20:40 (8:40 مساءً)
-    const startDate = new Date(2026, 1, 19, 20, 40, 0);
+    // التعديل هنا: الساعة 20:30 (8:30 مساءً)
+    const startDate = new Date(2026, 1, 19, 20, 30, 0);
 
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
@@ -182,7 +188,7 @@
         if (!matchData) {
             container.innerHTML = `<div style="padding:30px; text-align:center; font-weight:900; color:var(--gold-bright);">🗓️ استراحة - لا توجد مباريات</div>`;
         } else {
-            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">20:40</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
+            container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">20:30</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
             document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
             document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
             refreshTimer(d);
