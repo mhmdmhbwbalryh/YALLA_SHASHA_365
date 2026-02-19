@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -13,7 +12,7 @@
             --deep-purple: #310055;  
             --gold-bright: #FFD700;  
             --ramadan-green: #064e3b; 
-            --lime-timer: #2ecc71; /* أخضر فاتح وواضح للعداد */
+            --timer-purple: #9b59b6; /* لون بنفسجي جذاب للعداد */
             --white-silver: #f8f9fa;
         }
 
@@ -50,14 +49,14 @@
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
         
-        /* تعديل العداد: أخضر فاتح وحجم كبير وواضح */
-        .timer-label { font-size: 17px; font-weight: 900; display: block; margin-top: 5px; color: var(--lime-timer); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        /* تعديل العداد: لون بنفسجي وحجم واضح */
+        .timer-label { font-size: 17px; font-weight: 900; display: block; margin-top: 5px; color: var(--timer-purple); text-shadow: 1px 1px 1px rgba(0,0,0,0.05); }
 
         .lineup-section { background: #fdfdfd; padding: 12px; display: none; border-top: 2px solid var(--gold-bright); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list { flex: 1; font-size: 12px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--royal-purple); border-bottom: 1px solid #ddd; padding-bottom: 4px; font-weight: 900; }
-        .lineup-list p { margin: 4px 0; color: #1a237e; font-weight: 700; border-right: 2px solid var(--lime-timer); padding-right: 5px; }
+        .lineup-list p { margin: 4px 0; color: #1a237e; font-weight: 700; border-right: 2px solid var(--timer-purple); padding-right: 5px; }
 
         .table-wrapper { 
             background: var(--ramadan-green); 
@@ -169,7 +168,6 @@
     ];
 
     let currentIndex = 0;
-    // التوقيت: 8:30 مساءً
     const startDate = new Date(2026, 1, 19, 20, 30, 0);
 
     function toggleLineup() {
