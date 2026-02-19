@@ -1,1 +1,311 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YALA SHASHA 365 | يلا شاشة</title>
+    <style>
+        :root {
+            --gold: #D4AF37;       /* ذهبي ملكي */
+            --orange: #FF8C00;     /* برتقالي رياضي */
+            --light-blue: #87CEEB;  /* أزرق فاتح */
+            --dark-bg: #1a1a1a;    /* أسود للفخامة */
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f4f7f9; 
+            margin: 0; 
+            color: #333; 
+        }
+
+        /* الهيدر */
+        header { 
+            background: var(--dark-bg); 
+            color: var(--gold); 
+            text-align: center; 
+            padding: 30px 0; 
+            border-bottom: 5px solid var(--orange);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .site-name { 
+            font-size: 38px; 
+            font-weight: 900; 
+            margin: 0; 
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* شريط التنقل */
+        .date-navigator { 
+            background: var(--light-blue); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 15px; 
+            border-bottom: 3px solid var(--gold);
+            gap: 20px;
+        }
+
+        .nav-btn { 
+            background: var(--dark-bg); 
+            color: var(--gold); 
+            border: 2px solid var(--gold); 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            border-radius: 25px; 
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--orange);
+            color: white;
+            border-color: var(--white);
+        }
+
+        #current-date-display { 
+            font-weight: bold; 
+            color: #003366; 
+            font-size: 20px; 
+            min-width: 220px; 
+            text-align: center; 
+        }
+
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+
+        .section-header { 
+            background: var(--orange); 
+            color: white; 
+            padding: 10px 25px; 
+            display: inline-block; 
+            border-radius: 30px; 
+            margin-bottom: 20px;
+            font-weight: bold;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* بطاقة المباراة */
+        .match-card { 
+            background: var(--white); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+            margin-bottom: 40px; 
+            border: 1px solid #ddd;
+            border-top: 6px solid var(--gold);
+        }
+
+        .match-header { 
+            background: #fffcf0; 
+            text-align: center; 
+            padding: 12px; 
+            color: var(--orange); 
+            font-weight: bold; 
+            border-bottom: 1px solid #eee;
+        }
+        
+        .match-body { 
+            display: flex; 
+            justify-content: space-around; 
+            align-items: center; 
+            padding: 40px 15px; 
+        }
+        
+        .team { text-align: center; flex: 1; }
+        .team-icon { font-size: 50px; margin-bottom: 10px; display: block; }
+        .team-name { font-size: 22px; font-weight: bold; color: var(--dark-bg); }
+        
+        .match-meta { 
+            text-align: center; 
+            flex: 1; 
+            border-right: 2px solid var(--light-blue); 
+            border-left: 2px solid var(--light-blue); 
+            padding: 0 15px;
+        }
+        
+        .match-time { font-size: 32px; font-weight: 900; color: #222; margin-bottom: 5px; }
+        
+        .timer-box { 
+            color: var(--orange); 
+            font-size: 16px; 
+            font-weight: bold; 
+            background: #fff3e6;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        /* الجدول الكبير */
+        .table-container { overflow-x: auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .teams-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+        }
+
+        .teams-table th { 
+            background: var(--dark-bg); 
+            color: var(--gold); 
+            padding: 18px; 
+            font-size: 16px;
+            border: 1px solid #333;
+        }
+        
+        .teams-table td { 
+            border: 1px solid #eee; 
+            padding: 15px; 
+            text-align: center; 
+            vertical-align: top; 
+            font-size: 14px; 
+            line-height: 1.8;
+            background: #fff;
+        }
+
+        .teams-table tr:nth-child(even) { background: #f9f9f9; }
+
+        .live-badge { 
+            background: linear-gradient(45deg, #ff4b2b, #ff416c); 
+            color: white; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="site-name">YALA SHASHA 365</div>
+</header>
+
+<div class="date-navigator">
+    <button class="nav-btn" onclick="changeDay(-1)">◀ السابق</button>
+    <div id="current-date-display">جاري التحميل...</div>
+    <button class="nav-btn" onclick="changeDay(1)">التالي ▶</button>
+</div>
+
+<div class="container">
+    <div class="section-header">جدول مباريات اليوم</div>
+
+    <div class="match-card">
+        <div class="match-header" id="match-title">المباراة رقم 1</div>
+        <div class="match-body">
+            <div class="team">
+                <span class="team-icon">🛡️</span>
+                <div class="team-name" id="team1">تحميل...</div>
+            </div>
+            
+            <div class="match-meta">
+                <div class="match-time">08:00 م</div>
+                <div class="timer-box" id="timer">00:00:00</div>
+            </div>
+
+            <div class="team">
+                <span class="team-icon">⚔️</span>
+                <div class="team-name" id="team2">تحميل...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">قوائم الفرق واللاعبين</div>
+    <div class="table-container">
+        <table class="teams-table">
+            <thead>
+                <tr>
+                    <th>فريق معاوية</th>
+                    <th>فريق حافظ</th>
+                    <th>فريق عبدالرحيم</th>
+                    <th>فريق أحمد محمد</th>
+                    <th>فريق عبدالرحمن</th>
+                    <th>فريق عبدالمؤمن</th>
+                    <th>فريق حمد صلاح</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>معاوية محبوب<br>عبدالله الريح<br>مصطفي عباس<br>احمد حسن<br>العاقب بلوله<br>عبد اللطيف<br>عباس</td>
+                    <td>حافظ بشير<br>محمد هيثم<br>رحمة الله<br>بكري صلاح<br>عبدالحكم<br>ابوعاقلة<br>سعيد مبارك</td>
+                    <td>عبدالرحيم يوسف<br>اسماعيل حسين<br>محمد عبد الرحمن<br>ابراهيم اسامه<br>محمد محبوب<br>عثمان عمر<br>محمد بشير</td>
+                    <td>احمد محمد يوسف<br>محمد محبوب الريح<br>الطريفي رحمة الله<br>محمد عمر<br>عمر حسن حمد<br>اليسع<br>البشير</td>
+                    <td>عبدالرحمن محمد<br>يوسف حسين<br>مضوي الريح<br>يوسف الامين<br>مدثر عبدالحفيظ<br>البراء محمد<br>حمد النيل</td>
+                    <td>عبدالمومن بابكر<br>احمد عبدالكريم<br>يوسف خالد<br>محمد عبدالحفيظ<br>حمد الماحي<br>محي الدين<br>يوسف</td>
+                    <td>حمد صلاح<br>مزمل عبدالحفيظ<br>الطريفي عبدالباقي<br>محمد حمزة<br>عبدالوهاب بابكر<br>يوسف الريح<br>الريح يوسف</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const matches = [
+        ["حمد صلاح", "عبدالرحيم"], ["أحمد محمد يوسف", "عبدالرحمن"], ["معاوية", "عبدالمؤمن"],
+        ["عبدالمؤمن", "حافظ بشير"], ["معاوية", "حمد صلاح"], ["عبدالرحيم", "أحمد محمد يوسف"],
+        ["معاوية", "عبدالرحمن"], ["حمد صلاح", "عبدالمؤمن"], ["عبدالرحيم", "حافظ بشير"],
+        ["عبدالرحمن", "عبدالمؤمن"], ["حافظ بشير", "حمد صلاح"], ["معاوية", "أحمد محمد يوسف"],
+        ["عبدالرحيم", "معاوية"], ["عبدالرحمن", "حافظ بشير"], ["عبدالمؤمن", "أحمد محمد يوسف"],
+        ["حمد صلاح", "عبدالرحمن"], ["عبدالرحيم", "عبدالمؤمن"], ["أحمد محمد يوسف", "حافظ بشير"],
+        ["حافظ بشير", "معاوية"], ["حمد صلاح", "أحمد محمد يوسف"], ["عبدالرحيم", "عبدالرحمن"]
+    ];
+
+    const days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+    const months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    
+    let currentIndex = 0;
+    const startDate = new Date(2026, 1, 19, 20, 0, 0); // 19 فبراير 2026 الساعة 8 مساءً
+
+    function updateUI() {
+        const displayDate = new Date(startDate);
+        displayDate.setDate(startDate.getDate() + currentIndex);
+        
+        document.getElementById('current-date-display').innerText = `${days[displayDate.getDay()]}، ${displayDate.getDate()} ${months[displayDate.getMonth()]}`;
+        document.getElementById('match-title').innerText = `المباراة رقم ${currentIndex + 1}`;
+        document.getElementById('team1').innerText = matches[currentIndex][0];
+        document.getElementById('team2').innerText = matches[currentIndex][1];
+
+        refreshTimer(displayDate);
+    }
+
+    function changeDay(step) {
+        currentIndex += step;
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex >= matches.length) currentIndex = matches.length - 1;
+        updateUI();
+    }
+
+    function refreshTimer(targetDate) {
+        const now = new Date();
+        const diff = targetDate - now;
+        const timerEl = document.getElementById('timer');
+
+        if (diff <= 0 && diff > -7200000) { 
+            timerEl.innerHTML = '<span class="live-badge">مباشر الآن</span>';
+        } else if (diff <= -7200000) {
+            timerEl.innerHTML = 'انتهت المباراة';
+        } else {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            timerEl.innerText = `يبدأ بعد: ${hours}س ${mins}د ${secs}ث`;
+        }
+    }
+
+    setInterval(() => {
+        const currentTarget = new Date(startDate);
+        currentTarget.setDate(startDate.getDate() + currentIndex);
+        refreshTimer(currentTarget);
+    }, 1000);
+
+    updateUI();
+</script>
+
+</body>
+</html>
