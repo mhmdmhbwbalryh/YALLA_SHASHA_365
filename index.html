@@ -10,9 +10,10 @@
         :root {
             --royal-purple: #4b0082; 
             --deep-purple: #310055;  
-            --gold-app: #D4AF37;     /* الذهبي المطلوب */
-            --light-orange: #FFB347;  /* البرتقالي الفاتح */
-            --white-pure: #FFFFFF;    /* الأبيض للعد التنازلي */
+            --gold-bright: #FFD700;  
+            --gold-app: #D4AF37;   /* الذهبي الخاص بالتطبيق */
+            --white-pure: #FFFFFF;  /* أبيض للعد التنازلي */
+            --light-orange: #FFB347; /* برتقالي فاتح لأسماء الفرق في الأعلى */
             --ramadan-green: #064e3b; 
         }
 
@@ -54,7 +55,7 @@
         
         /* العد التنازلي - أبيض وأكبر */
         .timer-label { 
-            font-size: 20px; 
+            font-size: 22px; 
             font-weight: 900; 
             display: block; 
             margin-top: 10px; 
@@ -68,17 +69,19 @@
         
         /* أسماء الفرق واللاعبين داخل التشكيلة - ذهبي */
         .lineup-list h4 { margin: 0 0 8px; font-size: 14px; color: var(--gold-app); border-bottom: 1px solid var(--gold-app); padding-bottom: 4px; font-weight: 900; }
-        .lineup-list p { margin: 5px 0; color: var(--gold-app); font-weight: 700; border-right: 2px solid var(--gold-app); padding-right: 5px; }
+        .lineup-list p { margin: 5px 0; color: var(--gold-app); font-weight: 600; border-right: 2px solid var(--gold-app); padding-right: 5px; }
 
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--gold-app); text-align: center; }
-        .event-item { font-size: 13px; margin: 5px 0; font-weight: 700; color: var(--gold-app); }
+        .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; color: var(--gold-app); display: flex; align-items: center; justify-content: center; gap: 6px; }
 
-        /* الجداول */
+        /* الجداول الكاملة (الترتيب، الهدافين) */
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--gold-app); }
-        table { width: 100%; border-collapse: collapse; color: white; font-size: 11px; }
+        table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; }
         td { padding: 10px 2px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: 700; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); }
+        
+        /* أسماء الفرق في الجداول - ذهبي */
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 32%; color: var(--gold-app); }
 
         footer { margin-top: 50px; padding: 30px 10px; text-align: center; background: var(--deep-purple); border-top: 2px solid var(--gold-app); color: var(--gold-app); }
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
@@ -114,11 +117,33 @@
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>#</th><th class="team-name-cell">الفريق</th><th>ل</th><th>ف</th><th>ت</th><th>خ</th><th>ن</th></tr>
+                <tr>
+                    <th style="width:8%">#</th><th class="team-name-cell">الفريق</th><th>ل</th><th style="color:#4ade80">ف</th><th style="color:#facc15">ت</th><th style="color:#f87171">خ</th><th style="background:rgba(255,255,255,0.1)">ن</th>
+                </tr>
             </thead>
             <tbody>
                 <tr><td>1</td><td class="team-name-cell">الملكي</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td></tr>
-                <tr><td>2</td><td class="team-name-cell">النسور</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">شهداء الوطن</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name-cell">كتالونيا</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>4</td><td class="team-name-cell">الريدز</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>5</td><td class="team-name-cell">الميرنجي</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">العاصفة</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">النسور</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">الهدافين وصناع اللعب</div>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#4ade80">أهداف</th><th style="color:#38bdf8">صناعة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">يوسف الريح</td><td>الملكي</td><td>0</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -145,7 +170,9 @@
         ["الملكي", "النسور", "1 - 0", [
             {txt: '⚽ سجل الهدف: مزمل عبدالحفيظ'},
             {txt: '👟 صناعة: يوسف الريح'},
-            {txt: '❌ ركله جزاء ضائعه: (محمد محبوب ابوعاقلة)'}
+
+            {txt: '🟨 كرت أصفر: عبدالوهاب بابكر'},
+            {txt: '❌ ركله جزاء ضائعه:  (محمد محبوب ابوعاقلة)'}
         ]],
         ["الريدز", "الميرنجي"], 
         ["شهداء الوطن", "العاصفة"]
@@ -177,7 +204,8 @@
         if (matchData[3]) {
             eventsArea.innerHTML = `<div style="font-weight:900; color:var(--gold-app); margin-bottom:10px;">⚡ أحداث المباراة</div>` + 
             matchData[3].map(ev => `<div class="event-item">${ev.txt}</div>`).join('');
-        }
+            eventsArea.style.display = 'block';
+        } else { eventsArea.style.display = 'none'; }
         refreshTimer(d);
     }
 
@@ -189,7 +217,7 @@
     function refreshTimer(targetDate) {
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
-        if (allMatches[currentIndex][2]) { timerEl.innerText = 'انتهت المباراة'; return; }
+        if (allMatches[currentIndex][2]) { timerEl.innerText = 'انتهت المباراة'; timerEl.style.fontSize = '14px'; return; }
         
         const run = () => {
             const now = new Date();
@@ -200,6 +228,7 @@
             else {
                 const h = Math.floor(gap/3600000), m = Math.floor((gap%3600000)/60000), s = Math.floor((gap%60000)/1000);
                 timerEl.innerText = `${h}:${m}:${s}`;
+                timerEl.style.color = "var(--white-pure)";
             }
         };
         run();
