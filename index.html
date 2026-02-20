@@ -146,7 +146,6 @@
         "الملكي": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"]
     };
 
-    // مصفوفة المباريات مع تبديل الجولتين الثانية والرابعة
     const allMatches = [
         // الجولة 1
         ["الملكي", "النسور", "1 - 0", [
@@ -157,17 +156,17 @@
         ["الريدز", "الميرنجي"],
         ["شهداء الوطن", "العاصفة"],
         "إستراحة",
-        // الجولة 2 (أصبحت مباريات الرابعة سابقاً)
-        ["الريدز", "النسور"],
+        // الجولة 2 - الترتيب الجديد
+        ["كتالونيا", "العاصفة"], // الأولى في الجولة الثانية
         ["شهداء الوطن", "الميرنجي"],
-        ["كتالونيا", "العاصفة"],
+        ["الريدز", "النسور"],    // الأخيرة في الجولة الثانية
         "إستراحة",
         // الجولة 3
         ["شهداء الوطن", "النسور"],
         ["كتالونيا", "الميرنجي"],
         ["الملكي", "العاصفة"],
         "إستراحة",
-        // الجولة 4 (أصبحت مباريات الثانية سابقاً)
+        // الجولة 4
         ["كتالونيا", "النسور"],
         ["الملكي", "الميرنجي"],
         ["الريدز", "العاصفة"],
@@ -200,16 +199,14 @@
         const d = new Date(startDate); d.setDate(startDate.getDate() + currentIndex);
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
         
-        // حساب رقم الجولة (كل 4 أيام تشكل جولة بما فيها الاستراحة)
         const roundNumber = Math.floor(currentIndex / 4) + 1;
         const titleEl = document.getElementById('dynamic-title');
-        
         const mainContainer = document.getElementById('main-card-container');
         const matchData = allMatches[currentIndex];
 
         if (matchData === "إستراحة") {
-            titleEl.innerText = `الجولة ${roundNumber} | إستراحة`;
-            mainContainer.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-weight:900; font-size:20px; color:var(--gold-app);">☕ يوم إستراحة للمحاربين</div>`;
+            titleEl.innerText = `الجولة ${roundNumber} | يوم إستراحة`;
+            mainContainer.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-weight:900; font-size:20px; color:var(--gold-app);">☕ يوم إستراحة</div>`;
             return;
         }
 
