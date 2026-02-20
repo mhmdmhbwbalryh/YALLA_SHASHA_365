@@ -59,13 +59,13 @@
             background: var(--deep-purple); color: var(--gold-app); 
             padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; 
         }
-        .timer-label { font-size: 14px; font-weight: 900; display: block; margin-top: 8px; }
+        .timer-label { font-size: 13px; font-weight: 900; display: block; margin-top: 8px; }
 
         .lineup-section { 
             background: rgba(0,0,0,0.2); max-height: 0; overflow: hidden;
             transition: max-height 0.5s ease-out; padding: 0 12px;
         }
-        .lineup-section.open { max-height: 1200px; padding: 12px; border-top: 2px solid var(--gold-app); }
+        .lineup-section.open { max-height: 1500px; padding: 12px; border-top: 2px solid var(--gold-app); }
 
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list { flex: 1; }
@@ -174,13 +174,14 @@
         }],
         ["الريدز", "الميرنجي", "4 - 2", {
             right: [
+                "❌ ضيع ركلة جزاء: محمد محبوب الريح",
                 "⚽ محمد محبوب الريح (👟 عمر حسن)",
                 "⚽ محمد محبوب الريح (👟 عمر حسن)",
-                "⚽ عمر حسن (👟 احمد محمد)",
-                "⚽ محمد محبوب الريح (👟 احمد محمد)",
-                "❌ ضيع ركلة جزاء: محمد محبوب الريح"
+                "⚽ عمر حسن (👟 احمد محمد يوسف)",
+                "⚽ محمد محبوب الريح (👟 احمد محمد يوسف)"
             ],
             left: [
+                "🟨 يوسف حسين",
                 "⚽ يوسف حسين (👟 يوسف الامين)",
                 "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)",
                 "❌ ضيع ركلة جزاء: عبدالرحمن محمد"
@@ -202,7 +203,7 @@
 
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
-        if (area) area.classList.toggle('open');
+        if(area) area.classList.toggle('open');
     }
 
     function updateUI() {
@@ -261,7 +262,6 @@
         const timerEl = document.getElementById('timer'); if (!timerEl) return;
         const currentMatch = allMatches[currentIndex];
         
-        // إذا كانت المباراة تحتوي على نتيجة (يعني انتهت)
         if (currentMatch[2] && currentMatch[2].includes("-")) {
             timerEl.innerText = 'انتهت المباراة'; 
             timerEl.style.color = "var(--sky-blue)"; 
