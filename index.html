@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YALA SHASHA 365 | الدوري الرمضاني الكامل</title>
+    <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700;900&display=swap');
 
@@ -43,9 +43,10 @@
 
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
 
-        .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
+        .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; transition: 0.3s; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         
+        /* أسماء الفرق في الأعلى - برتقالي فاتح */
         .team-box { flex: 2; text-align: center; font-size: 18px; font-weight: 900; color: var(--light-orange); } 
         
         .score-area { flex: 1.5; text-align: center; }
@@ -74,7 +75,7 @@
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--gold-app); text-align: center; }
         .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; color: var(--gold-app); }
 
-        /* الجدول وألوان ف ت خ */
+        /* الجدول */
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--gold-app); }
         table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; }
@@ -101,16 +102,8 @@
 
 <div class="container">
     <div class="section-title">مباراة اليوم (إضغط للتفاصيل)</div>
-    <div class="match-card" onclick="toggleLineup()">
-        <div class="match-content" id="match-content-inner"></div>
-        <div class="lineup-section" id="lineup-area">
-            <div class="lineup-grid">
-                <div class="lineup-list" id="list-team1"></div>
-                <div class="lineup-list" id="list-team2"></div>
-            </div>
-            <div id="events-area" class="match-events"></div>
+    <div id="main-card-container">
         </div>
-    </div>
 
     <div class="section-title">جدول الترتيب العام</div>
     <div class="table-wrapper">
@@ -150,32 +143,32 @@
         "الملكي": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"]
     };
 
-    // القائمة الكاملة للمباريات (تمت إعادتها بالكامل)
+    // نظام 3 مباريات ثم استراحة
     const allMatches = [
-        ["الملكي", "النسور", "1 - 0", [
-            {txt: '⚽ سجل الهدف: مزمل عبدالحفيظ'},
-            {txt: '👟 صناعة: يوسف الريح'},
-            {txt: '🟨 كرت أصفر: عبدالوهاب بابكر (الملكي)'},
-            {txt: '🟨 كرت أصفر: عبدالله مبارك (النسور)'},
-            {txt: '❌ ركله جزاء ضائعه: محمد محبوب ابوعاقلة'}
-        ]],
+        ["الملكي", "النسور", "1 - 0", [{txt:'⚽ مزمل عبدالحفيظ'}, {txt:'👟 يوسف الريح'}, {txt:'🟨 عبدالوهاب بابكر (الملكي)'}, {txt:'🟨 عبدالله مبارك (النسور)'}, {txt:'❌ ركله جزاء ضائعه: محمد محبوب ابوعاقلة'}]],
         ["الريدز", "الميرنجي"],
         ["شهداء الوطن", "العاصفة"],
+        "إستراحة",
         ["كتالونيا", "النسور"],
         ["الملكي", "الميرنجي"],
         ["الريدز", "العاصفة"],
+        "إستراحة",
         ["شهداء الوطن", "النسور"],
         ["كتالونيا", "الميرنجي"],
         ["الملكي", "العاصفة"],
+        "إستراحة",
         ["الريدز", "النسور"],
         ["شهداء الوطن", "الميرنجي"],
         ["كتالونيا", "العاصفة"],
+        "إستراحة",
         ["الملكي", "الريدز"],
         ["كتالونيا", "الملكي"],
         ["شهداء الوطن", "الريدز"],
+        "إستراحة",
         ["العاصفة", "النسور"],
         ["كتالونيا", "شهداء الوطن"],
         ["الميرنجي", "النسور"],
+        "إستراحة",
         ["العاصفة", "الميرنجي"],
         ["شهداء الوطن", "الملكي"],
         ["كتالونيا", "الريدز"]
@@ -184,16 +177,9 @@
     let currentIndex = 0;
     const startDate = new Date(2026, 1, 19); 
 
-    function setInitialDay() {
-        const today = new Date(); today.setHours(0,0,0,0);
-        const start = new Date(startDate); start.setHours(0,0,0,0);
-        const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-        currentIndex = (diffDays >= 0 && diffDays < allMatches.length) ? diffDays : (diffDays >= allMatches.length ? allMatches.length - 1 : 0);
-    }
-
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
-        area.style.display = (area.style.display === 'block') ? 'none' : 'block';
+        if(area) area.style.display = (area.style.display === 'block') ? 'none' : 'block';
     }
 
     function updateUI() {
@@ -201,21 +187,43 @@
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
         
         const matchData = allMatches[currentIndex];
-        const container = document.getElementById('match-content-inner');
-        if (!matchData) return;
+        const mainContainer = document.getElementById('main-card-container');
+
+        if (matchData === "إستراحة") {
+            mainContainer.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-weight:900; font-size:20px; color:var(--gold-app);">☕ يوم إستراحة</div>`;
+            return;
+        }
 
         const scoreOrTime = matchData[2] ? matchData[2] : "21:00";
-        container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">${scoreOrTime}</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
         
-        document.getElementById('list-team1').innerHTML = `<h4>${matchData[0]}</h4>` + (teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('');
-        document.getElementById('list-team2').innerHTML = `<h4>${matchData[1]}</h4>` + (teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('');
+        mainContainer.innerHTML = `
+            <div class="match-card" onclick="toggleLineup()">
+                <div class="match-content">
+                    <div class="team-box">${matchData[0]}</div>
+                    <div class="score-area">
+                        <div class="time-box">${scoreOrTime}</div>
+                        <span class="timer-label" id="timer">--:--:--</span>
+                    </div>
+                    <div class="team-box">${matchData[1]}</div>
+                </div>
+                <div class="lineup-section" id="lineup-area">
+                    <div class="lineup-grid">
+                        <div class="lineup-list">
+                            <h4>${matchData[0]}</h4>
+                            ${(teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('')}
+                        </div>
+                        <div class="lineup-list">
+                            <h4>${matchData[1]}</h4>
+                            ${(teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('')}
+                        </div>
+                    </div>
+                    <div id="events-area" class="match-events" style="${matchData[3] ? '' : 'display:none'}">
+                        <div style="font-weight:900; color:var(--gold-app); margin-bottom:10px;">⚡ أحداث المباراة</div>
+                        ${matchData[3] ? matchData[3].map(ev => `<div class="event-item">${ev.txt}</div>`).join('') : ''}
+                    </div>
+                </div>
+            </div>`;
         
-        const eventsArea = document.getElementById('events-area');
-        if (matchData[3]) {
-            eventsArea.innerHTML = `<div style="font-weight:900; color:var(--gold-app); margin-bottom:10px;">⚡ أحداث المباراة</div>` + 
-            matchData[3].map(ev => `<div class="event-item">${ev.txt}</div>`).join('');
-            eventsArea.style.display = 'block';
-        } else { eventsArea.style.display = 'none'; }
         refreshTimer(d);
     }
 
@@ -227,7 +235,8 @@
     function refreshTimer(targetDate) {
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
-        if (allMatches[currentIndex][2] && allMatches[currentIndex][2] !== "21:00") { timerEl.innerText = 'انتهت المباراة'; return; }
+        const currentMatch = allMatches[currentIndex];
+        if (currentMatch[2] && currentMatch[2] !== "21:00") { timerEl.innerText = 'انتهت المباراة'; return; }
         
         const run = () => {
             const now = new Date();
@@ -249,7 +258,6 @@
         refreshTimer(t);
     }, 1000);
 
-    setInitialDay();
     updateUI();
 </script>
 </body>
