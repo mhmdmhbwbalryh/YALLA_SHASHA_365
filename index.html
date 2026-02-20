@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YALA SHASHA 365 | الدوري الرمضاني</title>
+    <title>YALA SHASHA 365 | الدوري الرمضاني الكامل</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700;900&display=swap');
 
@@ -46,7 +46,6 @@
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         
-        /* أسماء الفرق في الأعلى - برتقالي فاتح */
         .team-box { flex: 2; text-align: center; font-size: 18px; font-weight: 900; color: var(--light-orange); } 
         
         .score-area { flex: 1.5; text-align: center; }
@@ -72,11 +71,10 @@
         /* أسماء اللاعبين - ذهبي */
         .lineup-list p { margin: 5px 0; color: var(--gold-app); font-weight: 600; border-right: 2px solid var(--gold-app); padding-right: 5px; }
 
-        /* أحداث المباراة - أبيض مع ذهبي للأسماء */
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--gold-app); text-align: center; }
-        .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; color: var(--white-pure); }
-        .event-item b { color: var(--gold-app); } /* تلوين الأسماء فقط بالذهبي */
+        .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; color: var(--gold-app); }
 
+        /* الجدول وألوان ف ت خ */
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--gold-app); }
         table { width: 100%; border-collapse: collapse; color: white; table-layout: fixed; font-size: 10px; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; }
@@ -133,21 +131,6 @@
             </tbody>
         </table>
     </div>
-
-    <div class="section-title">الهدافين وصناع اللعب</div>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#4ade80">أهداف</th><th style="color:#38bdf8">صناعة</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td><td>0</td></tr>
-                <tr><td>2</td><td class="team-name-cell">يوسف الريح</td><td>الملكي</td><td>0</td><td>1</td></tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 
 <footer>
@@ -167,20 +150,46 @@
         "الملكي": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"]
     };
 
+    // القائمة الكاملة للمباريات (تمت إعادتها بالكامل)
     const allMatches = [
         ["الملكي", "النسور", "1 - 0", [
-            {txt: '⚽ سجل الهدف: <b>مزمل عبدالحفيظ</b>'},
-            {txt: '👟 صناعة: <b>يوسف الريح</b>'},
-            {txt: '🟨 كرت أصفر: <b>عبدالوهاب بابكر</b> (الملكي)'},
-            {txt: '🟨 كرت أصفر: <b>عبدالله مبارك</b> (النسور)'},
-            {txt: '❌ ركله جزاء ضائعه: <b>محمد محبوب ابوعاقلة</b>'}
+            {txt: '⚽ سجل الهدف: مزمل عبدالحفيظ'},
+            {txt: '👟 صناعة: يوسف الريح'},
+            {txt: '🟨 كرت أصفر: عبدالوهاب بابكر (الملكي)'},
+            {txt: '🟨 كرت أصفر: عبدالله مبارك (النسور)'},
+            {txt: '❌ ركله جزاء ضائعه: محمد محبوب ابوعاقلة'}
         ]],
-        ["الريدز", "الميرنجي"], 
-        ["شهداء الوطن", "العاصفة"]
+        ["الريدز", "الميرنجي"],
+        ["شهداء الوطن", "العاصفة"],
+        ["كتالونيا", "النسور"],
+        ["الملكي", "الميرنجي"],
+        ["الريدز", "العاصفة"],
+        ["شهداء الوطن", "النسور"],
+        ["كتالونيا", "الميرنجي"],
+        ["الملكي", "العاصفة"],
+        ["الريدز", "النسور"],
+        ["شهداء الوطن", "الميرنجي"],
+        ["كتالونيا", "العاصفة"],
+        ["الملكي", "الريدز"],
+        ["كتالونيا", "الملكي"],
+        ["شهداء الوطن", "الريدز"],
+        ["العاصفة", "النسور"],
+        ["كتالونيا", "شهداء الوطن"],
+        ["الميرنجي", "النسور"],
+        ["العاصفة", "الميرنجي"],
+        ["شهداء الوطن", "الملكي"],
+        ["كتالونيا", "الريدز"]
     ];
 
     let currentIndex = 0;
     const startDate = new Date(2026, 1, 19); 
+
+    function setInitialDay() {
+        const today = new Date(); today.setHours(0,0,0,0);
+        const start = new Date(startDate); start.setHours(0,0,0,0);
+        const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+        currentIndex = (diffDays >= 0 && diffDays < allMatches.length) ? diffDays : (diffDays >= allMatches.length ? allMatches.length - 1 : 0);
+    }
 
     function toggleLineup() {
         const area = document.getElementById('lineup-area');
@@ -193,11 +202,7 @@
         
         const matchData = allMatches[currentIndex];
         const container = document.getElementById('match-content-inner');
-        if (!matchData) {
-            container.innerHTML = `<div style="width:100%; text-align:center; padding:20px; color:var(--gold-app);">🗓️ لا توجد مباريات في هذا اليوم</div>`;
-            document.getElementById('lineup-area').style.display = 'none';
-            return;
-        }
+        if (!matchData) return;
 
         const scoreOrTime = matchData[2] ? matchData[2] : "21:00";
         container.innerHTML = `<div class="team-box">${matchData[0]}</div><div class="score-area"><div class="time-box">${scoreOrTime}</div><span class="timer-label" id="timer">--:--:--</span></div><div class="team-box">${matchData[1]}</div>`;
@@ -215,16 +220,14 @@
     }
 
     function changeDay(step) {
-        currentIndex += step;
-        if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex >= allMatches.length) currentIndex = allMatches.length - 1;
+        currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + step));
         updateUI();
     }
 
     function refreshTimer(targetDate) {
         const timerEl = document.getElementById('timer');
         if (!timerEl) return;
-        if (allMatches[currentIndex][2]) { timerEl.innerText = 'انتهت المباراة'; return; }
+        if (allMatches[currentIndex][2] && allMatches[currentIndex][2] !== "21:00") { timerEl.innerText = 'انتهت المباراة'; return; }
         
         const run = () => {
             const now = new Date();
@@ -235,6 +238,7 @@
             else {
                 const h = Math.floor(gap/3600000), m = Math.floor((gap%3600000)/60000), s = Math.floor((gap%60000)/1000);
                 timerEl.innerText = `${h}:${m}:${s}`;
+                timerEl.style.color = "var(--white-pure)";
             }
         };
         run();
@@ -245,6 +249,7 @@
         refreshTimer(t);
     }, 1000);
 
+    setInitialDay();
     updateUI();
 </script>
 </body>
