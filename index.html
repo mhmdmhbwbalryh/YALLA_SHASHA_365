@@ -14,7 +14,7 @@
             --gold-muted: #D4AF37;   
             --white-silver: #f8f9fa;
             --ramadan-green: #064e3b; 
-            --ramadan-indigo: #283593; /* اللون النيلي الرمضاني المعتمد */
+            --dark-indigo: #1a237e; /* نيلي غامق وواضح */
         }
 
         body { 
@@ -47,8 +47,8 @@
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-muted); color: white; overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         
-        /* أسماء الفرق في المباريات باللون النيلي */
-        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 900; color: #c5cae9; } 
+        /* أسماء الفرق في المباريات - نيلي أغمق */
+        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 900; color: #7986cb; } 
         
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
@@ -60,8 +60,8 @@
         .lineup-list { flex: 1; font-size: 12px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--gold-bright); border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; font-weight: 900; }
         
-        /* أسماء اللاعبين في التشكيلة باللون النيلي الرمضاني */
-        .lineup-list p { margin: 4px 0; color: #9fa8da; font-weight: 700; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
+        /* أسماء اللاعبين في التشكيلة - نيلي أغمق */
+        .lineup-list p { margin: 4px 0; color: #5c6bc0; font-weight: 800; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); text-align: center; }
         .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -110,7 +110,7 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width:8%">#</th><th class="team-name-cell">الفريق</th><th>لعب</th><th style="color:#4ade80">فوز</th><th style="color:#facc15">ت</th><th style="color:#f87171">خ</th><th>له</th><th>عليه</th><th style="background:rgba(255,255,255,0.1)">ن</th>
+                    <th style="width:8%">#</th><th class="team-name-cell">الفريق</th><th>ل</th><th style="color:#4ade80">ف</th><th style="color:#facc15">ت</th><th style="color:#f87171">خ</th><th>له</th><th>عليه</th><th style="background:rgba(255,255,255,0.1)">ن</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,6 +121,21 @@
                 <tr><td>5</td><td class="team-name-cell">الميرنجي</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                 <tr><td>6</td><td class="team-name-cell">العاصفة</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                 <tr><td>7</td><td class="team-name-cell">النسور</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">الهدافين وصناع اللعب</div>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="color:#4ade80">أهداف</th><th style="color:#38bdf8">صناعة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name-cell">يوسف الريح</td><td>الملكي</td><td>0</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
