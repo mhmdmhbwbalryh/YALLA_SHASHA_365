@@ -63,10 +63,11 @@
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--gold-app); text-align: center; }
         .event-item { font-size: 12px; margin: 4px 0; color: var(--white-pure); font-weight: bold; }
 
-        .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow: hidden; border: 1px solid var(--gold-app); margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .table-wrapper { background: var(--ramadan-green); border-radius: 10px; overflow-x: auto; border: 1px solid var(--gold-app); margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 400px; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 5px; }
         td { padding: 10px 5px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .team-cell { text-align: right; padding-right: 10px; font-weight: bold; color: var(--gold-app); }
 
         footer { margin-top: 40px; padding: 20px; text-align: center; background: var(--deep-purple); border-top: 2px solid var(--gold-app); color: var(--gold-app); font-size: 13px; }
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
@@ -87,17 +88,37 @@
     <div class="section-title" id="dynamic-title">مباراة اليوم</div>
     <div id="main-card-container"></div>
 
-    <div class="section-title">جدول الترتيب</div>
+    <div class="section-title">جدول الترتيب العام</div>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>#</th><th style="text-align:right">الفريق</th><th>ل</th><th>ف</th><th>ت</th><th>خ</th><th>ن</th></tr>
+                <tr>
+                    <th>#</th><th style="text-align:right">الفريق</th><th>ل</th><th>ف</th><th>ت</th><th>خ</th><th>له</th><th>عليه</th><th>ن</th>
+                </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td style="text-align:right">الملكي</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td></tr>
-                <tr><td>2</td><td style="text-align:right">النسور</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-                <tr><td>3</td><td style="text-align:right">الريدز</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>4</td><td style="text-align:right">الميرنجي</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-cell">الملكي</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>**3**</td></tr>
+                <tr><td>2</td><td class="team-cell">شهداء الوطن</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>**0**</td></tr>
+                <tr><td>3</td><td class="team-cell">كتالونيا</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>**0**</td></tr>
+                <tr><td>4</td><td class="team-cell">الريدز</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>**0**</td></tr>
+                <tr><td>5</td><td class="team-cell">الميرنجي</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>**0**</td></tr>
+                <tr><td>6</td><td class="team-cell">العاصفة</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>**0**</td></tr>
+                <tr><td>7</td><td class="team-cell">النسور</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>**0**</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">الهدافين وصناع اللعب</div>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th><th style="text-align:right">اللاعب</th><th>الفريق</th><th style="color:#4ade80">أهداف</th><th style="color:#38bdf8">صناعة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td class="team-cell">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-cell">يوسف الريح</td><td>الملكي</td><td>0</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -120,24 +141,13 @@
     };
 
     const allMatches = [
-        // الجولة 1
-        ["الملكي", "النسور", "1 - 0", [
-            {txt:'⚽ هدف: مزمل عبدالحفيظ'}, {txt:'👟 صناعة: يوسف الريح'}, 
-            {txt:'🟨 كرت أصفر: عبدالوهاب بابكر'}, {txt:'🟨 كرت أصفر: عبدالله مبارك'}, 
-            {txt:'❌ جزاء ضائعة: محمد محبوب ابوعاقلة'}
-        ]],
+        ["الملكي", "النسور", "1 - 0", [{txt:'⚽ هدف: مزمل عبدالحفيظ'}, {txt:'👟 صناعة: يوسف الريح'}, {txt:'🟨 كرت أصفر: عبدالوهاب بابكر'}, {txt:'🟨 كرت أصفر: عبدالله مبارك'}, {txt:'❌ جزاء ضائعة: محمد محبوب'}]],
         ["الريدز", "الميرنجي"], ["شهداء الوطن", "العاصفة"], "هذا اليوم للراحة 💤",
-        // الجولة 2
         ["العاصفة", "كتالونيا"], ["شهداء الوطن", "الملكي"], ["النسور", "الريدز"], "هذا اليوم للراحة 💤",
-        // الجولة 3
         ["شهداء الوطن", "الميرنجي"], ["الملكي", "العاصفة"], ["النسور", "كتالونيا"], "هذا اليوم للراحة 💤",
-        // الجولة 4
         ["الميرنجي", "العاصفة"], ["كتالونيا", "الملكي"], ["شهداء الوطن", "الريدز"], "هذا اليوم للراحة 💤",
-        // الجولة 5
         ["النسور", "شهداء الوطن"], ["الميرنجي", "كتالونيا"], ["العاصفة", "الريدز"], "هذا اليوم للراحة 💤",
-        // الجولة 6
         ["الملكي", "الميرنجي"], ["كتالونيا", "الريدز"], ["العاصفة", "النسور"], "هذا اليوم للراحة 💤",
-        // الجولة 7
         ["الريدز", "الملكي"], ["الميرنجي", "النسور"], ["كتالونيا", "شهداء الوطن"], "هذا اليوم للراحة 💤"
     ];
 
@@ -147,7 +157,6 @@
     function updateUI() {
         const d = new Date(startDate); d.setDate(startDate.getDate() + currentIndex);
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
-        
         const matchData = allMatches[currentIndex];
         const container = document.getElementById('main-card-container');
         const titleEl = document.getElementById('dynamic-title');
@@ -171,7 +180,7 @@
                         <div class="lineup-list"><h4>${matchData[0]}</h4>${(teamPlayers[matchData[0]] || []).map(p => `<p>${p}</p>`).join('')}</div>
                         <div class="lineup-list"><h4>${matchData[1]}</h4>${(teamPlayers[matchData[1]] || []).map(p => `<p>${p}</p>`).join('')}</div>
                     </div>
-                    ${matchData[3] ? `<div class="match-events"> ${matchData[3].map(ev => `<div class="event-item">${ev.txt}</div>`).join('')} </div>` : ''}
+                    ${matchData[3] ? `<div class="match-events">${matchData[3].map(ev => `<div class="event-item">${ev.txt}</div>`).join('')}</div>` : ''}
                 </div>
             </div>`;
         refreshTimer(d, matchData[2]);
@@ -179,13 +188,12 @@
 
     function toggleLineup() {
         const el = document.getElementById('lineup-area');
-        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        if(el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
 
     function refreshTimer(targetDate, result) {
         const timerEl = document.getElementById('timer');
         if (result && result.includes("-")) { timerEl.innerText = "انتهت المباراة"; return; }
-        
         const run = () => {
             const now = new Date();
             const start = new Date(targetDate); start.setHours(21, 0, 0);
