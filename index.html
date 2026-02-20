@@ -14,7 +14,8 @@
             --gold-muted: #D4AF37;   
             --white-silver: #f8f9fa;
             --ramadan-green: #064e3b; 
-            --dark-indigo: #1a237e; /* نيلي غامق وواضح */
+            --light-yellow: #FFFDE7; /* أصفر فاتح جداً (كريمي) */
+            --brilliant-silver: #FFFFFF; /* فضي ناصع البياض */
         }
 
         body { 
@@ -47,21 +48,30 @@
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-muted); color: white; overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         
-        /* أسماء الفرق في المباريات - نيلي أغمق */
-        .team-box { flex: 2; text-align: center; font-size: 15px; font-weight: 900; color: #7986cb; } 
+        /* أسماء الفرق - أصفر فاتح جداً */
+        .team-box { flex: 2; text-align: center; font-size: 16px; font-weight: 900; color: var(--light-yellow); text-shadow: 1px 1px 2px rgba(0,0,0,0.3); } 
         
         .score-area { flex: 1.5; text-align: center; }
         .time-box { background: var(--deep-purple); color: var(--gold-bright); padding: 4px 8px; border-radius: 5px; font-size: 18px; font-weight: 900; }
         
-        .timer-label { font-size: 13px; font-weight: 900; display: block; margin-top: 8px; color: #e0b0ff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        /* العد التنازلي - فضي ناصع وحجم كبير */
+        .timer-label { 
+            font-size: 18px; 
+            font-weight: 900; 
+            display: block; 
+            margin-top: 10px; 
+            color: var(--brilliant-silver); 
+            text-shadow: 0px 0px 10px rgba(255,255,255,0.8); 
+            letter-spacing: 1px;
+        }
 
         .lineup-section { background: rgba(255,255,255,0.05); padding: 12px; display: none; border-top: 2px solid var(--gold-muted); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list { flex: 1; font-size: 12px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 13px; color: var(--gold-bright); border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; font-weight: 900; }
         
-        /* أسماء اللاعبين في التشكيلة - نيلي أغمق */
-        .lineup-list p { margin: 4px 0; color: #5c6bc0; font-weight: 800; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
+        /* أسماء اللاعبين في التشكيلة - أصفر فاتح جداً */
+        .lineup-list p { margin: 5px 0; color: var(--light-yellow); font-weight: 800; border-right: 2px solid var(--gold-bright); padding-right: 5px; }
 
         .match-events { margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); text-align: center; }
         .event-item { font-size: 12px; margin: 5px 0; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -76,7 +86,7 @@
 
         footer { margin-top: 50px; padding: 30px 10px; text-align: center; background: var(--deep-purple); border-top: 2px solid var(--gold-bright); color: var(--gold-bright); }
 
-        .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
+        .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; font-size: 14px; }
         @keyframes blink { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
     </style>
 </head>
@@ -234,7 +244,8 @@
         else if (diff <= -7200000) { timerEl.innerText = 'انتهت المباراة'; timerEl.style.color = "white"; }
         else {
             const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-            timerEl.innerText = `بعد ${h}:${m}:${s}`; timerEl.style.color = "#e0b0ff";
+            timerEl.innerText = `بعد ${h}:${m}:${s}`; 
+            timerEl.style.color = "var(--brilliant-silver)"; 
         }
     }
 
