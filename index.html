@@ -14,7 +14,7 @@
             --white-pure: #FFFFFF;  
             --light-orange: #FFB347; 
             --ramadan-green: #064e3b; 
-            --sky-blue: #38bdf8; /* لون عبارة انتهت المباراة */
+            --sky-blue: #38bdf8;
         }
 
         body { 
@@ -90,7 +90,7 @@
 </div>
 
 <div class="container">
-    <div class="section-title">مباراة اليوم (إضغط للتفاصيل)</div>
+    <div class="section-title" id="dynamic-title">مباراة اليوم</div>
     <div id="main-card-container"></div>
 
     <div class="section-title">جدول الترتيب العام</div>
@@ -146,7 +146,7 @@
         "الملكي": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"]
     };
 
-    // مصفوفة المباريات المنظمة حسب الجولات (بدون تكرار في الجولة الواحدة)
+    // مصفوفة المباريات مع تبديل الجولتين الثانية والرابعة
     const allMatches = [
         // الجولة 1
         ["الملكي", "النسور", "1 - 0", [
@@ -157,20 +157,20 @@
         ["الريدز", "الميرنجي"],
         ["شهداء الوطن", "العاصفة"],
         "إستراحة",
-        // الجولة 2
-        ["كتالونيا", "النسور"],
-        ["الملكي", "الميرنجي"],
-        ["الريدز", "العاصفة"],
+        // الجولة 2 (أصبحت مباريات الرابعة سابقاً)
+        ["الريدز", "النسور"],
+        ["شهداء الوطن", "الميرنجي"],
+        ["كتالونيا", "العاصفة"],
         "إستراحة",
         // الجولة 3
         ["شهداء الوطن", "النسور"],
         ["كتالونيا", "الميرنجي"],
         ["الملكي", "العاصفة"],
         "إستراحة",
-        // الجولة 4
-        ["الريدز", "النسور"],
-        ["شهداء الوطن", "الميرنجي"],
-        ["كتالونيا", "العاصفة"],
+        // الجولة 4 (أصبحت مباريات الثانية سابقاً)
+        ["كتالونيا", "النسور"],
+        ["الملكي", "الميرنجي"],
+        ["الريدز", "العاصفة"],
         "إستراحة",
         // الجولة 5
         ["الملكي", "الريدز"],
@@ -199,14 +199,21 @@
     function updateUI() {
         const d = new Date(startDate); d.setDate(startDate.getDate() + currentIndex);
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
+        
+        // حساب رقم الجولة (كل 4 أيام تشكل جولة بما فيها الاستراحة)
+        const roundNumber = Math.floor(currentIndex / 4) + 1;
+        const titleEl = document.getElementById('dynamic-title');
+        
         const mainContainer = document.getElementById('main-card-container');
         const matchData = allMatches[currentIndex];
 
         if (matchData === "إستراحة") {
-            mainContainer.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-weight:900; font-size:20px; color:var(--gold-app);">☕ يوم إستراحة</div>`;
+            titleEl.innerText = `الجولة ${roundNumber} | إستراحة`;
+            mainContainer.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-weight:900; font-size:20px; color:var(--gold-app);">☕ يوم إستراحة للمحاربين</div>`;
             return;
         }
 
+        titleEl.innerText = `الجولة ${roundNumber} | مباراة اليوم`;
         const scoreOrTime = matchData[2] ? matchData[2] : "21:00";
         mainContainer.innerHTML = `
             <div class="match-card" onclick="toggleLineup()">
@@ -242,7 +249,6 @@
         if (!timerEl) return;
         const currentMatch = allMatches[currentIndex];
         
-        // التحقق من انتهاء المباراة (إذا وجدت نتيجة مسجلة)
         if (currentMatch[2] && currentMatch[2] !== "21:00") { 
             timerEl.innerText = 'انتهت المباراة'; 
             timerEl.style.color = "var(--sky-blue)"; 
@@ -264,7 +270,7 @@
             else {
                 const h = Math.floor(gap/3600000), m = Math.floor((gap%3600000)/60000), s = Math.floor((gap%60000)/1000);
                 timerEl.innerText = `${h}:${m}:${s}`;
-                timerEl.style.color = "var(--white-pure)"; // لون العد التنازلي أبيض
+                timerEl.style.color = "var(--white-pure)";
             }
         };
         run();
