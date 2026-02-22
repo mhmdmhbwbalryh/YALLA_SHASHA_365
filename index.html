@@ -21,29 +21,41 @@
         .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
 
-        /* ستايل مستطيل ونجمة رجل المباراة */
+        /* تأثير نجم المباراة المطور */
         .man-of-match {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(45deg, #4b0082, #6a0dad);
-            border: 1.5px solid var(--gold-app);
-            padding: 6px 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(90deg, #310055, #4b0082, #310055);
+            background-size: 200% auto;
+            border: 2px solid var(--gold-app);
+            padding: 8px 18px;
+            border-radius: 12px;
+            margin-top: 12px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            animation: shine-bg 3s linear infinite;
+            position: relative;
+            overflow: hidden;
         }
+
+        @keyframes shine-bg {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
         .star-icon {
             display: inline-block;
-            font-size: 22px; 
-            margin-left: 10px;
+            font-size: 24px; 
+            margin-left: 12px;
+            filter: drop-shadow(0 0 5px gold);
             animation: star-pro 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
+
         @keyframes star-pro {
-            0% { transform: rotateY(0deg); filter: drop-shadow(0 0 0px gold); }
-            40% { transform: rotateY(720deg); filter: drop-shadow(0 0 2px gold); }
-            50% { transform: rotateY(720deg); filter: drop-shadow(0 0 15px gold); scale: 1.3; }
-            60% { transform: rotateY(720deg); filter: drop-shadow(0 0 2px gold); scale: 1; }
-            100% { transform: rotateY(720deg); }
+            0% { transform: rotateY(0deg); scale: 1; }
+            30% { transform: rotateY(720deg); scale: 1.1; }
+            50% { transform: rotateY(720deg); scale: 1.3; filter: drop-shadow(0 0 20px gold) brightness(1.5); }
+            70% { transform: rotateY(720deg); scale: 1.1; }
+            100% { transform: rotateY(720deg); scale: 1; }
         }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; transition: 0.3s; }
@@ -71,7 +83,10 @@
         td { padding: 10px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
         .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 25%; color: var(--gold-app); }
 
+        /* ارجاع التذييل كما كان سطر سطر */
         footer { margin-top: 50px; padding: 30px 10px; text-align: center; background: var(--deep-purple); border-top: 2px solid var(--gold-app); color: var(--gold-app); }
+        footer p { margin: 5px 0; font-weight: bold; }
+        
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0%, 100% {opacity: 1} 50% {opacity: 0.3} }
     </style>
@@ -145,7 +160,8 @@
 </div>
 
 <footer>
-    <p>صمم بواسطة Muhammad Mahboub Alryh | LANSTER ™</p>
+    <p>صمم بواسطة Muhammad Mahboub Alryh</p>
+    <p>LANSTER ™</p>
 </footer>
 
 <script>
@@ -164,39 +180,19 @@
     }
 
     const allMatches = [
-        // الجولة 1
         ["الملكي", "النسور", "1 - 0", {
             right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", "🟨 عبدالوهاب بابكر", createStarBox("مزمل عبدالحفيظ")], 
             left: ["🟨 عبدالله مبارك", "❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"]
         }],
         ["الريدز", "الميرنجي", "4 - 2", {
-            right: [
-                "❌ ضيع ركلة جزاء: محمد محبوب الريح", 
-                "⚽ محمد محبوب الريح (👟 عمر حسن)", 
-                "⚽ محمد محبوب الريح (👟 عمر حسن)", 
-                "⚽ عمر حسن (👟 احمد محمد يوسف)", 
-                "⚽ محمد محبوب الريح (👟 احمد محمد يوسف)", 
-                createStarBox("محمد محبوب الريح")
-            ],
-            left: [
-                "🟨 يوسف حسين", 
-                "⚽ يوسف حسين (👟 يوسف الامين)", 
-                "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)", 
-                "❌ ضيع ركلة جزاء: عبدالرحمن محمد"
-            ]
+            right: ["❌ ضيع ركلة جزاء: محمد محبوب الريح", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", "⚽ محمد محبوب الريح (👟 احمد محمد يوسف)", createStarBox("محمد محبوب الريح")],
+            left: ["🟨 يوسف حسين", "⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)", "❌ ضيع ركلة جزاء: عبدالرحمن محمد"]
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", {
-            right: [
-                "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)",
-                "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ احمد عبداللطيف (👟 مصطفى عباس)",
-                "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 عبدالله الريح)",
-                "⚽ عبدالله الريح (👟 احمد عبداللطيف)", createStarBox("عبدالله الريح")
-            ],
+            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ احمد عبداللطيف (👟 مصطفى عباس)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", createStarBox("عبدالله الريح")],
             left: ["⚽ احمد عبدالكريم (👟 حمد النيل ود الريف)", "🟥 محمد عبدالحفيظ"]
         }],
         "راحة",
-
-        // الجولة 2
         ["كتالونيا", "الملكي"], ["النسور", "الريدز"], ["الميرنجي", "شهداء الوطن"], "راحة"
     ];
 
