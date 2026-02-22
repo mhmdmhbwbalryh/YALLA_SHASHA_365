@@ -21,7 +21,7 @@
         .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
 
-        /* تأثير نجم المباراة الجديد: نبض شعاعي وحركة كل 4 ثواني */
+        /* تأثير نجم المباراة: نبض إشعاعي ساطع وثابت */
         .man-of-match {
             display: inline-flex;
             align-items: center;
@@ -30,28 +30,32 @@
             padding: 8px 18px;
             border-radius: 12px;
             margin-top: 12px;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
             position: relative;
-            z-index: 1;
         }
 
         .star-icon {
             display: inline-block;
-            font-size: 24px; 
+            font-size: 26px; /* حجم أكبر قليلاً ليظهر التوهج */
             margin-left: 12px;
             position: relative;
-            /* الأنيميشن: نبض لمدة 4 ثواني ثم دوران */
-            animation: star-pulse-and-spin 5s ease-in-out infinite;
+            /* أنيميشن النبض الساطع */
+            animation: super-glow-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes star-pulse-and-spin {
-            /* النبض والإشعاع (0 إلى 80% من الوقت = 4 ثواني تقريباً) */
-            0%, 20%, 40%, 60% { transform: scale(1); filter: drop-shadow(0 0 5px gold) brightness(1); }
-            10%, 30%, 50%, 70% { transform: scale(1.3); filter: drop-shadow(0 0 20px gold) brightness(1.8); }
-            
-            /* الحركة المفاجئة (آخر ثانية) */
-            80% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1) rotate(360deg); }
+        @keyframes super-glow-pulse {
+            0% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 2px gold) brightness(1); 
+            }
+            50% { 
+                transform: scale(1.2); 
+                filter: drop-shadow(0 0 25px gold) drop-shadow(0 0 45px #FFD700) brightness(2); 
+            }
+            100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 2px gold) brightness(1); 
+            }
         }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; transition: 0.3s; }
@@ -79,7 +83,6 @@
         td { padding: 10px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
         .team-name-cell { text-align: right !important; padding-right: 8px !important; width: 25%; color: var(--gold-app); }
 
-        /* التذييل المنفصل سطر سطر */
         footer { margin-top: 50px; padding: 30px 10px; text-align: center; background: var(--deep-purple); border-top: 2px solid var(--gold-app); color: var(--gold-app); }
         footer p { margin: 5px 0; font-weight: bold; }
         
