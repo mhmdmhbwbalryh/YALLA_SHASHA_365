@@ -36,26 +36,16 @@
 
         .star-icon {
             display: inline-block;
-            font-size: 26px; /* حجم أكبر قليلاً ليظهر التوهج */
+            font-size: 26px; 
             margin-left: 12px;
             position: relative;
-            /* أنيميشن النبض الساطع */
             animation: super-glow-pulse 2s ease-in-out infinite;
         }
 
         @keyframes super-glow-pulse {
-            0% { 
-                transform: scale(1); 
-                filter: drop-shadow(0 0 2px gold) brightness(1); 
-            }
-            50% { 
-                transform: scale(1.2); 
-                filter: drop-shadow(0 0 25px gold) drop-shadow(0 0 45px #FFD700) brightness(2); 
-            }
-            100% { 
-                transform: scale(1); 
-                filter: drop-shadow(0 0 2px gold) brightness(1); 
-            }
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px gold) brightness(1); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 25px gold) drop-shadow(0 0 45px #FFD700) brightness(2); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 2px gold) brightness(1); }
         }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; transition: 0.3s; }
@@ -179,37 +169,28 @@
     }
 
     const allMatches = [
+        // الجولة 1
         ["الملكي", "النسور", "1 - 0", {
             right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", "🟨 عبدالوهاب بابكر", createStarBox("مزمل عبدالحفيظ")], 
             left: ["🟨 عبدالله مبارك", "❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"]
         }],
         ["الريدز", "الميرنجي", "4 - 2", {
-            right: [
-                "❌ ضيع ركلة جزاء: محمد محبوب الريح", 
-                "⚽ محمد محبوب الريح (👟 عمر حسن)", 
-                "⚽ محمد محبوب الريح (👟 عمر حسن)", 
-                "⚽ عمر حسن (👟 احمد محمد يوسف)", 
-                "⚽ محمد محبوب الريح (👟 احمد محمد يوسف)", 
-                createStarBox("محمد محبوب الريح")
-            ],
-            left: [
-                "🟨 يوسف حسين", 
-                "⚽ يوسف حسين (👟 يوسف الامين)", 
-                "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)", 
-                "❌ ضيع ركلة جزاء: عبدالرحمن محمد"
-            ]
+            right: ["❌ ضيع ركلة جزاء: محمد محبوب الريح", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", "⚽ محمد محبوب الريح (👟 احمد محمد يوسف)", createStarBox("محمد محبوب الريح")],
+            left: ["🟨 يوسف حسين", "⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)", "❌ ضيع ركلة جزاء: عبدالرحمن محمد"]
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", {
-            right: [
-                "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)",
-                "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ احمد عبداللطيف (👟 مصطفى عباس)",
-                "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 عبدالله الريح)",
-                "⚽ عبدالله الريح (👟 احمد عبداللطيف)", createStarBox("عبدالله الريح")
-            ],
+            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ احمد عبداللطيف (👟 مصطفى عباس)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", createStarBox("عبدالله الريح")],
             left: ["⚽ احمد عبدالكريم (👟 حمد النيل ود الريف)", "🟥 محمد عبدالحفيظ"]
         }],
-        "راحة",
-        ["كتالونيا", "الملكي"], ["النسور", "الريدز"], ["الميرنجي", "شهداء الوطن"], "راحة"
+        "راحة", // استراحة اليوم 22 فبراير
+        "راحة", // استراحة غداً 23 فبراير (طلب التأجيل)
+        "راحة", // استراحة 24 فبراير (طلب التأجيل)
+        
+        // الجولة 2 تبدأ بعد غد (25 فبراير)
+        ["كتالونيا", "الملكي"], 
+        ["النسور", "الريدز"], 
+        ["الميرنجي", "شهداء الوطن"], 
+        "راحة"
     ];
 
     const startDate = new Date(2026, 1, 19); 
@@ -221,21 +202,25 @@
         currentIndex = Math.max(0, Math.min(allMatches.length - 1, diff));
     }
 
-    function toggleLineup() { document.getElementById('lineup-area').classList.toggle('open'); }
+    function toggleLineup() { 
+        const area = document.getElementById('lineup-area');
+        if(area) area.classList.toggle('open'); 
+    }
 
     function updateUI() {
         const d = new Date(startDate); d.setDate(startDate.getDate() + currentIndex);
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
-        const round = Math.floor(currentIndex / 4) + 1;
-        document.getElementById('dynamic-title').innerText = allMatches[currentIndex] === "راحة" ? "يوم إستراحة" : `الجولة ${round} | مباراة اليوم`;
+        
         const data = allMatches[currentIndex];
         const mainCard = document.getElementById('main-card-container');
 
         if (data === "راحة") {
+            document.getElementById('dynamic-title').innerText = "يوم إستراحة";
             mainCard.innerHTML = `<div class="match-card" style="padding:40px; text-align:center; font-size:18px; color:var(--gold-app); font-weight:700;">إستراحة ☕</div>`;
             return;
         }
 
+        document.getElementById('dynamic-title').innerText = "مباراة اليوم";
         let eventsHtml = data[3] ? `<div class="events-container">
             <div class="events-column events-right">${(data[3].right || []).map(ev => `<div>${ev}</div>`).join('')}</div>
             <div class="events-column events-left">${(data[3].left || []).map(ev => `<div>${ev}</div>`).join('')}</div>
@@ -263,7 +248,12 @@
 
     function refreshTimer(targetDate) {
         const timerEl = document.getElementById('timer'); if (!timerEl) return;
-        if (allMatches[currentIndex][2]?.includes("-")) { timerEl.innerText = 'انتهت المباراة'; timerEl.style.color = "var(--sky-blue)"; return; }
+        const matchData = allMatches[currentIndex];
+        if (matchData !== "راحة" && matchData[2]?.includes("-")) { 
+            timerEl.innerText = 'انتهت المباراة'; 
+            timerEl.style.color = "var(--sky-blue)"; 
+            return; 
+        }
         const run = () => {
             const gap = new Date(targetDate).setHours(21,0,0) - new Date();
             if (gap <= 0 && gap > -7200000) timerEl.innerHTML = '<span class="live-badge">● مباشر الآن</span>';
@@ -284,3 +274,4 @@
 </script>
 </body>
 </html>
+
