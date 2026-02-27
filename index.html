@@ -11,7 +11,7 @@
             --royal-purple: #4b0082; --deep-purple: #310055;  
             --gold-app: #D4AF37; --white-pure: #FFFFFF;  
             --light-orange: #FFB347; --ramadan-green: #064e3b;
-            --win: #22c55e; --draw: #eab308; --loss: #ef4444;
+            --win-color: #2ecc71; --draw-color: #f1c40f; --loss-color: #e74c3c;
         }
 
         body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); margin: 0; color: white; overflow-x: hidden; }
@@ -26,13 +26,6 @@
         
         .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
-
-        .man-of-match {
-            display: inline-flex; align-items: center; background: linear-gradient(135deg, #310055 0%, #4b0082 50%, #310055 100%);
-            border: 2px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; margin-top: 12px; width: 92%; justify-content: center;
-        }
-        .star-icon { display: inline-block; font-size: 26px; margin-left: 12px; animation: glow 2s infinite; }
-        @keyframes glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); filter: brightness(1.5); } }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
@@ -53,21 +46,28 @@
         .events-left { text-align: left; padding-right: 5px; }
 
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; border: 1px solid var(--gold-app); margin-bottom: 20px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 10px; color: white; table-layout: fixed; }
-        th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; font-size: 9px; }
-        td { padding: 10px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
+        th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; font-size: 10px; }
+        td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); width: 25%; }
         
-        .bg-win { background-color: var(--win); color: white; border-radius: 3px; }
-        .bg-draw { background-color: var(--draw); color: black; border-radius: 3px; }
-        .bg-loss { background-color: var(--loss); color: white; border-radius: 3px; }
+        /* تلوين الكلمات */
+        .txt-win { color: var(--win-color) !important; }
+        .txt-draw { color: var(--draw-color) !important; }
+        .txt-loss { color: var(--loss-color) !important; }
+
+        .man-of-match {
+            display: inline-flex; align-items: center; background: linear-gradient(135deg, #310055 0%, #4b0082 50%, #310055 100%);
+            border: 2px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; margin-top: 12px; width: 92%; justify-content: center;
+        }
+        .star-icon { display: inline-block; font-size: 26px; margin-left: 12px; animation: glow 2s infinite; }
+        @keyframes glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); filter: brightness(1.5); } }
 
         footer { 
             margin-top: 50px; padding: 40px 10px; text-align: center; 
             background: var(--deep-purple); border-top: 3px solid var(--gold-app);
         }
-        .footer-text { font-size: 14px; color: var(--white-pure); margin-bottom: 5px; display: block; }
-        .footer-name { font-size: 20px; color: var(--gold-app); font-weight: 900; display: block; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212,175,55,0.4); }
+        .footer-name { font-size: 20px; color: var(--gold-app); font-weight: 900; display: block; margin-bottom: 10px; }
         .brand { font-size: 22px; color: var(--gold-app); font-weight: 900; letter-spacing: 5px; opacity: 0.7; }
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0%, 100% {opacity: 1} 50% {opacity: 0.3} }
@@ -92,7 +92,7 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width:7%">#</th>
+                    <th style="width:10%">#</th>
                     <th class="team-name-cell">الفريق</th>
                     <th>لعب</th>
                     <th>فوز</th>
@@ -104,13 +104,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td class="bg-win">2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>6</td></tr>
-                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td class="bg-win">1</td><td class="bg-draw">1</td><td>0</td><td>3</td><td>2</td><td>4</td></tr>
-                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td class="bg-win">1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>3</td></tr>
-                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td class="bg-draw">1</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
-                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td class="bg-loss">2</td><td>0</td><td>2</td><td>0</td></tr>
-                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td class="bg-loss">1</td><td>2</td><td>4</td><td>0</td></tr>
-                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td class="bg-loss">1</td><td>1</td><td>7</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td class="txt-win">فوز 2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>6</td></tr>
+                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td class="txt-win">فوز 1</td><td class="txt-draw">تعادل 1</td><td>0</td><td>3</td><td>2</td><td>4</td></tr>
+                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td class="txt-win">فوز 1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>3</td></tr>
+                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td class="txt-draw">تعادل 1</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td class="txt-loss">خسارة 2</td><td>0</td><td>2</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">خسارة 1</td><td>2</td><td>4</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">خسارة 1</td><td>1</td><td>7</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -159,7 +159,6 @@
 </div>
 
 <footer>
-    <span class="footer-text">صمم بواسطة</span>
     <span class="footer-name">Muhammad Mahboub Alryh</span>
     <span class="brand">LANSTER ™</span>
 </footer>
