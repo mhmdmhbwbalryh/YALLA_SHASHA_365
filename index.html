@@ -10,12 +10,11 @@
         :root {
             --royal-purple: #4b0082; --deep-purple: #310055;  
             --gold-app: #D4AF37; --white-pure: #FFFFFF;  
-            --light-orange: #FFB347; --ramadan-green: #064e3b; 
+            --light-orange: #FFB347; --ramadan-green: #064e3b;
+            --win: #22c55e; --draw: #eab308; --loss: #ef4444;
         }
 
         body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); margin: 0; color: white; overflow-x: hidden; }
-        
-        /* العنوان البارز */
         header { 
             background: linear-gradient(180deg, var(--deep-purple) 0%, var(--royal-purple) 100%);
             padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -35,7 +34,7 @@
         .star-icon { display: inline-block; font-size: 26px; margin-left: 12px; animation: glow 2s infinite; }
         @keyframes glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); filter: brightness(1.5); } }
 
-        .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 22px 5px; }
         .team-box { flex: 2; text-align: center; font-size: 18px; font-weight: 900; color: var(--light-orange); } 
         .score-area { flex: 1.5; text-align: center; }
@@ -55,11 +54,14 @@
 
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; border: 1px solid var(--gold-app); margin-bottom: 20px; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; font-size: 10px; color: white; table-layout: fixed; }
-        th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; }
+        th { background: var(--deep-purple); color: var(--gold-app); padding: 10px 2px; font-size: 9px; }
         td { padding: 10px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
         .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); }
+        
+        .bg-win { background-color: var(--win); color: white; border-radius: 3px; }
+        .bg-draw { background-color: var(--draw); color: black; border-radius: 3px; }
+        .bg-loss { background-color: var(--loss); color: white; border-radius: 3px; }
 
-        /* التذييل الذهبي */
         footer { 
             margin-top: 50px; padding: 40px 10px; text-align: center; 
             background: var(--deep-purple); border-top: 3px solid var(--gold-app);
@@ -67,7 +69,6 @@
         .footer-text { font-size: 14px; color: var(--white-pure); margin-bottom: 5px; display: block; }
         .footer-name { font-size: 20px; color: var(--gold-app); font-weight: 900; display: block; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212,175,55,0.4); }
         .brand { font-size: 22px; color: var(--gold-app); font-weight: 900; letter-spacing: 5px; opacity: 0.7; }
-        
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0%, 100% {opacity: 1} 50% {opacity: 0.3} }
     </style>
@@ -89,15 +90,27 @@
     <div class="section-title">جدول الترتيب العام</div>
     <div class="table-wrapper">
         <table>
-            <thead><tr><th style="width:7%">#</th><th class="team-name-cell">الفريق</th><th>ل</th><th>ف</th><th>ت</th><th>خ</th><th>له</th><th>عليه</th><th>ن</th></tr></thead>
+            <thead>
+                <tr>
+                    <th style="width:7%">#</th>
+                    <th class="team-name-cell">الفريق</th>
+                    <th>لعب</th>
+                    <th>فوز</th>
+                    <th>تعادل</th>
+                    <th>خسارة</th>
+                    <th>له</th>
+                    <th>عليه</th>
+                    <th>نقاط</th>
+                </tr>
+            </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td>2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>6</td></tr>
-                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td>1</td><td>1</td><td>0</td><td>3</td><td>2</td><td>4</td></tr>
-                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td>1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>3</td></tr>
-                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
-                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>2</td><td>0</td></tr>
-                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td><td>4</td><td>0</td></tr>
-                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>7</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td class="bg-win">2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>6</td></tr>
+                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td class="bg-win">1</td><td class="bg-draw">1</td><td>0</td><td>3</td><td>2</td><td>4</td></tr>
+                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td class="bg-win">1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>3</td></tr>
+                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td class="bg-draw">1</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
+                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td class="bg-loss">2</td><td>0</td><td>2</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td class="bg-loss">1</td><td>2</td><td>4</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td class="bg-loss">1</td><td>1</td><td>7</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -137,7 +150,9 @@
                 <tr><td>7</td><td class="team-name-cell">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
                 <tr><td>8</td><td class="team-name-cell">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
                 <tr><td>9</td><td class="team-name-cell">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
-                <tr><td>10</td><td class="team-name-cell">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>10</td><td class="team-name-cell">مصطفى عباس</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>11</td><td class="team-name-cell">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>12</td><td class="team-name-cell">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -168,17 +183,17 @@
             left: ["🟨 عبدالله مبارك", "❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"] 
         }],
         ["الريدز", "الميرنجي", "4 - 2", { 
-            right: ["⚽ محمد محبوب الريح (👟 عمر حسن) x3", "⚽ عمر حسن (👟 احمد محمد يوسف)", createStarBox("محمد محبوب")], 
+            right: ["⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", createStarBox("محمد محبوب الريح")], 
             left: ["⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)"] 
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", { 
-            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح) x3", "⚽ عبدالله الريح (👟 احمد عبداللطيف) x2", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 مصطفى عباس)", createStarBox("عبدالله الريح")], 
+            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 مصطفى عباس)", createStarBox("عبدالله الريح")], 
             left: ["⚽ احمد عبدالكريم (👟 حمد النيل ود الريف)"] 
         }],
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", {
-            right: ["⚽ رحمة الله (👟 محمد هيثم)", "⚽ محمد هيثم", createStarBox("محمد هيثم")], 
-            left: ["⚽ عبدالوهاب (👟 مزمل)", "⚽ هدف عكسي: احمد الأمين", "❌ ضيع ركلة جزاء: مزمل"]
+            right: ["⚽ رحمة الله عبدالرحمن (👟 محمد هيثم)", "⚽ محمد هيثم", createStarBox("محمد هيثم")], 
+            left: ["⚽ عبدالوهاب بابكر (👟 مزمل عبدالحفيظ)", "⚽ هدف عكسي: احمد الأمين", "❌ ضيع ركلة جزاء: مزمل عبدالحفيظ"]
         }], 
         ["النسور", "الريدز", "0 - 1", {
             right: [], 
@@ -211,11 +226,10 @@
         }
 
         document.getElementById('dynamic-title').innerText = data[2] ? "نتيجة المباراة" : "مباراة اليوم";
-        let eventsHtml = data[3] ? `
-            <div class="events-container">
-                <div class="events-column events-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div>
-                <div class="events-column events-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div>
-            </div>` : '';
+        let eventsHtml = data[3] ? `<div class="events-container">
+            <div class="events-column events-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div>
+            <div class="events-column events-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div>
+        </div>` : '';
 
         mainCard.innerHTML = `
             <div class="match-card" onclick="toggleLineup()">
@@ -251,12 +265,7 @@
             }
         }; run();
     }
-
-    setInterval(() => {
-        const t = new Date(startDate); t.setDate(startDate.getDate() + currentIndex);
-        refreshTimer(t);
-    }, 1000);
-
+    setInterval(() => { const t = new Date(startDate); t.setDate(startDate.getDate() + currentIndex); refreshTimer(t); }, 1000);
     setInitialDay(); updateUI();
 </script>
 </body>
