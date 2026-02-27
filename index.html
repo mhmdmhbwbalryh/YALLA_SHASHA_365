@@ -56,45 +56,34 @@
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
 
-        /* نجم المباراة: النجمة تنبض ببطء */
+        /* نجم المباراة: تنسيق أفقي متكامل */
         .man-of-match-box { 
-            background: rgba(49, 0, 85, 0.8); border: 1px solid var(--gold-app); 
-            padding: 10px 20px; border-radius: 12px; margin-top: 15px; 
+            background: rgba(49, 0, 85, 0.9); border: 1px solid var(--gold-app); 
+            padding: 8px 18px; border-radius: 12px; margin-top: 15px; 
             text-align: center; font-weight: 900; color: var(--gold-app); 
             font-size: 15px; display: flex; align-items: center; justify-content: center;
-            width: fit-content; margin-left: auto; margin-right: auto;
+            width: fit-content; margin: 15px auto 5px auto; gap: 10px;
         }
         
         .star-pulse {
-            display: inline-block; font-size: 24px; margin-left: 10px;
-            animation: star-glow-slow 2.5s ease-in-out infinite; /* تم إبطاء الحركة هنا */
+            display: inline-block; font-size: 22px;
+            animation: star-glow-slow 2.5s ease-in-out infinite;
         }
 
         @keyframes star-glow-slow {
             0% { transform: scale(1); filter: drop-shadow(0 0 2px gold); }
-            50% { transform: scale(1.35); filter: drop-shadow(0 0 12px gold); } /* نبض وتوهج أوضح وأبطأ */
+            50% { transform: scale(1.3); filter: drop-shadow(0 0 12px gold); }
             100% { transform: scale(1); filter: drop-shadow(0 0 2px gold); }
         }
 
-        /* التذييل المنظم واللامع ببطء */
         footer { margin-top: 60px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
-        
-        .designer-text {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--white-pure);
-            margin-bottom: 5px;
-            opacity: 0.9;
-        }
-
+        .designer-text { display: block; font-size: 14px; font-weight: 600; color: var(--white-pure); margin-bottom: 5px; opacity: 0.9; }
         .shiny-gold-name {
             font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px;
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-size: 200% auto; animation: shine-text-slow 4s linear infinite; /* لمعان أبطأ */
+            background-size: 200% auto; animation: shine-text-slow 4s linear infinite;
         }
-
         @keyframes shine-text-slow { to { background-position: 200% center; } }
         .lanster-logo { color: var(--gold-app); font-size: 18px; font-weight: 700; letter-spacing: 5px; opacity: 0.7; }
     </style>
@@ -139,36 +128,6 @@
                 <tr><td>1</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>3</td></tr>
                 <tr><td>2</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>3</td></tr>
                 <tr><td>3</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
-                <tr><td>4</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
-                <tr><td>5</td><td class="col-name">عبدالوهاب بابكر</td><td>الملكي</td><td>1</td></tr>
-                <tr><td>6</td><td class="col-name">رحمة الله عبدالرحمن</td><td>كتالونيا</td><td>1</td></tr>
-                <tr><td>7</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
-                <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
-                <tr><td>9</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>1</td></tr>
-                <tr><td>10</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>1</td></tr>
-                <tr><td>11</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>1</td></tr>
-                <tr><td>12</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="section-title">أفضل صناع اللعب 👟</div>
-    <div class="table-wrapper">
-        <table>
-            <thead><tr><th style="width:10%">#</th><th class="col-name">اللاعب</th><th>الفريق</th><th style="width:30%">تمريرات حاسمة</th></tr></thead>
-            <tbody>
-                <tr><td>1</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
-                <tr><td>2</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
-                <tr><td>3</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
-                <tr><td>4</td><td class="col-name">احمد محمد يوسف</td><td>الريدز</td><td>2</td></tr>
-                <tr><td>5</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>1</td></tr>
-                <tr><td>6</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>1</td></tr>
-                <tr><td>7</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
-                <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
-                <tr><td>9</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
-                <tr><td>10</td><td class="col-name">مصطفى عباس</td><td>شهداء الوطن</td><td>1</td></tr>
-                <tr><td>11</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
-                <tr><td>12</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -191,31 +150,32 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
+    // دالة إنشاء صندوق نجم المباراة (أفقي)
     function createStarBox(name) { 
         return `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>`; 
     }
 
     const allMatches = [
         ["الملكي", "النسور", "1 - 0", { 
-            right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", createStarBox("مزمل عبدالحفيظ")], 
-            left: ["🟨 عبدالله مبارك"] 
+            right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", "🟨 عبدالوهاب بابكر", createStarBox("مزمل عبدالحفيظ")], 
+            left: ["🟨 عبدالله مبارك", "❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"] 
         }],
         ["الريدز", "الميرنجي", "4 - 2", { 
             right: ["⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", createStarBox("محمد محبوب الريح")], 
-            left: ["⚽ يوسف حسين"] 
+            left: ["⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)"] 
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", { 
-            right: ["⚽ احمد عبداللطيف", createStarBox("عبدالله الريح")], 
-            left: ["⚽ احمد عبدالكريم"] 
+            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 مصطفى عباس)", createStarBox("عبدالله الريح")], 
+            left: ["⚽ احمد عبدالكريم (👟 حمد النيل ود الريف)"] 
         }],
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", { 
-            right: ["⚽ رحمة الله عبدالرحمن", createStarBox("محمد هيثم")], 
-            left: ["⚽ عبدالوهاب بابكر"] 
+            right: ["⚽ رحمة الله عبدالرحمن (👟 محمد هيثم)", "⚽ محمد هيثم", createStarBox("محمد هيثم")], 
+            left: ["⚽ عبدالوهاب بابكر (👟 مزمل عبدالحفيظ)", "⚽ هدف عكسي: احمد الأمين", "❌ ضيع ركلة جزاء: مزمل عبدالحفيظ"] 
         }], 
         ["النسور", "الريدز", "0 - 1", { 
             right: [], 
-            left: ["⚽ عمر حسن", createStarBox("عمر حسن")] 
+            left: ["⚽ عمر حسن (👟 محمد محبوب الريح)", createStarBox("عمر حسن")] 
         }]
     ];
 
