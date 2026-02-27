@@ -56,7 +56,6 @@
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
 
-        /* نجم المباراة: تنسيق أفقي متكامل */
         .man-of-match-box { 
             background: rgba(49, 0, 85, 0.9); border: 1px solid var(--gold-app); 
             padding: 8px 18px; border-radius: 12px; margin-top: 15px; 
@@ -128,6 +127,36 @@
                 <tr><td>1</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>3</td></tr>
                 <tr><td>2</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>3</td></tr>
                 <tr><td>3</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
+                <tr><td>4</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
+                <tr><td>5</td><td class="col-name">عبدالوهاب بابكر</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>6</td><td class="col-name">رحمة الله عبدالرحمن</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>7</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>9</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>10</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>11</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>1</td></tr>
+                <tr><td>12</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">أفضل صناع اللعب 👟</div>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th style="width:10%">#</th><th class="col-name">اللاعب</th><th>الفريق</th><th style="width:30%">تمريرات حاسمة</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
+                <tr><td>2</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
+                <tr><td>3</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
+                <tr><td>4</td><td class="col-name">احمد محمد يوسف</td><td>الريدز</td><td>2</td></tr>
+                <tr><td>5</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>6</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>1</td></tr>
+                <tr><td>7</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>9</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>10</td><td class="col-name">مصطفى عباس</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>11</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>12</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -150,7 +179,6 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
-    // دالة إنشاء صندوق نجم المباراة (أفقي)
     function createStarBox(name) { 
         return `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>`; 
     }
