@@ -21,16 +21,10 @@
         }
         .logo { font-size: 28px; font-weight: 900; color: var(--gold-app); }
 
-        .nav-strip { background: rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding: 10px; }
+        .nav-strip { background: rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding: 10px; margin-bottom: 10px; }
         .btn-nav { background: var(--gold-app); color: var(--deep-purple); border: none; padding: 5px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; }
         
-        /* الكلمات الملونة في الأعلى */
-        .top-legend { text-align: center; padding: 10px; font-size: 14px; font-weight: bold; }
-        .leg-win { color: var(--win-color); margin: 0 5px; }
-        .leg-draw { color: var(--draw-color); margin: 0 5px; }
-        .leg-loss { color: var(--loss-color); margin: 0 5px; }
-
-        .container { max-width: 500px; margin: 10px auto; padding: 0 10px; }
+        .container { max-width: 550px; margin: 0 auto; padding: 0 10px; }
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
@@ -47,10 +41,10 @@
         .lineup-list p { margin: 4px 0; color: var(--gold-app); font-size: 12px; font-weight: 600; border-right: 2px solid var(--gold-app); padding-right: 5px; }
 
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; border: 1px solid var(--gold-app); margin-bottom: 20px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
-        th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; }
+        table { width: 100%; border-collapse: collapse; font-size: 10px; color: white; min-width: 450px; }
+        th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; text-align: center; }
         td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); width: 28%; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); width: 22%; }
         
         .txt-win { color: var(--win-color); }
         .txt-draw { color: var(--draw-color); }
@@ -73,12 +67,6 @@
     <button class="btn-nav" onclick="changeDay(1)">التالي</button>
 </div>
 
-<div class="top-legend">
-    <span class="leg-win">فوز</span> | 
-    <span class="leg-draw">تعادل</span> | 
-    <span class="leg-loss">خسارة</span>
-</div>
-
 <div class="container">
     <div class="section-title" id="dynamic-title">مباراة اليوم</div>
     <div id="main-card-container"></div>
@@ -88,7 +76,7 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width:10%">#</th>
+                    <th>#</th>
                     <th class="team-name-cell">الفريق</th>
                     <th>لعب</th>
                     <th>فوز</th>
@@ -96,17 +84,18 @@
                     <th>خسارة</th>
                     <th>له</th>
                     <th>عليه</th>
+                    <th>الفارق</th>
                     <th>نقاط</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td class="txt-win">2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>6</td></tr>
-                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td class="txt-win">1</td><td class="txt-draw">1</td><td>0</td><td>3</td><td>2</td><td>4</td></tr>
-                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td class="txt-win">1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>3</td></tr>
-                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td class="txt-draw">1</td><td>0</td><td>2</td><td>2</td><td>1</td></tr>
-                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td class="txt-loss">2</td><td>0</td><td>2</td><td>0</td></tr>
-                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">1</td><td>2</td><td>4</td><td>0</td></tr>
-                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">1</td><td>1</td><td>7</td><td>0</td></tr>
+                <tr><td>1</td><td class="team-name-cell">الريدز</td><td>2</td><td class="txt-win">2</td><td>0</td><td>0</td><td>5</td><td>2</td><td>+3</td><td>6</td></tr>
+                <tr><td>2</td><td class="team-name-cell">الملكي</td><td>2</td><td class="txt-win">1</td><td class="txt-draw">1</td><td>0</td><td>3</td><td>2</td><td>+1</td><td>4</td></tr>
+                <tr><td>3</td><td class="team-name-cell">شهداء الوطن</td><td>1</td><td class="txt-win">1</td><td>0</td><td>0</td><td>7</td><td>1</td><td>+6</td><td>3</td></tr>
+                <tr><td>4</td><td class="team-name-cell">كتالونيا</td><td>1</td><td>0</td><td class="txt-draw">1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>1</td></tr>
+                <tr><td>5</td><td class="team-name-cell">النسور</td><td>2</td><td>0</td><td>0</td><td class="txt-loss">2</td><td>0</td><td>2</td><td>-2</td><td>0</td></tr>
+                <tr><td>6</td><td class="team-name-cell">الميرنجي</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">1</td><td>2</td><td>4</td><td>-2</td><td>0</td></tr>
+                <tr><td>7</td><td class="team-name-cell">العاصفة</td><td>1</td><td>0</td><td>0</td><td class="txt-loss">1</td><td>1</td><td>7</td><td>-6</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -160,6 +149,7 @@
 </footer>
 
 <script>
+    // ... (نفس منطق السكربت السابق وتوزيع الأهداف المنفصلة) ...
     const teamPlayers = {
         "النسور": ["عبدالرحيم محمد", "اسماعيل حسين", "عبدالله مبارك", "ابراهيم اسامه", "محمد محبوب ابوعاقلة", "عثمان عمر", "محمد البشير"],
         "الملكي": ["حمد صلاح", "مزمل عبدالحفيظ", "الطريفي عبدالباقي", "محمد حمزة", "عبدالوهاب بابكر", "يوسف الريح", "الريح يوسف"],
