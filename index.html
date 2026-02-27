@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YALA SHASHA 365 | الدوري الرمضاني</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
         
         :root {
             --royal-purple: #4b0082; --deep-purple: #310055;  
@@ -27,13 +27,13 @@
         .container { max-width: 600px; margin: 0 auto; padding: 0 12px; }
         .section-title { font-size: 18px; font-weight: 700; margin: 25px 0 15px; color: var(--gold-app); border-right: 4px solid var(--gold-app); padding-right: 12px; }
 
-        /* تعديل الجدول ليكون متجاوباً بدون تصغير مخل */
+        /* الجدول */
         .table-wrapper { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); margin-bottom: 25px; width: 100%; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; font-weight: 700; }
         td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
         
-        .col-name { width: 25%; text-align: right !important; padding-right: 8px !important; color: var(--gold-app); font-size: 11px; white-space: normal; line-height: 1.2; }
+        .col-name { width: 25%; text-align: right !important; padding-right: 8px !important; color: var(--gold-app); white-space: normal; line-height: 1.2; }
         
         .txt-win { color: var(--win-color); }
         .txt-draw { color: var(--draw-color); }
@@ -58,10 +58,72 @@
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
 
-        .star-box { background: linear-gradient(135deg, var(--deep-purple), var(--royal-purple)); border: 2px solid var(--gold-app); padding: 10px; border-radius: 12px; margin-top: 15px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 14px; }
+        /* تألق ونبض نجم المباراة */
+        .man-of-match-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0033 0%, #310055 50%, #1a0033 100%);
+            border: 3px solid var(--gold-app);
+            padding: 15px 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            width: 90%;
+            margin-left: 5%;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--gold-app);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            animation: super-glow-pulse 2s ease-in-out infinite; /* إضافة الحركة التنبضية والتوهج */
+            cursor: default;
+        }
 
-        footer { margin-top: 60px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
-        .footer-name { font-size: 22px; color: var(--gold-app); font-weight: 900; display: block; }
+        .star-icon {
+            display: inline-block;
+            font-size: 32px; /* تضخيم النجمة */
+            margin-left: 15px;
+            color: gold;
+        }
+
+        /* تعريف حركة التوهج والنبض */
+        @keyframes super-glow-pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+            50% {
+                transform: scale(1.03); /* نبض خفيف */
+                box-shadow: 0 0 40px rgba(212, 175, 55, 1), 0 0 60px rgba(212, 175, 55, 0.8); /* توهج قوي */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        /* التذييل المنفصل السطرين في المنتصف */
+        footer { 
+            margin-top: 60px; 
+            padding: 40px 10px; 
+            text-align: center; 
+            background: var(--deep-purple); 
+            border-top: 3px solid var(--gold-app);
+        }
+        .designer-info {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--white-pure);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .brand-logo {
+            display: block;
+            color: var(--gold-app);
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -122,8 +184,8 @@
                 <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
                 <tr><td>9</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>1</td></tr>
                 <tr><td>10</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>1</td></tr>
-                <tr><td>11</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>1</td></tr>
-                <tr><td>12</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>11</td><td class="team-name-cell">احمد عبدالكريم</td><td>العاصفة</td><td>1</td></tr>
+                <tr><td>12</td><td class="team-name-cell">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -143,15 +205,16 @@
                 <tr><td>8</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
                 <tr><td>9</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
                 <tr><td>10</td><td class="col-name">مصطفى عباس</td><td>شهداء الوطن</td><td>1</td></tr>
-                <tr><td>11</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
-                <tr><td>12</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>11</td><td class="team-name-cell">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>12</td><td class="team-name-cell">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
 </div>
 
 <footer>
-    <span class="footer-name">Muhammad Mahboub Alryh</span>
+    <span class="designer-info">صمم بواسطة Muhammad Mahboub Alryh</span>
+    <span class="brand-logo">LANSTER ™</span>
 </footer>
 
 <script>
@@ -165,27 +228,35 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
+    // تعديل نجم المباراة ليكون ضخماً ومتوهجاً وينبض
+    function createStarBox(name) { 
+        return `<div class="man-of-match-box">
+            <span class="star-icon">⭐</span>
+            <span>نجم المباراة: ${name}</span>
+        </div>`; 
+    }
+
     const allMatches = [
         ["الملكي", "النسور", "1 - 0", { 
-            right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", "🟨 عبدالوهاب بابكر", "<div class='star-box'>⭐ نجم المباراة: مزمل عبدالحفيظ</div>"], 
+            right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)", "🟨 عبدالوهاب بابكر", createStarBox("مزمل عبدالحفيظ")], 
             left: ["🟨 عبدالله مبارك", "❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"] 
         }],
         ["الريدز", "الميرنجي", "4 - 2", { 
-            right: ["⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", "<div class='star-box'>⭐ نجم المباراة: محمد محبوب الريح</div>"], 
+            right: ["⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ عمر حسن (👟 احمد محمد يوسف)", createStarBox("محمد محبوب الريح")], 
             left: ["⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)"] 
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", { 
-            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 مصطفى عباس)", "<div class='star-box'>⭐ نجم المباراة: عبدالله الريح</div>"], 
+            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ احمد عبداللطيف (👟 عبدالله الريح)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 احمد عبداللطيف)", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن (👟 مصطفى عباس)", createStarBox("عبدالله الريح")], 
             left: ["⚽ احمد عبدالكريم (👟 حمد النيل ود الريف)"] 
         }],
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", { 
-            right: ["⚽ رحمة الله عبدالرحمن (👟 محمد هيثم)", "⚽ محمد هيثم", "<div class='star-box'>⭐ نجم المباراة: محمد هيثم</div>"], 
+            right: ["⚽ رحمة الله عبدالرحمن (👟 محمد هيثم)", "⚽ محمد هيثم", createStarBox("محمد هيثم")], 
             left: ["⚽ عبدالوهاب بابكر (👟 مزمل عبدالحفيظ)", "⚽ هدف عكسي: احمد الأمين", "❌ ضيع ركلة جزاء: مزمل عبدالحفيظ"] 
         }], 
         ["النسور", "الريدز", "0 - 1", { 
             right: [], 
-            left: ["⚽ عمر حسن (👟 محمد محبوب الريح)", "<div class='star-box'>⭐ نجم المباراة: عمر حسن</div>"] 
+            left: ["⚽ عمر حسن (👟 محمد محبوب الريح)", createStarBox("عمر حسن")] 
         }]
     ];
 
