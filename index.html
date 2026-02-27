@@ -17,20 +17,20 @@
         body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); margin: 0; color: white; overflow-x: hidden; }
         header { 
             background: linear-gradient(180deg, var(--deep-purple) 0%, var(--royal-purple) 100%);
-            padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app);
         }
-        .logo { font-size: 28px; font-weight: 900; color: var(--gold-app); text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .logo { font-size: 28px; font-weight: 900; color: var(--gold-app); }
 
-        .nav-strip { background: rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-strip { background: rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding: 10px; }
         .btn-nav { background: var(--gold-app); color: var(--deep-purple); border: none; padding: 5px 15px; cursor: pointer; border-radius: 20px; font-weight: bold; }
         
-        /* دليل الألوان في الأعلى */
-        .color-legend { display: flex; justify-content: center; gap: 20px; padding: 10px; font-size: 14px; font-weight: 700; background: rgba(0,0,0,0.2); }
-        .leg-win { color: var(--win-color); }
-        .leg-draw { color: var(--draw-color); }
-        .leg-loss { color: var(--loss-color); }
+        /* الكلمات الملونة في الأعلى */
+        .top-legend { text-align: center; padding: 10px; font-size: 14px; font-weight: bold; }
+        .leg-win { color: var(--win-color); margin: 0 5px; }
+        .leg-draw { color: var(--draw-color); margin: 0 5px; }
+        .leg-loss { color: var(--loss-color); margin: 0 5px; }
 
-        .container { max-width: 500px; margin: 20px auto; padding: 0 10px; }
+        .container { max-width: 500px; margin: 10px auto; padding: 0 10px; }
         .section-title { font-size: 16px; font-weight: 700; margin: 25px 0 12px; color: var(--gold-app); border-right: 3px solid var(--gold-app); padding-right: 10px; }
 
         .match-card { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
@@ -42,27 +42,23 @@
 
         .lineup-section { background: rgba(0,0,0,0.3); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
         .lineup-section.open { max-height: 2000px; padding: 15px 12px; border-top: 2px solid var(--gold-app); }
-        .lineup-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 15px; }
+        .lineup-grid { display: flex; justify-content: space-between; gap: 10px; }
         .lineup-list h4 { margin: 0 0 8px; font-size: 14px; color: var(--white-pure); border-bottom: 1px solid var(--gold-app); }
         .lineup-list p { margin: 4px 0; color: var(--gold-app); font-size: 12px; font-weight: 600; border-right: 2px solid var(--gold-app); padding-right: 5px; }
 
         .table-wrapper { background: var(--ramadan-green); border-radius: 10px; border: 1px solid var(--gold-app); margin-bottom: 20px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 10px; color: white; table-layout: fixed; }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; }
         td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); width: 25%; }
+        .team-name-cell { text-align: right !important; padding-right: 8px !important; color: var(--gold-app); width: 28%; }
         
         .txt-win { color: var(--win-color); }
         .txt-draw { color: var(--draw-color); }
         .txt-loss { color: var(--loss-color); }
 
-        footer { 
-            margin-top: 50px; padding: 40px 10px; text-align: center; 
-            background: var(--deep-purple); border-top: 3px solid var(--gold-app);
-        }
-        .footer-name { font-size: 20px; color: var(--gold-app); font-weight: 900; display: block; margin-bottom: 10px; }
+        footer { margin-top: 50px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
+        .footer-name { font-size: 20px; color: var(--gold-app); font-weight: 900; display: block; }
         .brand { font-size: 22px; color: var(--gold-app); font-weight: 900; letter-spacing: 5px; opacity: 0.7; }
-        
         .live-badge { color: #ff4d4d; animation: blink 1s infinite; font-weight: 900; }
         @keyframes blink { 0%, 100% {opacity: 1} 50% {opacity: 0.3} }
     </style>
@@ -77,13 +73,16 @@
     <button class="btn-nav" onclick="changeDay(1)">التالي</button>
 </div>
 
-<div class="color-legend">
-    <span class="leg-win">● فوز</span>
-    <span class="leg-draw">● تعادل</span>
-    <span class="leg-loss">● خسارة</span>
+<div class="top-legend">
+    <span class="leg-win">فوز</span> | 
+    <span class="leg-draw">تعادل</span> | 
+    <span class="leg-loss">خسارة</span>
 </div>
 
 <div class="container">
+    <div class="section-title" id="dynamic-title">مباراة اليوم</div>
+    <div id="main-card-container"></div>
+
     <div class="section-title">جدول الترتيب العام</div>
     <div class="table-wrapper">
         <table>
@@ -112,9 +111,6 @@
         </table>
     </div>
 
-    <div class="section-title" id="dynamic-title">مباراة اليوم</div>
-    <div id="main-card-container"></div>
-
     <div class="section-title">قائمة الهدافين ⚽</div>
     <div class="table-wrapper">
         <table>
@@ -139,7 +135,7 @@
     <div class="section-title">أفضل صناع اللعب 👟</div>
     <div class="table-wrapper">
         <table>
-            <thead><tr><th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="width:25%">تمريرات حاسمة</th></tr></thead>
+            <thead><tr><th style="width:10%">#</th><th class="team-name-cell">اللاعب</th><th>الفريق</th><th style="width:30%">تمريرات حاسمة</th></tr></thead>
             <tbody>
                 <tr><td>1</td><td class="team-name-cell">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
                 <tr><td>2</td><td class="team-name-cell">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
@@ -174,7 +170,7 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
-    function createStarBox(name) { return `<div class="man-of-match" style="display:flex; align-items:center; background:linear-gradient(135deg, #310055, #4b0082); border:2px solid #D4AF37; padding:8px; border-radius:12px; margin-top:10px; justify-content:center;"><span style="font-size:24px; margin-left:10px;">⭐</span><span>نجم المباراة: ${name}</span></div>`; }
+    function createStarBox(name) { return `<div style="display:flex; align-items:center; background:linear-gradient(135deg, #310055, #4b0082); border:2px solid #D4AF37; padding:8px; border-radius:12px; margin-top:10px; justify-content:center;"><span style="font-size:24px; margin-left:10px;">⭐</span><span>نجم المباراة: ${name}</span></div>`; }
 
     const allMatches = [
         ["الملكي", "النسور", "1 - 0", { 
@@ -225,7 +221,7 @@
         }
 
         document.getElementById('dynamic-title').innerText = data[2] ? "نتيجة المباراة" : "مباراة اليوم";
-        let eventsHtml = data[3] ? `<div class="events-container" style="display:flex; border-top:1px dashed #D4AF37; padding-top:10px; margin-top:10px;">
+        let eventsHtml = data[3] ? `<div style="display:flex; border-top:1px dashed #D4AF37; padding-top:10px; margin-top:10px;">
             <div style="flex:1; font-size:11px; text-align:right; border-left:1px solid rgba(212,175,55,0.2); padding-left:5px;">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div>
             <div style="flex:1; font-size:11px; text-align:left; padding-right:5px;">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div>
         </div>` : '';
