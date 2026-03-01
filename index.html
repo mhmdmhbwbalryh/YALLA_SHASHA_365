@@ -33,13 +33,16 @@
         .lineup-grid { display: flex; justify-content: space-between; gap: 15px; }
         .lineup-list h4 { margin: 0 0 12px; font-size: 15px; color: var(--white-pure); border-bottom: 2px solid var(--gold-app); padding-bottom: 5px; }
         .lineup-list p { margin: 6px 0; color: var(--gold-app); font-size: 13px; font-weight: 600; }
-        .events-box { display: flex; border-top: 1px dashed var(--gold-app); margin-top: 15px; padding-top: 15px; }
+        .events-box { border-top: 1px dashed var(--gold-app); margin-top: 15px; padding-top: 15px; }
+        .ev-flex { display: flex; justify-content: space-between; }
         .ev-col { flex: 1; font-size: 12px; line-height: 1.6; }
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
+        .man-of-match-box { background: rgba(49, 0, 85, 0.9); border: 1px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 15px; display: flex; align-items: center; justify-content: center; width: fit-content; margin: 15px auto 5px auto; gap: 10px; }
+        .star-pulse { display: inline-block; font-size: 22px; animation: star-glow-slow 2.5s ease-in-out infinite; }
+        @keyframes star-glow-slow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px gold); } 50% { transform: scale(1.3); filter: drop-shadow(0 0 12px gold); } }
         footer { margin-top: 60px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
         .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine-text-slow 4s linear infinite; }
-        @keyframes shine-text-slow { to { background-position: 200% center; } }
     </style>
 </head>
 <body>
@@ -137,27 +140,28 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
+    function createStarBox(name) { return name ? `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>` : ''; }
+
     const allMatches = [
-        ["الملكي", "النسور", "1 - 0", { right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)"], left: ["❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"] }],
+        ["الملكي", "النسور", "1 - 0", { right: ["⚽ مزمل عبدالحفيظ (👟 يوسف الريح)"], left: ["❌ ضيع ركلة جزاء: محمد محبوب ابوعاقلة"], star: "مزمل عبدالحفيظ" }],
         ["الريدز", "الميرنجي", "4 - 2", { 
-            right: ["⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح (👟 عمر حسن)", "⚽ محمد محبوب الريح", "⚽ عمر حسن (👟 احمد محمد يوسف)"], 
-            left: ["⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)"] 
+            right: ["⚽ محمد محبوب الريح (👟 عمر حسن) x2", "⚽ محمد محبوب الريح", "⚽ عمر حسن (👟 احمد محمد يوسف)"], 
+            left: ["⚽ يوسف حسين (👟 يوسف الامين)", "⚽ عبدالرحمن محمد (👟 مدثر عبدالحفيظ)"], 
+            star: "محمد محبوب الريح" 
         }],
         ["شهداء الوطن", "العاصفة", "7 - 1", { 
-            right: ["⚽ احمد عبداللطيف (👟 عبدالله الريح) x3", "⚽ عبدالله الريح (👟 احمد عبداللطيف) x2", "⚽ عبدالله الريح (👟 معاوية محبوب)", "⚽ احمد حسن"], 
-            left: ["⚽ احمد عبدالكريم"] 
+            right: ["⚽ احمد عبداللطيف x3", "⚽ عبدالله الريح x3", "⚽ احمد حسن"], 
+            left: ["⚽ احمد عبدالكريم"], 
+            star: "عبدالله الريح" 
         }],
         "راحة", "راحة", "راحة", "راحة",
-        ["كتالونيا", "الملكي", "2 - 2", { 
-            right: ["⚽ رحمة الله عبدالرحمن", "⚽ محمد هيثم"], 
-            left: ["⚽ عبدالوهاب بابكر", "⚽ هدف عكسي: احمد الامين"] 
-        }], 
-        ["النسور", "الريدز", "0 - 1", { right: [], left: ["⚽ عمر حسن (👟 محمد محبوب الريح)"] }],
-        ["الميرنجي", "شهداء الوطن", "1 - 1", { right: ["⚽ البراء محمد (👟 يوسف حسين)"], left: ["⚽ معاوية محبوب", "❌ ضيع ركلة جزاء: معاوية محبوب"] }],
-        // الجولة الجديدة - تبدأ اليوم الأحد 1 مارس
-        ["العاصفة", "كتالونيا", null, { right: [], left: [] }],
-        ["الميرنجي", "الملكي", null, { right: [], left: [] }],
-        ["النسور", "شهداء الوطن", null, { right: [], left: [] }]
+        ["كتالونيا", "الملكي", "2 - 2", { right: ["⚽ رحمة الله عبدالرحمن", "⚽ محمد هيثم"], left: ["⚽ عبدالوهاب بابكر", "⚽ هدف عكسي: احمد الامين"], star: "محمد هيثم" }], 
+        ["النسور", "الريدز", "0 - 1", { right: [], left: ["⚽ عمر حسن (👟 محمد محبوب الريح)"], star: "عمر حسن" }],
+        ["الميرنجي", "شهداء الوطن", "1 - 1", { right: ["⚽ البراء محمد (👟 يوسف حسين)"], left: ["⚽ معاوية محبوب"], star: "البراء محمد" }],
+        // مباراة اليوم
+        ["العاصفة", "كتالونيا", null, { right: [], left: [], star: "" }],
+        ["الميرنجي", "الملكي", null, { right: [], left: [], star: "" }],
+        ["النسور", "شهداء الوطن", null, { right: [], left: [], star: "" }]
     ];
 
     const startDate = new Date(2026, 1, 19); 
@@ -174,7 +178,8 @@
         const mainCard = document.getElementById('main-card-container');
         if (data === "راحة") { mainCard.innerHTML = `<div class="match-card" style="padding:50px; text-align:center; font-size:20px; font-weight:900;">إستراحة ☕</div>`; return; }
         document.getElementById('dynamic-title').innerText = data[2] ? "نتيجة المباراة" : "مباراة الجولة";
-        let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>` : '';
+        let starHtml = createStarBox(data[3].star);
+        let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>` : '';
         mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div><span style="font-size:12px; display:block; margin-top:5px; color:white">التفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
     }
     function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
