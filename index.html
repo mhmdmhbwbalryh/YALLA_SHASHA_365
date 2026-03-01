@@ -9,7 +9,10 @@
         :root {
             --royal-purple: #4b0082; --deep-purple: #310055;  
             --gold-app: #D4AF37; --white-pure: #FFFFFF;  
-            --light-orange: #FFB347; --ramadan-green: #064e3b;
+            --light-orange: #FFB347; 
+            /* تم التبادل بين درجات الأخضر */
+            --ramadan-green: rgba(0, 0, 0, 0.4); /* اللون الذي كان للتشكيلة أصبح للأساس */
+            --lineup-bg: #064e3b; /* اللون الذي كان للأساس أصبح للتشكيلة */
             --win-color: #2ecc71; --draw-color: #f1c40f; --loss-color: #e74c3c;
             --goal-clr: #2eff2e; --assist-clr: #00e5ff; --miss-clr: #ff4d4d; --og-clr: #ffa500;
         }
@@ -29,7 +32,7 @@
         .match-content { display: flex; align-items: center; padding: 25px 10px; }
         .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: var(--light-orange); } 
         .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); }
-        .lineup-section { background: rgba(0,0,0,0.4); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .lineup-section { background: var(--lineup-bg); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .lineup-section.open { max-height: 3000px; padding: 20px 15px; border-top: 2px solid var(--gold-app); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 15px; }
         .lineup-list h4 { margin: 0 0 12px; font-size: 15px; color: var(--white-pure); border-bottom: 2px solid var(--gold-app); padding-bottom: 5px; }
@@ -187,7 +190,7 @@
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", { 
             right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span> <span class='assist'>(👟 محمد هيثم)</span>", "<span class='goal'>⚽ محمد هيثم</span>"], 
-            left: ["<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>", "<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>"], 
+            left: ["<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>", "<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>"], 
             star: "محمد هيثم" 
         }], 
         ["النسور", "الريدز", "0 - 1", { 
