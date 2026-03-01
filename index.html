@@ -49,6 +49,7 @@
         footer { margin-top: 60px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
         .designed-by { color: var(--white-pure); font-size: 14px; opacity: 0.8; margin-bottom: 5px; display: block; }
         .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine-text-slow 4s linear infinite; }
+        @keyframes shine-text-slow { to { background-position: 200% center; } }
     </style>
 </head>
 <body>
@@ -157,16 +158,16 @@
         }],
         ["الريدز", "الميرنجي", "4 - 2", { 
             right: [
+                "<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب الريح</span>",
                 "<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>",
                 "<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>",
                 "<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 احمد محمد يوسف)</span>",
-                "<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 احمد محمد يوسف)</span>",
-                "<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب الريح</span>"
+                "<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 احمد محمد يوسف)</span>"
             ], 
             left: [
+                "<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>",
                 "<span class='goal'>⚽ يوسف حسين</span> <span class='assist'>(👟 يوسف الامين)</span>",
-                "<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 مدثر عبدالحفيظ)</span>",
-                "<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>"
+                "<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 مدثر عبدالحفيظ)</span>"
             ], 
             star: "محمد محبوب الريح" 
         }],
@@ -186,7 +187,7 @@
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", { 
             right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span> <span class='assist'>(👟 محمد هيثم)</span>", "<span class='goal'>⚽ محمد هيثم</span>"], 
-            left: ["<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>", "<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>"], 
+            left: ["<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>", "<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>"], 
             star: "محمد هيثم" 
         }], 
         ["النسور", "الريدز", "0 - 1", { 
@@ -196,7 +197,7 @@
         }],
         ["الميرنجي", "شهداء الوطن", "1 - 1", { 
             right: ["<span class='goal'>⚽ البراء محمد</span> <span class='assist'>(👟 يوسف حسين)</span>"], 
-            left: ["<span class='goal'>⚽ معاوية محبوب</span>", "<span class='miss'>❌ أضاع ركلة جزاء: معاوية محبوب</span>"], 
+            left: ["<span class='miss'>❌ أضاع ركلة جزاء: معاوية محبوب</span>", "<span class='goal'>⚽ معاوية محبوب</span>"], 
             star: "البراء محمد" 
         }],
         ["العاصفة", "كتالونيا", null, { right: [], left: [], star: "" }],
