@@ -11,11 +11,7 @@
             --gold-app: #D4AF37; --white-pure: #FFFFFF;  
             --light-orange: #FFB347; --ramadan-green: #064e3b;
             --win-color: #2ecc71; --draw-color: #f1c40f; --loss-color: #e74c3c;
-            /* ألوان الأحداث الجديدة */
-            --goal-clr: #2eff2e;    /* أخضر للأهداف */
-            --assist-clr: #00e5ff;  /* سماوي للصناعة */
-            --miss-clr: #ff4d4d;    /* أحمر للضياع */
-            --og-clr: #ffa500;      /* برتقالي للعكسي */
+            --goal-clr: #2eff2e; --assist-clr: #00e5ff; --miss-clr: #ff4d4d; --og-clr: #ffa500;
         }
         body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); margin: 0; color: white; overflow-x: hidden; }
         header { background: linear-gradient(180deg, var(--deep-purple) 0%, var(--royal-purple) 100%); padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app); }
@@ -38,19 +34,15 @@
         .lineup-grid { display: flex; justify-content: space-between; gap: 15px; }
         .lineup-list h4 { margin: 0 0 12px; font-size: 15px; color: var(--white-pure); border-bottom: 2px solid var(--gold-app); padding-bottom: 5px; }
         .lineup-list p { margin: 6px 0; color: var(--gold-app); font-size: 13px; font-weight: 600; }
-        
-        /* تنسيق الأحداث الملونة */
         .events-box { border-top: 1px dashed var(--gold-app); margin-top: 15px; padding-top: 15px; }
         .ev-flex { display: flex; justify-content: space-between; }
         .ev-col { flex: 1; font-size: 12px; line-height: 1.8; }
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
-        
         .goal { color: var(--goal-clr); font-weight: bold; }
         .assist { color: var(--assist-clr); font-size: 11px; }
         .miss { color: var(--miss-clr); font-weight: bold; }
         .og { color: var(--og-clr); font-weight: bold; }
-
         .man-of-match-box { background: rgba(49, 0, 85, 0.9); border: 1px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 15px; display: flex; align-items: center; justify-content: center; width: fit-content; margin: 15px auto 5px auto; gap: 10px; }
         .star-pulse { display: inline-block; font-size: 22px; animation: star-glow-slow 2.5s ease-in-out infinite; }
         @keyframes star-glow-slow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px gold); } 50% { transform: scale(1.3); filter: drop-shadow(0 0 12px gold); } }
@@ -100,6 +92,38 @@
                 <tr><td>3</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
                 <tr><td>4</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
                 <tr><td>5</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>6</td><td class="col-name">البراء محمد</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>7</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>8</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>9</td><td class="col-name">عبدالوهاب بابكر</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>10</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>11</td><td class="col-name">رحمة الله عبدالرحمن</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>12</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>13</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>1</td></tr>
+                <tr><td>14</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">قائمة صناع اللعب كاملة 👟</div>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th style="width:10%">#</th><th class="col-name">اللاعب</th><th>الفريق</th><th>أسيست</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>3</td></tr>
+                <tr><td>2</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
+                <tr><td>3</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
+                <tr><td>4</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>5</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>6</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>7</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
+                <tr><td>8</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>9</td><td class="col-name">مصطفي عباس</td><td>شهداء الوطن</td><td>1</td></tr>
+                <tr><td>10</td><td class="col-name">احمد محمد يوسف</td><td>الريدز</td><td>1</td></tr>
+                <tr><td>11</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>1</td></tr>
+                <tr><td>12</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>1</td></tr>
+                <tr><td>13</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>1</td></tr>
+                <tr><td>14</td><td class="col-name">حمد النيل ود الريف</td><td>العاصفة</td><td>1</td></tr>
             </tbody>
         </table>
     </div>
@@ -152,15 +176,15 @@
                 "<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>",
                 "<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>",
                 "<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 معاوية محبوب)</span>",
-                "<span class='goal'>⚽ احمد حسن</span>"
+                "<span class='goal'>⚽ احمد حسن</span> <span class='assist'>(👟 مصطفي عباس)</span>"
             ], 
-            left: ["<span class='goal'>⚽ احمد عبدالكريم</span>"], 
+            left: ["<span class='goal'>⚽ احمد عبدالكريم</span> <span class='assist'>(👟 حمد النيل ود الريف)</span>"], 
             star: "عبدالله الريح" 
         }],
         "راحة", "راحة", "راحة", "راحة",
         ["كتالونيا", "الملكي", "2 - 2", { 
-            right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span>", "<span class='goal'>⚽ محمد هيثم</span>"], 
-            left: ["<span class='goal'>⚽ عبدالوهاب بابكر</span>", "<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='miss'>❌ ضيع ركلة جزاء: مزمل عبدالحفيظ</span>"], 
+            right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span> <span class='assist'>(👟 محمد هيثم)</span>", "<span class='goal'>⚽ محمد هيثم</span>"], 
+            left: ["<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>", "<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='miss'>❌ ضيع ركلة جزاء: مزمل عبدالحفيظ</span>"], 
             star: "محمد هيثم" 
         }], 
         ["النسور", "الريدز", "0 - 1", { 
@@ -173,7 +197,6 @@
             left: ["<span class='goal'>⚽ معاوية محبوب</span>", "<span class='miss'>❌ ضيع ركلة جزاء: معاوية محبوب</span>"], 
             star: "البراء محمد" 
         }],
-        // جولة اليوم
         ["العاصفة", "كتالونيا", null, { right: [], left: [], star: "" }],
         ["الميرنجي", "الملكي", null, { right: [], left: [], star: "" }],
         ["النسور", "شهداء الوطن", null, { right: [], left: [], star: "" }]
@@ -195,7 +218,7 @@
         document.getElementById('dynamic-title').innerText = data[2] ? "نتيجة المباراة" : "مباراة الجولة";
         let starHtml = createStarBox(data[3].star);
         let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>` : '';
-        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div><span style="font-size:12px; display:block; margin-top:5px; color:white">اضغط للتفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
+        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div><span style="font-size:12px; display:block; margin-top:5px; color:white">التفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
     }
     function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
     setInitialDay(); updateUI();
