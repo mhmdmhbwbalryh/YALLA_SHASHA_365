@@ -28,10 +28,11 @@
         .match-card { background: var(--ramadan-green); border-radius: 15px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 25px 10px; }
         .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: var(--light-orange); } 
-        .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); }
+        .score-area { flex: 1.5; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); width: fit-content; }
         
-        /* تنيسق الموقت */
-        .countdown-wrapper { margin-top: 8px; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 4px; font-family: monospace; font-size: 14px; color: var(--white-pure); }
+        /* تنسيق الموقت الجديد - في المنتصف وبدون نص */
+        .countdown-wrapper { margin-top: 10px; background: rgba(0,0,0,0.5); border-radius: 6px; padding: 4px 10px; font-family: 'Courier New', monospace; font-size: 18px; color: #ffeb3b; font-weight: bold; border: 1px solid rgba(212, 175, 55, 0.3); display: inline-block; min-width: 100px; text-align: center; letter-spacing: 1px; }
 
         .lineup-section { background: rgba(0,0,0,0.4); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .lineup-section.open { max-height: 3000px; padding: 20px 15px; border-top: 2px solid var(--gold-app); }
@@ -164,20 +165,20 @@
         if (!timerElem) return;
 
         const matchTime = new Date(targetDate);
-        matchTime.setHours(21, 0, 0); // وقت المباراة 9 مساءً
+        matchTime.setHours(21, 0, 0); 
 
         function update() {
             const now = new Date();
             const diff = matchTime - now;
             if (diff <= 0) {
-                timerElem.innerHTML = "بدأت المباراة الآن ⚽";
+                timerElem.innerHTML = "بدأت المباراة ⚽";
                 clearInterval(timerInterval);
                 return;
             }
-            const h = Math.floor(diff / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
-            timerElem.innerText = `يبدأ خلال: ${h}:${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+            const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+            const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+            timerElem.innerText = `${h}:${m}:${s}`;
         }
         update();
         timerInterval = setInterval(update, 1000);
@@ -275,11 +276,11 @@
         const isFuture = data[2] === null;
         document.getElementById('dynamic-title').innerText = isFuture ? "مباراة الجولة" : "نتيجة المباراة";
         
-        let timerHtml = isFuture ? `<div class="countdown-wrapper" id="timer-display">جارِ حساب الوقت...</div>` : '';
+        let timerHtml = isFuture ? `<div class="countdown-wrapper" id="timer-display">--:--:--</div>` : '';
         let starHtml = createStarBox(data[3].star);
         let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>` : '';
         
-        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div>${timerHtml}<span style="font-size:12px; display:block; margin-top:5px; color:white">التفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
+        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div>${timerHtml}<span style="font-size:12px; display:block; margin-top:8px; color:rgba(255,255,255,0.7)">التفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
 
         if (isFuture) {
             startTimer(d);
