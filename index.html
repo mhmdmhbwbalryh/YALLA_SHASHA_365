@@ -93,10 +93,58 @@ body.lantern-active {
     100% { transform: scale(1); }
 }
 
-body { transition: background 0.5s ease; }
+body { transition: background 0.5s ease; } /* 1. خلفية السماء الليلية العميقة */
+body.lantern-active {
+    --main-bg: radial-gradient(circle at center, #1a2a4a 0%, #050912 100%);
+    --header-bg: #020617;
+    --gold-app: #fcd34d;
+    
+    /* نجوم ثابتة تتلألأ */
+    background-image: 
+        radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 60px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 120px 150px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 180px 250px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 220px 50px, #fff, rgba(0,0,0,0));
+    background-size: 350px 350px;
+    animation: stars-twinkle 5s infinite alternate;
+}
+
+/* 2. تصميم الشهاب (Shooting Star) */
+.shooting-star {
+    position: fixed;
+    top: -100px;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, #D4AF37 100%);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px #fff);
+    z-index: -1; /* ليكون خلف البطاقات */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 3. حركة انطلاق الشهاب */
+@keyframes shoot {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+}
+
+@keyframes stars-twinkle {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+/* إضافة نعومة في تحول الألوان */
+body { transition: background 0.8s ease; }
+
  </style>
 </head>
 <body>
+    <div class="lantern-toggle" onclick="toggleLantern()" style="position: fixed; left: 20px; bottom: 20px; z-index: 10000; background: var(--gold-app); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; border: 2px solid white; box-shadow: 0 0 15px var(--gold-app);">🏮</div>
+
     <body>
     <div class="lantern-toggle" onclick="toggleLantern()">🏮</div>
     
@@ -291,12 +339,54 @@ body { transition: background 0.5s ease; }
     function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
     setInitialDay(); updateUI();
 // أضفه كدالة مستقلة في الأسفل
+let shootingStarInterval;
+
 function toggleLantern() {
     const body = document.body;
     const btn = document.querySelector('.lantern-toggle');
+    
     body.classList.toggle('lantern-active');
-    btn.innerHTML = body.classList.contains('lantern-active') ? '💡' : '🏮';
+    
+    if (body.classList.contains('lantern-active')) {
+        btn.innerHTML = '💡';
+        startShootingStars(); // تشغيل الشهب
+    } else {
+        btn.innerHTML = '🏮';
+        stopShootingStars(); // إيقاف الشهب
+    }
 }
+
+function createShootingStar() {
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    
+    // مكان عشوائي من اليمين إلى اليسار
+    star.style.left = Math.random() * 100 + 'vw';
+    
+    // سرعة عشوائية للشهاب بين 1.5 و 3 ثواني
+    const duration = (Math.random() * 1.5 + 1.5) + 's';
+    star.style.animation = `shoot ${duration} linear forwards`;
+    
+    document.body.appendChild(star);
+    
+    // مسح الشهاب من الذاكرة بعد انتهاء حركته
+    setTimeout(() => { star.remove(); }, 3500);
+}
+
+function startShootingStars() {
+    if (shootingStarInterval) clearInterval(shootingStarInterval);
+    // إطلاق أول شهاب فوراً
+    createShootingStar();
+    // تكرار إطلاق شهاب كل 4 ثوانٍ عشوائياً
+    shootingStarInterval = setInterval(createShootingStar, 4000);
+}
+
+function stopShootingStars() {
+    clearInterval(shootingStarInterval);
+    // إزالة أي شهب لا تزال تتحرك في الصفحة
+    document.querySelectorAll('.shooting-star').forEach(s => s.remove());
+}
+
  </script>
 </body>
 </html>
