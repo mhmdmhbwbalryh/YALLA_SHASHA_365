@@ -9,7 +9,9 @@
         :root {
             --royal-purple: #4b0082; --deep-purple: #310055;  
             --gold-app: #D4AF37; --white-pure: #FFFFFF;  
-            --light-orange: #FFB347; --ramadan-green: #064e3b;
+            --light-orange: #FFB347; 
+            /* التدرج الأخضر الجديد */
+            --ramadan-green-grad: linear-gradient(145deg, #064e3b, #0d7a5f);
             --win-color: #2ecc71; --draw-color: #f1c40f; --loss-color: #e74c3c;
             --goal-clr: #2eff2e; --assist-clr: #00e5ff; --miss-clr: #ff4d4d; --og-clr: #ffa500;
         }
@@ -20,16 +22,38 @@
         .btn-nav { background: var(--gold-app); color: var(--deep-purple); border: none; padding: 8px 18px; cursor: pointer; border-radius: 20px; font-weight: bold; }
         .container { max-width: 600px; margin: 0 auto; padding: 0 12px; }
         .section-title { font-size: 18px; font-weight: 700; margin: 25px 0 15px; color: var(--gold-app); border-right: 4px solid var(--gold-app); padding-right: 12px; }
-        .table-wrapper { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); margin-bottom: 25px; width: 100%; overflow: hidden; }
+        
+        /* تحديث شكل الجداول بلمسة التدرج والظلال */
+        .table-wrapper { 
+            background: var(--ramadan-green-grad); 
+            border-radius: 12px; 
+            border: 1px solid var(--gold-app); 
+            margin-bottom: 25px; 
+            width: 100%; 
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4); 
+        }
         table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
         th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; font-weight: 700; }
         td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
         .col-name { width: 25%; text-align: right !important; padding-right: 8px !important; color: var(--gold-app); font-size: 11px; white-space: normal; line-height: 1.2; }
-        .match-card { background: var(--ramadan-green); border-radius: 15px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
+        
+        /* تحديث شكل بطاقة المباراة */
+        .match-card { 
+            background: var(--ramadan-green-grad); 
+            border-radius: 15px; 
+            border: 1px solid var(--gold-app); 
+            overflow: hidden; 
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        .match-card:active { transform: scale(0.98); }
+        
         .match-content { display: flex; align-items: center; padding: 25px 10px; }
-        .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: var(--light-orange); } 
+        .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: var(--light-orange); text-shadow: 1px 1px 2px black; } 
         .score-area { flex: 1.5; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); width: fit-content; }
+        .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); width: fit-content; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
         .countdown-wrapper { margin-top: 10px; background: rgba(0,0,0,0.5); border-radius: 6px; padding: 4px 10px; font-family: 'Courier New', monospace; font-size: 18px; color: #ffeb3b; font-weight: bold; border: 1px solid rgba(212, 175, 55, 0.3); display: inline-block; min-width: 100px; text-align: center; letter-spacing: 1px; }
         .lineup-section { background: rgba(0,0,0,0.4); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .lineup-section.open { max-height: 3000px; padding: 20px 15px; border-top: 2px solid var(--gold-app); }
@@ -78,9 +102,8 @@
                 <tr><td>1</td><td class="col-name">الريدز</td><td>3</td><td>3</td><td>0</td><td>0</td><td>8</td><td>2</td><td>+6</td><td>9</td></tr>
                 <tr><td>2</td><td class="col-name">شهداء الوطن</td><td>4</td><td>2</td><td>1</td><td>1</td><td>10</td><td>4</td><td>+6</td><td>7</td></tr>
                 <tr><td>3</td><td class="col-name">الملكي</td><td>4</td><td>2</td><td>1</td><td>1</td><td>5</td><td>4</td><td>+1</td><td>7</td></tr>
-                <tr><td>4</td><td class="col-name">الميرنجي</td><td>4</td><td>1</td><td>1</td><td>2</td><td>6</td><td>7</td><td>-1</td><td>4</td></tr>
-                <tr><td>5</td><td class="col-name">كتالونيا</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5</td><td>6</td><td>-1</td><td>4</td></tr>
-                
+                <tr><td>4</td><td class="col-name">كتالونيا</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5</td><td>6</td><td>-1</td><td>4</td></tr>
+                <tr><td>5</td><td class="col-name">الميرنجي</td><td>4</td><td>1</td><td>1</td><td>2</td><td>6</td><td>7</td><td>-1</td><td>4</td></tr>
                 <tr><td>6</td><td class="col-name">العاصفة</td><td>3</td><td>1</td><td>0</td><td>2</td><td>4</td><td>11</td><td>-7</td><td>3</td></tr>
                 <tr><td>7</td><td class="col-name">النسور</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>4</td><td>-4</td><td>0</td></tr>
             </tbody>
