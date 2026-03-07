@@ -7,31 +7,30 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
         :root {
-            --primary-navy: #1e293b;
-            --gold-app: #D4AF37;
-            --white-pure: #FFFFFF;
-            --ramadan-green-grad: linear-gradient(145deg, #064e3b, #0d7a5f);
-            --deep-purple: #1a0033;
+            --royal-purple: #4b0082; --deep-purple: #310055;  
+            --gold-app: #D4AF37; --white-pure: #FFFFFF;  
+            --light-orange: #FFB347; --ramadan-green: #064e3b;
             --win-color: #2ecc71; --draw-color: #f1c40f; --loss-color: #e74c3c;
             --goal-clr: #2eff2e; --assist-clr: #00e5ff; --miss-clr: #ff4d4d; --og-clr: #ffa500;
         }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--primary-navy); margin: 0; color: white; overflow-x: hidden; }
-        header { background: linear-gradient(180deg, var(--deep-purple) 0%, var(--primary-navy) 100%); padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app); }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--royal-purple); margin: 0; color: white; overflow-x: hidden; }
+        header { background: linear-gradient(180deg, var(--deep-purple) 0%, var(--royal-purple) 100%); padding: 25px 0; text-align: center; border-bottom: 3px solid var(--gold-app); }
         .logo { font-size: 28px; font-weight: 900; color: var(--gold-app); }
         .nav-strip { background: rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding: 12px; margin-bottom: 10px; }
-        .btn-nav { background: var(--gold-app); color: var(--primary-navy); border: none; padding: 8px 18px; cursor: pointer; border-radius: 20px; font-weight: bold; }
+        .btn-nav { background: var(--gold-app); color: var(--deep-purple); border: none; padding: 8px 18px; cursor: pointer; border-radius: 20px; font-weight: bold; }
         .container { max-width: 600px; margin: 0 auto; padding: 0 12px; }
         .section-title { font-size: 18px; font-weight: 700; margin: 25px 0 15px; color: var(--gold-app); border-right: 4px solid var(--gold-app); padding-right: 12px; }
-        .table-wrapper { background: var(--ramadan-green-grad); border-radius: 12px; border: 1px solid var(--gold-app); margin-bottom: 25px; width: 100%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        .table-wrapper { background: var(--ramadan-green); border-radius: 12px; border: 1px solid var(--gold-app); margin-bottom: 25px; width: 100%; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; font-size: 11px; color: white; table-layout: fixed; }
-        th { background: rgba(0,0,0,0.3); color: var(--gold-app); padding: 12px 2px; font-weight: 700; }
+        th { background: var(--deep-purple); color: var(--gold-app); padding: 12px 2px; font-weight: 700; }
         td { padding: 12px 2px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .col-name { width: 30%; text-align: right !important; padding-right: 8px !important; color: var(--gold-app); font-size: 11px; white-space: normal; line-height: 1.2; }
-        .match-card { background: var(--ramadan-green-grad); border-radius: 15px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transition: transform 0.2s; }
+        .col-name { width: 25%; text-align: right !important; padding-right: 8px !important; color: var(--gold-app); font-size: 11px; white-space: normal; line-height: 1.2; }
+        .match-card { background: var(--ramadan-green); border-radius: 15px; border: 1px solid var(--gold-app); overflow: hidden; cursor: pointer; }
         .match-content { display: flex; align-items: center; padding: 25px 10px; }
-        .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: #fff; text-shadow: 1px 1px 2px black; } 
-        .score-area { flex: 1.5; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .time-box { background: var(--primary-navy); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); }
+        .team-box { flex: 2; text-align: center; font-size: 20px; font-weight: 900; color: var(--light-orange); } 
+        .score-area { flex: 1.5; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .time-box { background: var(--deep-purple); color: var(--gold-app); padding: 6px 12px; border-radius: 8px; font-size: 22px; font-weight: 900; border: 1px solid var(--gold-app); width: fit-content; }
+        .countdown-wrapper { margin-top: 10px; background: rgba(0,0,0,0.5); border-radius: 6px; padding: 4px 10px; font-family: 'Courier New', monospace; font-size: 18px; color: #ffeb3b; font-weight: bold; border: 1px solid rgba(212, 175, 55, 0.3); display: inline-block; min-width: 100px; text-align: center; letter-spacing: 1px; }
         .lineup-section { background: rgba(0,0,0,0.4); max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .lineup-section.open { max-height: 3000px; padding: 20px 15px; border-top: 2px solid var(--gold-app); }
         .lineup-grid { display: flex; justify-content: space-between; gap: 15px; }
@@ -42,12 +41,17 @@
         .ev-col { flex: 1; font-size: 12px; line-height: 1.8; }
         .ev-right { text-align: right; border-left: 1px solid rgba(212,175,55,0.3); padding-left: 10px; }
         .ev-left { text-align: left; padding-right: 10px; }
-        .man-of-match-box { background: rgba(30, 41, 59, 0.9); border: 1px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 15px; display: flex; align-items: center; justify-content: center; width: fit-content; margin: 15px auto 5px auto; gap: 10px; }
         .goal { color: var(--goal-clr); font-weight: bold; }
         .assist { color: var(--assist-clr); font-size: 11px; }
+        .miss { color: var(--miss-clr); font-weight: bold; }
+        .og { color: var(--og-clr); font-weight: bold; }
+        .man-of-match-box { background: rgba(49, 0, 85, 0.9); border: 1px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 15px; display: flex; align-items: center; justify-content: center; width: fit-content; margin: 15px auto 5px auto; gap: 10px; }
+        .star-pulse { display: inline-block; font-size: 22px; animation: star-glow-slow 2.5s ease-in-out infinite; }
+        @keyframes star-glow-slow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px gold); } 50% { transform: scale(1.3); filter: drop-shadow(0 0 12px gold); } }
         footer { margin-top: 60px; padding: 40px 10px; text-align: center; background: var(--deep-purple); border-top: 3px solid var(--gold-app); }
-        .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 4s linear infinite; }
-        @keyframes shine { to { background-position: 200% center; } }
+        .designed-by { color: var(--white-pure); font-size: 14px; opacity: 0.8; margin-bottom: 5px; display: block; }
+        .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine-text-slow 4s linear infinite; }
+        @keyframes shine-text-slow { to { background-position: 200% center; } }
     </style>
 </head>
 <body>
@@ -56,7 +60,7 @@
 
 <div class="nav-strip">
     <button class="btn-nav" onclick="changeDay(-1)">السابق</button>
-    <div id="current-date" style="color: var(--gold-app); font-weight: 900;">...</div>
+    <div id="current-date" style="color: var(--gold-app); font-weight: 900; font-size: 15px;">...</div>
     <button class="btn-nav" onclick="changeDay(1)">التالي</button>
 </div>
 
@@ -68,16 +72,17 @@
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th style="width:8%">#</th><th class="col-name">الفريق</th><th>لعب</th><th style="color:var(--win-color)">فوز</th><th>تعادل</th><th style="color:var(--loss-color)">خسر</th><th>له</th><th>عليه</th><th>نقط</th></tr>
+                <tr><th style="width:8%">#</th><th class="col-name">الفريق</th><th>لعب</th><th style="color:var(--win-color)">فوز</th><th>تعادل</th><th style="color:var(--loss-color)">خسر</th><th>له</th><th>عليه</th><th>فارق</th><th>نقط</th></tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="col-name">الريدز</td><td>3</td><td>3</td><td>0</td><td>0</td><td>8</td><td>2</td><td>9</td></tr>
-                <tr><td>2</td><td class="col-name">شهداء الوطن</td><td>4</td><td>2</td><td>1</td><td>1</td><td>10</td><td>4</td><td>7</td></tr>
-                <tr><td>3</td><td class="col-name">الملكي</td><td>4</td><td>2</td><td>1</td><td>1</td><td>5</td><td>4</td><td>7</td></tr>
-                <tr><td>4</td><td class="col-name">كتالونيا</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5</td><td>6</td><td>4</td></tr>
-                <tr><td>5</td><td class="col-name">الميرنجي</td><td>4</td><td>1</td><td>1</td><td>2</td><td>6</td><td>7</td><td>4</td></tr>
-                <tr><td>6</td><td class="col-name">العاصفة</td><td>3</td><td>1</td><td>0</td><td>2</td><td>4</td><td>11</td><td>3</td></tr>
-                <tr><td>7</td><td class="col-name">النسور</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>4</td><td>0</td></tr>
+                <tr><td>1</td><td class="col-name">الريدز</td><td>3</td><td>3</td><td>0</td><td>0</td><td>8</td><td>2</td><td>+6</td><td>9</td></tr>
+                <tr><td>2</td><td class="col-name">شهداء الوطن</td><td>4</td><td>2</td><td>1</td><td>1</td><td>10</td><td>4</td><td>+6</td><td>7</td></tr>
+                <tr><td>3</td><td class="col-name">الملكي</td><td>4</td><td>2</td><td>1</td><td>1</td><td>5</td><td>4</td><td>+1</td><td>7</td></tr>
+                <tr><td>4</td><td class="col-name">الميرنجي</td><td>4</td><td>1</td><td>1</td><td>2</td><td>6</td><td>7</td><td>-1</td><td>4</td></tr>
+                <tr><td>5</td><td class="col-name">كتالونيا</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5</td><td>6</td><td>-1</td><td>4</td></tr>
+                
+                <tr><td>6</td><td class="col-name">العاصفة</td><td>3</td><td>1</td><td>0</td><td>2</td><td>4</td><td>11</td><td>-7</td><td>3</td></tr>
+                <tr><td>7</td><td class="col-name">النسور</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>4</td><td>-4</td><td>0</td></tr>
             </tbody>
         </table>
     </div>
@@ -139,9 +144,9 @@
 </div>
 
 <footer>
-    <span style="color:white; opacity: 0.8;">صمم بواسطة</span>
+    <span class="designed-by">صمم بواسطة</span>
     <span class="shiny-gold-name">Muhammad Mahboub Alryh</span>
-    <span style="color:var(--gold-app); letter-spacing:3px;">LANSTER ™</span>
+    <span style="color:var(--gold-app); font-weight:bold; letter-spacing:3px;">LANSTER ™</span>
 </footer>
 
 <script>
@@ -155,6 +160,33 @@
         "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
     };
 
+    let timerInterval;
+
+    function startTimer(targetDate) {
+        if (timerInterval) clearInterval(timerInterval);
+        const timerElem = document.getElementById('timer-display');
+        if (!timerElem) return;
+        const matchTime = new Date(targetDate);
+        matchTime.setHours(21, 0, 0); 
+        function update() {
+            const now = new Date();
+            const diff = matchTime - now;
+            if (diff <= 0) {
+                timerElem.innerHTML = "بدأت المباراة ⚽";
+                clearInterval(timerInterval);
+                return;
+            }
+            const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+            const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+            timerElem.innerText = `${h}:${m}:${s}`;
+        }
+        update();
+        timerInterval = setInterval(update, 1000);
+    }
+
+    function createStarBox(name) { return name ? `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>` : ''; }
+
     const allMatches = [
         ["الملكي", "النسور", "1 - 0", { right: ["<span class='goal'>⚽ مزمل عبدالحفيظ</span> <span class='assist'>(👟 يوسف الريح)</span>"], left: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب ابوعاقلة</span>"], star: "مزمل عبدالحفيظ" }],
         ["الريدز", "الميرنجي", "4 - 2", { right: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب الريح</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 احمد محمد يوسف)</span>","<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 احمد محمد يوسف)</span>"], left: ["<span class='goal'>⚽ يوسف حسين</span> <span class='assist'>(👟 يوسف الامين)</span>","<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 مدثر عبدالحفيظ)</span>","<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>"], star: "محمد محبوب الريح" }],
@@ -166,13 +198,13 @@
         ["العاصفة", "كتالونيا", "3 - 1", { right: ["<span class='goal'>⚽ احمد عبدالكريم</span> <span class='assist'>(👟 حمد الماحي)</span>","<span class='goal'>⚽ حمد النيل ودالريف</span>","<span class='goal'>⚽ حمد الماحي</span> <span class='assist'>(👟 حمد النيل ود الريف)</span>"], left: ["<span class='goal'>⚽ محمد هيثم</span> <span class='assist'>(👟 ابراهيم عبدالحكم)</span>"], star: "حمد النيل ود الريف" }], 
         ["الميرنجي", "الملكي", "2 - 0", { right: ["<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 يوسف حسين)</span>","<span class='goal'>⚽ يوسف حسين</span> <span class='assist'>(👟 البراء محمد)</span>"], left: [], star: "البراء محمد" }], 
         ["النسور", "شهداء الوطن", "0 - 2", { right: [], left: ["<span class='miss'>❌ أضاع ركلة جزاء: احمد حسن</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 معاوية محبوب)</span>","<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 احمد حسن)</span>"], star:"عبدالله الريح" }],
-        ["الريدز", "العاصفة", "3 - 0", { right: ["<span class='goal'>⚽ محمد محبوب الريح</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 أحمد محمد يوسف)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>"], left: [], star: "محمد محبوب الريح" }],
+        ["الريدز", "العاصفة", "3 - 0", { right: ["<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'></span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 أحمد محمد يوسف)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>"], left: [], star: "محمد محبوب الريح" }],
         ["كتالونيا", "الميرنجي", "2 - 1", { right: ["<span class='goal'>⚽ بكري صلاح</span> <span class='assist'>(👟 سعيد مبارك)</span>","<span class='goal'>⚽ سعيد مبارك</span> <span class='assist'>(👟 محمد هيثم)</span>"], left: ["<span class='goal'>⚽ البراء محمد</span> <span class='assist'>(👟 يوسف الامين)</span>","<span class='miss'>❌ أضاع ركلة جزاء: يوسف حسين</span>"], star: "سعيد مبارك" }],
         ["الملكي", "شهداء الوطن", "2 - 0", { right: ["<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل)</span>", "<span class='goal'>⚽ مزمل عبدالحفيظ</span>"], left: ["<span class='miss'>❌ أضاع ركلة جزاء: احمد عبداللطيف</span>", "<span class='miss'>❌ أضاع ركلة جزاء: معاوية محبوب</span>"], star: "مزمل عبدالحفيظ" }],
-        "راحة", 
-        ["النسور", "العاصفة", null, { star: "" }], 
-        ["الريدز", "الملكي", null, { star: "" }],  
-        ["كتالونيا", "شهداء الوطن", null, { star: "" }]
+        "راحة", // السبت 7 مارس (اليوم)
+        ["النسور", "العاصفة", null, { star: "" }], // الأحد 8 مارس
+        ["الريدز", "الملكي", null, { star: "" }],  // الاثنين 9 مارس
+        ["كتالونيا", "شهداء الوطن", null, { star: "" }] // الثلاثاء 10 مارس
     ];
 
     const startDate = new Date(2026, 1, 19); 
@@ -187,25 +219,14 @@
         document.getElementById('current-date').innerText = d.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' });
         const data = allMatches[currentIndex];
         const mainCard = document.getElementById('main-card-container');
-        if (data === "راحة") { mainCard.innerHTML = `<div class="match-card" style="padding:50px; text-align:center;">إستراحة ☕</div>`; return; }
-        let starHtml = data[3].star ? `<div class="man-of-match-box">⭐ نجم المباراة: ${data[3].star}</div>` : '';
-        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')">
-            <div class="match-content">
-                <div class="team-box">${data[0]}</div>
-                <div class="score-area"><div class="time-box">${data[2] || "21:00"}</div><span style="font-size:10px; margin-top:5px;">التفاصيل</span></div>
-                <div class="team-box">${data[1]}</div>
-            </div>
-            <div class="lineup-section">
-                <div class="lineup-grid">
-                    <div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div>
-                    <div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div>
-                </div>
-                <div class="events-box"><div class="ev-flex">
-                    <div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div>
-                    <div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div>
-                </div>${starHtml}</div>
-            </div>
-        </div>`;
+        if (data === "راحة") { mainCard.innerHTML = `<div class="match-card" style="padding:50px; text-align:center; font-size:20px; font-weight:900;">إستراحة ☕</div>`; if (timerInterval) clearInterval(timerInterval); return; }
+        const isFuture = data[2] === null;
+        document.getElementById('dynamic-title').innerText = isFuture ? "مباراة الجولة" : "نتيجة المباراة";
+        let timerHtml = isFuture ? `<div class="countdown-wrapper" id="timer-display">--:--:--</div>` : '';
+        let starHtml = createStarBox(data[3].star);
+        let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>` : '';
+        mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div>${timerHtml}<span style="font-size:12px; display:block; margin-top:8px; color:rgba(255,255,255,0.7)">التفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
+        if (isFuture) startTimer(d); else if (timerInterval) clearInterval(timerInterval);
     }
     function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
     setInitialDay(); updateUI();
