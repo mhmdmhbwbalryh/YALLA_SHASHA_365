@@ -69,9 +69,39 @@
         .designed-by { color: var(--white-pure); font-size: 14px; opacity: 0.8; margin-bottom: 5px; display: block; }
         .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine-text-slow 4s linear infinite; }
         @keyframes shine-text-slow { to { background-position: 200% center; } }
-    </style>
+   /* أضفه هنا قبل نهاية الـ style */
+body.lantern-active {
+    --royal-purple: #0b1120;
+    --header-bg: #020617;
+    --darker-purple: #020617;
+    --gold-app: #fcd34d;
+}
+
+.lantern-toggle {
+    position: fixed; left: 20px; bottom: 20px; z-index: 9999;
+    background: var(--gold-app); color: #000;
+    width: 55px; height: 55px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; cursor: pointer; border: 2px solid white;
+    box-shadow: 0 0 15px var(--gold-app);
+    animation: lantern-pulse 2s infinite; transition: 0.3s;
+}
+
+@keyframes lantern-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+body { transition: background 0.5s ease; }
+ </style>
 </head>
 <body>
+    <body>
+    <div class="lantern-toggle" onclick="toggleLantern()">🏮</div>
+    
+    <header> ... </header>
+
 
 <header><div class="logo">🌙 YALA SHASHA 365</div></header>
 
@@ -260,6 +290,13 @@
     }
     function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
     setInitialDay(); updateUI();
-</script>
+// أضفه كدالة مستقلة في الأسفل
+function toggleLantern() {
+    const body = document.body;
+    const btn = document.querySelector('.lantern-toggle');
+    body.classList.toggle('lantern-active');
+    btn.innerHTML = body.classList.contains('lantern-active') ? '💡' : '🏮';
+}
+ </script>
 </body>
 </html>
