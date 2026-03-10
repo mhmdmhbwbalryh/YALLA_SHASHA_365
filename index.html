@@ -247,7 +247,7 @@
 
         function createStarBox(name) { return name ? `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>` : ''; }
 
-        const allMatches = [
+                const allMatches = [
             ["الملكي", "النسور", "1 - 0", { right: ["<span class='goal'>⚽ مزمل عبدالحفيظ</span> <span class='assist'>(👟 يوسف الريح)</span>"], left: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب ابوعاقلة</span>"], star: "مزمل عبدالحفيظ" }],
             ["الريدز", "الميرنجي", "4 - 2", { right: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب الريح</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 احمد محمد يوسف)</span>","<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 احمد محمد يوسف)</span>"], left: ["<span class='goal'>⚽ يوسف حسين</span> <span class='assist'>(👟 يوسف الامين)</span>","<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 مدثر عبدالحفيظ)</span>","<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>"], star: "محمد محبوب الريح" }],
             ["شهداء الوطن", "العاصفة", "7 - 1", { right: ["<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 عبدالله الريح)</span>","<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 مصطفي عباس)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>","<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 عبدالله الريح)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 معاوية محبوب)</span>","<span class='goal'>⚽ احمد حسن</span> <span class='assist'>(👟 عبدالله الريح)</span>"], left: ["<span class='goal'>⚽ احمد عبدالكريم</span> <span class='assist'>(👟 حمد النيل ود الريف)</span>"], star: "عبدالله الريح" }],
@@ -272,12 +272,13 @@
                     "<span style='color:#f1c40f'>🟨 كرت أصفر: عبدالله الريح</span>"
                 ], 
                 star: "معاوية محبوب" 
-            }]             // أضف هذا الجزء في نهاية مصفوفة allMatches
+            }],
             "راحة", 
             ["الميرنجي", "النسور", null, { right: [], left: [], star: "" }], 
             ["الملكي", "العاصفة", null, { right: [], left: [], star: "" }], 
             ["الريدز", "كتالونيا", null, { right: [], left: [], star: "" }]
-    
+        ];
+
 
         ];
 
