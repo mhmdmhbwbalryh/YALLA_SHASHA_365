@@ -62,6 +62,7 @@
         .goal { color: var(--goal-clr); font-weight: bold; text-shadow: 0 0 5px rgba(46, 255, 46, 0.3); }
         .assist { color: var(--assist-clr); font-size: 11px; }
         .miss { color: var(--miss-clr); font-weight: bold; }
+        .og-clr { color: var(--og-clr); font-weight: bold; }
         .man-of-match-box { background: rgba(26, 0, 51, 0.9); border: 1px solid var(--gold-app); padding: 8px 18px; border-radius: 12px; text-align: center; font-weight: 900; color: var(--gold-app); font-size: 15px; display: flex; align-items: center; justify-content: center; width: fit-content; margin: 15px auto 5px auto; gap: 10px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
         .star-pulse { display: inline-block; font-size: 22px; animation: star-glow-slow 2.5s ease-in-out infinite; }
         @keyframes star-glow-slow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px gold); } 50% { transform: scale(1.3); filter: drop-shadow(0 0 12px gold); } }
@@ -71,44 +72,9 @@
         .shiny-gold-name { font-size: 22px; font-weight: 900; display: block; margin-bottom: 8px; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine-text-slow 4s linear infinite; }
         @keyframes shine-text-slow { to { background-position: 200% center; } }
 
-        /* Lantern Active States */
-        body.lantern-active {
-            --royal-purple: #050912;
-            --header-bg: #000;
-            --darker-purple: #000;
-            --gold-app: #fcd34d;
-            background-image: 
-                radial-gradient(1.5px 1.5px at 10% 20%, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 30% 50%, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 50% 80%, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 70% 30%, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 90% 60%, #ffffff, rgba(0,0,0,0));
-            background-size: 400px 400px;
-        }
-
-        body.lantern-active .logo::before {
-            content: "🌙"; display: block; font-size: 30px; color: #ffffff; margin-bottom: 5px; filter: drop-shadow(0 0 5px #fff);
-        }
-
-        .lantern-toggle {
-            position: fixed; left: 20px; bottom: 20px; z-index: 10000;
-            background: var(--gold-app); width: 55px; height: 55px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; cursor: pointer; border: 2px solid white;
-            box-shadow: 0 0 15px var(--gold-app); animation: lantern-pulse 2s infinite; transition: 0.3s;
-        }
+        body.lantern-active { --royal-purple: #050912; --darker-purple: #000; --gold-app: #fcd34d; background-image: radial-gradient(1.5px 1.5px at 10% 20%, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 30% 50%, #fff, rgba(0,0,0,0)); background-size: 400px 400px; }
+        .lantern-toggle { position: fixed; left: 20px; bottom: 20px; z-index: 10000; background: var(--gold-app); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; border: 2px solid white; box-shadow: 0 0 15px var(--gold-app); animation: lantern-pulse 2s infinite; }
         @keyframes lantern-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-        .shooting-star {
-            position: fixed; top: -50px; width: 1px; height: 40px;
-            background: linear-gradient(to top, transparent, #ffffff);
-            filter: drop-shadow(0 0 3px #ffffff); z-index: -1; pointer-events: none;
-        }
-        @keyframes shoot {
-            0% { transform: translate(0, 0) rotate(30deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translate(-30vw, 100vh) rotate(30deg); opacity: 0; }
-        }
     </style>
 </head>
 <body>
@@ -140,41 +106,43 @@
                     <tr><td>3</td><td class="col-name">الريدز</td><td>4</td><td>3</td><td>0</td><td>1</td><td>8</td><td>4</td><td>+4</td><td>9</td></tr>
                     <tr><td>4</td><td class="col-name">العاصفة</td><td>4</td><td>2</td><td>0</td><td>2</td><td>5</td><td>11</td><td>-6</td><td>6</td></tr>
                     <tr><td>5</td><td class="col-name">كتالونيا</td><td>4</td><td>1</td><td>1</td><td>2</td><td>5</td><td>8</td><td>-3</td><td>4</td></tr>
-                    <tr><td>6</td><td class="col-name">الميرنجي</td><td>4</td><td>1</td><td>1</td><td>2</td><td>6</td><td>7</td><td>-1</td><td>4</td></tr>
-                    <tr><td>7</td><td class="col-name">النسور</td><td>4</td><td>0</td><td>0</td><td>4</td><td>0</td><td>5</td><td>-5</td><td>0</td></tr>
+                    <tr><td>6</td><td class="col-name">الميرنجي</td><td>5</td><td>1</td><td>1</td><td>3</td><td>6</td><td>10</td><td>-4</td><td>4</td></tr>
+                    <tr><td>7</td><td class="col-name">النسور</td><td>5</td><td>1</td><td>0</td><td>4</td><td>3</td><td>5</td><td>-2</td><td>3</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="section-title">قائمة الهدافين كاملة ⚽</div>
+        <div class="section-title">قائمة الهدافين (21) ⚽</div>
         <div class="table-wrapper">
             <table>
                 <thead><tr><th style="width:10%">#</th><th class="col-name">اللاعب</th><th>الفريق</th><th>أهداف</th></tr></thead>
                 <tbody>
                     <tr><td>1</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>6</td></tr>
-                    <tr><td>2</td><td class="col-name"> احمد عبداللطيف</td><td>شهداء الوطن</td><td>5</td></tr>
-                    <tr><td>3</td><td class="col-name">عبدالله الريح </td><td>شهداء الوطن</td><td>4</td></tr>
+                    <tr><td>2</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>5</td></tr>
+                    <tr><td>3</td><td class="col-name">عبدالله الريح</td><td>شهداء الوطن</td><td>4</td></tr>
                     <tr><td>4</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>3</td></tr>
                     <tr><td>5</td><td class="col-name">عبدالوهاب بابكر</td><td>الملكي</td><td>3</td></tr>
-                    <tr><td>6</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>2</td></tr>
-                    <tr><td>7</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>2</td></tr>
-                    <tr><td>8</td><td class="col-name">البراء محمد</td><td>الميرنجي</td><td>2</td></tr>
-                    <tr><td>9</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
-                    <tr><td>10</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>2</td></tr>
-                    <tr><td>11</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>2</td></tr>
-                    <tr><td>12</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>2</td></tr>
-                    <tr><td>13</td><td class="col-name">محي الدين الريح</td><td>العاصفة</td><td>1</td></tr>
-                    <tr><td>14</td><td class="col-name">سعيد مبارك</td><td>كتالونيا</td><td>1</td></tr>
-                    <tr><td>15</td><td class="col-name">بكري صلاح</td><td>كتالونيا</td><td>1</td></tr>
-                    <tr><td>16</td><td class="col-name">رحمة الله عبدالرحمن</td><td>كتالونيا</td><td>1</td></tr>
-                    <tr><td>17</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
-                    <tr><td>18</td><td class="col-name">حمد النيل ودالريف</td><td>العاصفة</td><td>1</td></tr>
-                    <tr><td>19</td><td class="col-name">حمد الماحي</td><td>العاصفة</td><td>1</td></tr>
+                    <tr><td>6</td><td class="col-name">اسماعيل حسين</td><td>النسور</td><td>2</td></tr>
+                    <tr><td>7</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>2</td></tr>
+                    <tr><td>8</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>2</td></tr>
+                    <tr><td>9</td><td class="col-name">البراء محمد</td><td>الميرنجي</td><td>2</td></tr>
+                    <tr><td>10</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>2</td></tr>
+                    <tr><td>11</td><td class="col-name">عبدالرحمن محمد</td><td>الميرنجي</td><td>2</td></tr>
+                    <tr><td>12</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>2</td></tr>
+                    <tr><td>13</td><td class="col-name">احمد عبدالكريم</td><td>العاصفة</td><td>2</td></tr>
+                    <tr><td>14</td><td class="col-name">محمد محبوب ابوعاقلة</td><td>النسور</td><td>1</td></tr>
+                    <tr><td>15</td><td class="col-name">محي الدين الريح</td><td>العاصفة</td><td>1</td></tr>
+                    <tr><td>16</td><td class="col-name">سعيد مبارك</td><td>كتالونيا</td><td>1</td></tr>
+                    <tr><td>17</td><td class="col-name">بكري صلاح</td><td>كتالونيا</td><td>1</td></tr>
+                    <tr><td>18</td><td class="col-name">رحمة الله عبدالرحمن</td><td>كتالونيا</td><td>1</td></tr>
+                    <tr><td>19</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
+                    <tr><td>20</td><td class="col-name">حمد النيل ود الريف</td><td>العاصفة</td><td>1</td></tr>
+                    <tr><td>21</td><td class="col-name">حمد الماحي</td><td>العاصفة</td><td>1</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="section-title">قائمة صناع اللعب كاملة 👟</div>
+        <div class="section-title">قائمة صناع اللعب (21) 👟</div>
         <div class="table-wrapper">
             <table>
                 <thead><tr><th style="width:10%">#</th><th class="col-name">اللاعب</th><th>الفريق</th><th>أسيست</th></tr></thead>
@@ -183,21 +151,23 @@
                     <tr><td>2</td><td class="col-name">عمر حسن</td><td>الريدز</td><td>3</td></tr>
                     <tr><td>3</td><td class="col-name">احمد محمد يوسف</td><td>الريدز</td><td>3</td></tr>
                     <tr><td>4</td><td class="col-name">معاوية محبوب</td><td>شهداء الوطن</td><td>3</td></tr>
-                    <tr><td>5</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>2</td></tr>
-                    <tr><td>6</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>2</td></tr>
-                    <tr><td>7</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>2</td></tr>
-                    <tr><td>8</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>2</td></tr>
-                    <tr><td>9</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
-                    <tr><td>10</td><td class="col-name">مصطفي عباس</td><td>شهداء الوطن</td><td>2</td></tr>
-                    <tr><td>11</td><td class="col-name">حمد النيل ود الريف</td><td>العاصفة</td><td>2</td></tr>
-                    <tr><td>12</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>2</td></tr>
-                    <tr><td>13</td><td class="col-name">محمد محبوب الريح</td><td>الريدز</td><td>1</td></tr>
-                    <tr><td>14</td><td class="col-name">سعيد مبارك</td><td>كتالونيا</td><td>1</td></tr>
-                    <tr><td>15</td><td class="col-name">ابراهيم عبدالحكم</td><td>كتالونيا</td><td>1</td></tr>
-                    <tr><td>16</td><td class="col-name">البراء محمد </td><td>الميرنجي</td><td>1</td></tr>
-                    <tr><td>17</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
+                    <tr><td>5</td><td class="col-name">عبدالرحيم محمد</td><td>النسور</td><td>2</td></tr>
+                    <tr><td>6</td><td class="col-name">مزمل عبدالحفيظ</td><td>الملكي</td><td>2</td></tr>
+                    <tr><td>7</td><td class="col-name">يوسف حسين</td><td>الميرنجي</td><td>2</td></tr>
+                    <tr><td>8</td><td class="col-name">يوسف الامين</td><td>الميرنجي</td><td>2</td></tr>
+                    <tr><td>9</td><td class="col-name">محمد هيثم</td><td>كتالونيا</td><td>2</td></tr>
+                    <tr><td>10</td><td class="col-name">احمد عبداللطيف</td><td>شهداء الوطن</td><td>2</td></tr>
+                    <tr><td>11</td><td class="col-name">مصطفي عباس</td><td>شهداء الوطن</td><td>2</td></tr>
+                    <tr><td>12</td><td class="col-name">حمد النيل ود الريف</td><td>العاصفة</td><td>2</td></tr>
+                    <tr><td>13</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>2</td></tr>
+                    <tr><td>14</td><td class="col-name">اسماعيل حسين</td><td>النسور</td><td>1</td></tr>
+                    <tr><td>15</td><td class="col-name">يوسف الريح</td><td>الملكي</td><td>1</td></tr>
+                    <tr><td>16</td><td class="col-name">مدثر عبدالحفيظ</td><td>الميرنجي</td><td>1</td></tr>
+                    <tr><td>17</td><td class="col-name">البراء محمد</td><td>الميرنجي</td><td>1</td></tr>
                     <tr><td>18</td><td class="col-name">احمد حسن</td><td>شهداء الوطن</td><td>1</td></tr>
                     <tr><td>19</td><td class="col-name">حمد الماحي</td><td>العاصفة</td><td>1</td></tr>
+                    <tr><td>20</td><td class="col-name">ابراهيم عبدالحكم</td><td>كتالونيا</td><td>1</td></tr>
+                    <tr><td>21</td><td class="col-name">سعيد مبارك</td><td>كتالونيا</td><td>1</td></tr>
                 </tbody>
             </table>
         </div>
@@ -220,39 +190,12 @@
             "العاصفة": ["عبدالمومن بابكر", "احمد عبدالكريم", "يوسف خالد", "محمد عبدالحفيظ", "حمد الماحي", "محي الدين الريح", "حمد النيل ود الريف"]
         };
 
-        let timerInterval;
-
-        function startTimer(targetDate) {
-            if (timerInterval) clearInterval(timerInterval);
-            const timerElem = document.getElementById('timer-display');
-            if (!timerElem) return;
-            const matchTime = new Date(targetDate);
-            matchTime.setHours(21, 0, 0); 
-            function update() {
-                const now = new Date();
-                const diff = matchTime - now;
-                if (diff <= 0) {
-                    timerElem.innerHTML = "بدأت المباراة ⚽";
-                    clearInterval(timerInterval);
-                    return;
-                }
-                const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
-                const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
-                const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
-                timerElem.innerText = `${h}:${m}:${s}`;
-            }
-            update();
-            timerInterval = setInterval(update, 1000);
-        }
-
-        function createStarBox(name) { return name ? `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${name}</span></div>` : ''; }
-
-                const allMatches = [
+        const allMatches = [
             ["الملكي", "النسور", "1 - 0", { right: ["<span class='goal'>⚽ مزمل عبدالحفيظ</span> <span class='assist'>(👟 يوسف الريح)</span>"], left: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب ابوعاقلة</span>"], star: "مزمل عبدالحفيظ" }],
             ["الريدز", "الميرنجي", "4 - 2", { right: ["<span class='miss'>❌ أضاع ركلة جزاء: محمد محبوب الريح</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 عمر حسن)</span>","<span class='goal'>⚽ محمد محبوب الريح</span> <span class='assist'>(👟 احمد محمد يوسف)</span>","<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 احمد محمد يوسف)</span>"], left: ["<span class='goal'>⚽ يوسف حسين</span> <span class='assist'>(👟 يوسف الامين)</span>","<span class='goal'>⚽ عبدالرحمن محمد</span> <span class='assist'>(👟 مدثر عبدالحفيظ)</span>","<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>"], star: "محمد محبوب الريح" }],
             ["شهداء الوطن", "العاصفة", "7 - 1", { right: ["<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 عبدالله الريح)</span>","<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 مصطفي عباس)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>","<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 عبدالله الريح)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 احمد عبداللطيف)</span>","<span class='goal'>⚽ عبدالله الريح</span> <span class='assist'>(👟 معاوية محبوب)</span>","<span class='goal'>⚽ احمد حسن</span> <span class='assist'>(👟 عبدالله الريح)</span>"], left: ["<span class='goal'>⚽ احمد عبدالكريم</span> <span class='assist'>(👟 حمد النيل ود الريف)</span>"], star: "عبدالله الريح" }],
             "راحة", "راحة", "راحة", "راحة",
-            ["كتالونيا", "الملكي", "2 - 2", { right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span> <span class='assist'>(👟 محمد هيثم)</span>", "<span class='goal'>⚽ محمد هيثم</span>"], left: ["<span class='og'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>", "<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>"], star: "محمد هيثم" }], 
+            ["كتالونيا", "الملكي", "2 - 2", { right: ["<span class='goal'>⚽ رحمة الله عبدالرحمن</span> <span class='assist'>(👟 محمد هيثم)</span>", "<span class='goal'>⚽ محمد هيثم</span>"], left: ["<span class='og-clr'>⚠️ هدف عكسي: احمد الامين</span>", "<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 مزمل عبدالحفيظ)</span>", "<span class='miss'>❌ أضاع ركلة جزاء: مزمل عبدالحفيظ</span>"], star: "محمد هيثم" }], 
             ["النسور", "الريدز", "0 - 1", { right: [], left: ["<span class='goal'>⚽ عمر حسن</span> <span class='assist'>(👟 محمد محبوب الريح)</span>"], star: "عمر حسن" }],
             ["الميرنجي", "شهداء الوطن", "1 - 1", { right: ["<span class='goal'>⚽ البراء محمد</span> <span class='assist'>(👟 يوسف حسين)</span>"], left: ["<span class='miss'>❌ أضاع ركلة جزاء: معاوية محبوب</span>", "<span class='goal'>⚽ معاوية محبوب</span>"], star: "البراء محمد" }],
             ["العاصفة", "كتالونيا", "3 - 1", { right: ["<span class='goal'>⚽ احمد عبدالكريم</span> <span class='assist'>(👟 حمد الماحي)</span>","<span class='goal'>⚽ حمد النيل ودالريف</span>","<span class='goal'>⚽ حمد الماحي</span> <span class='assist'>(👟 حمد النيل ود الريف)</span>"], left: ["<span class='goal'>⚽ محمد هيثم</span> <span class='assist'>(👟 ابراهيم عبدالحكم)</span>"], star: "حمد النيل ود الريف" }], 
@@ -264,26 +207,23 @@
             "راحة", 
             ["النسور", "العاصفة", "0 - 1", { right: ["<span class='miss'>❌ أضاع ركلة جزاء: عثمان عمر</span>"], left: ["<span class='goal'>⚽ محي الدين الريح</span> <span class='assist'></span>"], star: "محمد عبدالحفيظ" }], 
             ["الريدز", "الملكي", "0 - 2", { right: [], left: ["<span class='goal'>⚽ عبدالوهاب بابكر</span> <span class='assist'>(👟 يوسف الريح)</span>", "<span class='goal'>⚽ مزمل عبدالحفيظ</span>"], star: "مزمل عبدالحفيظ" }],  
-            ["كتالونيا", "شهداء الوطن", "0 - 2", { 
-                right: [], 
+            ["كتالونيا", "شهداء الوطن", "0 - 2", { right: [], left: ["<span class='goal'>⚽ معاوية محبوب</span> <span class='assist'>(👟 عبدالله الريح)</span>", "<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 معاوية محبوب)</span>"], star: "معاوية محبوب" }],
+            ["الميرنجي", "النسور", "0 - 3", { 
+                right: ["<span class='miss'>❌ أضاع ركلة جزاء: مدثر عبدالحفيظ</span>", "<span class='miss'>❌ أضاع ركلة جزاء: عبدالرحمن محمد</span>"], 
                 left: [
-                    "<span class='goal'>⚽ معاوية محبوب</span> <span class='assist'>(👟 عبدالله الريح)</span>", 
-                    "<span class='goal'>⚽ احمد عبداللطيف</span> <span class='assist'>(👟 معاوية محبوب)</span>",
-                    "<span style='color:#f1c40f'>🟨 كرت أصفر: عبدالله الريح</span>"
+                    "<span class='goal'>⚽ محمد محبوب ابوعاقلة</span> <span class='assist'>(👟 اسماعيل حسين)</span>", 
+                    "<span class='goal'>⚽ اسماعيل حسين</span> <span class='assist'>(👟 عبدالرحيم محمد)</span>", 
+                    "<span class='goal'>⚽ اسماعيل حسين</span> <span class='assist'>(👟 عبدالرحيم محمد)</span>"
                 ], 
-                star: "معاوية محبوب" 
+                star: "اسماعيل حسين" 
             }],
-            "راحة", 
-            ["الميرنجي", "النسور", null, { right: [], left: [], star: "" }], 
             ["الملكي", "العاصفة", null, { right: [], left: [], star: "" }], 
             ["الريدز", "كتالونيا", null, { right: [], left: [], star: "" }]
-     
-
-
         ];
 
         const startDate = new Date(2026, 1, 19); 
         let currentIndex = 0;
+        let timerInterval;
 
         function setInitialDay() { 
             const today = new Date(); today.setHours(0,0,0,0); 
@@ -298,42 +238,39 @@
             const mainCard = document.getElementById('main-card-container');
             
             if (data === "راحة") { 
-                mainCard.innerHTML = `<div class="match-card"><div class="match-content" style="flex-direction:column; justify-content:center; gap:10px;"><div style="font-size:35px;">☕</div><div style="font-size:22px; font-weight:900; color:var(--gold-app);">يوم إستراحة</div><div style="font-size:12px; color:rgba(255,255,255,0.6);">لا توجد مباريات لهذا اليوم</div></div></div>`; 
+                mainCard.innerHTML = `<div class="match-card"><div class="match-content" style="flex-direction:column; justify-content:center; gap:10px;"><div style="font-size:35px;">☕</div><div style="font-size:22px; font-weight:900; color:var(--gold-app);">يوم إستراحة</div></div></div>`; 
                 if (timerInterval) clearInterval(timerInterval); return; 
             }
 
             const isFuture = data[2] === null;
             document.getElementById('dynamic-title').innerText = isFuture ? "مباراة الجولة" : "نتيجة المباراة";
             let timerHtml = isFuture ? `<div class="countdown-wrapper" id="timer-display">--:--:--</div>` : '';
-            let starHtml = createStarBox(data[3].star);
-            let eventsHtml = data[3] ? `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>` : '';
-            mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div>${timerHtml}<span style="font-size:12px; display:block; margin-top:8px; color:rgba(255,255,255,0.7)">اضغط للتفاصيل</span></div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
+            let starHtml = data[3].star ? `<div class="man-of-match-box"><span class="star-pulse">⭐</span><span>نجم المباراة: ${data[3].star}</span></div>` : '';
+            let eventsHtml = `<div class="events-box"><div class="ev-flex"><div class="ev-col ev-right">${(data[3].right || []).map(e => `<div>${e}</div>`).join('')}</div><div class="ev-col ev-left">${(data[3].left || []).map(e => `<div>${e}</div>`).join('')}</div></div>${starHtml}</div>`;
+            
+            mainCard.innerHTML = `<div class="match-card" onclick="this.querySelector('.lineup-section').classList.toggle('open')"><div class="match-content"><div class="team-box">${data[0]}</div><div class="score-area"><div class="time-box">${data[2] || "21:00"}</div>${timerHtml}</div><div class="team-box">${data[1]}</div></div><div class="lineup-section"><div class="lineup-grid"><div class="lineup-list"><h4>${data[0]}</h4>${(teamPlayers[data[0]] || []).map(p => `<p>${p}</p>`).join('')}</div><div class="lineup-list"><h4>${data[1]}</h4>${(teamPlayers[data[1]] || []).map(p => `<p>${p}</p>`).join('')}</div></div>${eventsHtml}</div></div>`;
+            
             if (isFuture) startTimer(d); else if (timerInterval) clearInterval(timerInterval);
         }
 
-        function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
-        
-        let shootingStarInterval;
-        function toggleLantern() {
-            const body = document.body;
-            const btn = document.querySelector('.lantern-toggle');
-            body.classList.toggle('lantern-active');
-            if (body.classList.contains('lantern-active')) {
-                btn.innerHTML = '💡'; startShootingStars();
-            } else {
-                btn.innerHTML = '🏮'; stopShootingStars();
+        function startTimer(targetDate) {
+            if (timerInterval) clearInterval(timerInterval);
+            const timerElem = document.getElementById('timer-display');
+            if (!timerElem) return;
+            const matchTime = new Date(targetDate); matchTime.setHours(21, 0, 0); 
+            function update() {
+                const diff = matchTime - new Date();
+                if (diff <= 0) { timerElem.innerText = "بدأت المباراة ⚽"; clearInterval(timerInterval); return; }
+                const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+                const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+                const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+                timerElem.innerText = `${h}:${m}:${s}`;
             }
+            update(); timerInterval = setInterval(update, 1000);
         }
-        function createShootingStar() {
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.animation = `shoot ${(Math.random() * 0.3 + 0.4)}s linear forwards`;
-            document.body.appendChild(star);
-            setTimeout(() => star.remove(), 800);
-        }
-        function startShootingStars() { shootingStarInterval = setInterval(createShootingStar, 1000); }
-        function stopShootingStars() { clearInterval(shootingStarInterval); document.querySelectorAll('.shooting-star').forEach(s => s.remove()); }
+
+        function changeDay(s) { currentIndex = Math.max(0, Math.min(allMatches.length - 1, currentIndex + s)); updateUI(); }
+        function toggleLantern() { document.body.classList.toggle('lantern-active'); }
 
         setInitialDay(); updateUI();
     </script>
